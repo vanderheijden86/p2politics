@@ -1,4 +1,4 @@
 # p2politics
-p2p political party powered by blockchain
+P2P political party powered by blockchain
 
-https://www.youtube.com/watch?v=9mzaXMoaybg
+To see what we are planning to accomplish checkout [this](https://www.youtube.com/watch?v=9mzaXMoaybg) video
