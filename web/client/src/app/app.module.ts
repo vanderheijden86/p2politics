@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifications/components';
 
 import './rxjs-extensions';
