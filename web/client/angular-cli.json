@@ -20,9 +20,7 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [
-        "../node_modules/web3/dist/web3.min.js"
-      ],
+      "scripts": [],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
