@@ -1,5 +1,11 @@
-<mark>TODO project info</mark>
 <button md-button>Flat button</button>
 <button md-raised-button>Raised button</button>
 <button md-fab><md-icon>check</md-icon></button>
 <button md-mini-fab><md-icon>check</md-icon></button>
+
+<md-spinner *ngIf="showSpinner"></md-spinner>
+
+<md-grid-list *ngFor="let info of infos; let i = index" cols="2" rowHeight="60px">
+  <md-grid-tile>{{i}}</md-grid-tile>
+  <md-grid-tile>{{info.test}}</md-grid-tile>
+</md-grid-list>

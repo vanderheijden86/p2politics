@@ -14,6 +14,7 @@ import { Broadcaster } from './utils/broadcaster';
 import { AppReadyEvent } from './utils/app-ready-event';
 
 import { AppComponent } from './app.component';
+import { InfoServiceAgent } from './service-agents';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AppComponent } from './app.component';
     AppConfig,
     Broadcaster,
     AppReadyEvent,
+    InfoServiceAgent,
   ],
   bootstrap: [AppComponent]
 })

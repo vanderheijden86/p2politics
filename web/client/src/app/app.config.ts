@@ -8,7 +8,7 @@ export class AppConfig {
     }
 
     // set the next properties to influence the dev experience - works on localhost only
-    private _useStub = false;
+    private _useStub = true;
     get useStub(): boolean {
         return this._useStub;
     }
