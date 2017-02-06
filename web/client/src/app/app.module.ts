@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
-import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifications/components';
 
 import './rxjs-extensions';
 
@@ -26,12 +25,10 @@ import { InfoServiceAgent } from './service-agents';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    SimpleNotificationsModule,
     routing,
   ],
   providers: [
     FormBuilder,
-    NotificationsService,
     AppConfig,
     Broadcaster,
     AppReadyEvent,

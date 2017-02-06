@@ -19,11 +19,6 @@ export class AppComponent implements OnInit {
     private appConfig: AppConfig) {
   }
 
-  public notificationsOptions = {
-    timeOut: 8000,
-    lastOnBottom: true
-  }
-
   ngOnInit() {
     // TODO remove
     this.router.navigate(['/info']);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { NotificationsService } from 'angular2-notifications/components';
 import { Observable } from 'rxjs/Observable';
+import { MdSnackBar } from '@angular/material';
 
 import { AppConfig } from '../app.config';
 
@@ -10,19 +10,13 @@ import { UserModel } from '../models';
 export abstract class BaseServiceAgent {
     constructor(
         private http: Http,
-        protected notificationsService: NotificationsService,
+        protected snackBar: MdSnackBar,
         protected appConfig: AppConfig) {
     }
 
-    // showLocalhostNotificationIfApplicable() {
-    //     if (this.appConfig.useLocalHost) {
-    //         this.notificationsService.info('LET OP', 'call is naar localhost!', { timeOut: 500, preventDuplicates: true });
-    //     }
-    // }
     get(
         user: UserModel,
         route: string): Observable<any> {
-        // this.showLocalhostNotificationIfApplicable();
         // console.log('BaseServiceAgent.get', 'route', route);
 
         let rootUrl = this.appConfig.webapiRootUrl;
@@ -39,7 +33,9 @@ export abstract class BaseServiceAgent {
             },
             error => {
                 console.log(error);
-                this.notificationsService.error('Er is een fout opgetreden', this.getErrorMessage(error));
+                this.snackBar.open('Er is een fout opgetreden', 'Sluiten', {
+                    duration: 8000
+                });
             });
         return observable;
     }
@@ -48,7 +44,6 @@ export abstract class BaseServiceAgent {
         user: UserModel,
         route: string,
         data: any): Observable<any> {
-        // this.showLocalhostNotificationIfApplicable();
         // console.log('BaseServiceAgent.post', 'route', route);
 
         let rootUrl = this.appConfig.webapiRootUrl;
@@ -68,7 +63,9 @@ export abstract class BaseServiceAgent {
             },
             error => {
                 console.error(error);
-                this.notificationsService.error('Er is een fout opgetreden', this.getErrorMessage(error));
+                this.snackBar.open('Er is een fout opgetreden', 'Sluiten', {
+                    duration: 8000
+                });
             });
         return observable;
     }
@@ -82,20 +79,20 @@ export abstract class BaseServiceAgent {
         return headers;
     }
 
-    private getErrorMessage(error): string {
-        let message = error._body ? error._body : 'Er is een fout opgetreden';
-        if (typeof message !== 'string') {
-            message = 'Er is een fout opgetreden';
-        }
-        message = message.replace('Error occurred: ', '');
-        if (message.indexOf('{') > -1) {
-            let contractError = JSON.parse(message);
-            if (contractError && contractError.contractMessage) {
-                return contractError.contractMessage;
-            }
-        }
-        let status = error.status ? ` (http-status=${error.status})` : '';
-        let result = `${message}${status}`;
-        return result;
-    }
+    // private getErrorMessage(error): string {
+    //     let message = error._body ? error._body : 'Er is een fout opgetreden';
+    //     if (typeof message !== 'string') {
+    //         message = 'Er is een fout opgetreden';
+    //     }
+    //     message = message.replace('Error occurred: ', '');
+    //     if (message.indexOf('{') > -1) {
+    //         let contractError = JSON.parse(message);
+    //         if (contractError && contractError.contractMessage) {
+    //             return contractError.contractMessage;
+    //         }
+    //     }
+    //     let status = error.status ? ` (http-status=${error.status})` : '';
+    //     let result = `${message}${status}`;
+    //     return result;
+    // }
 }
