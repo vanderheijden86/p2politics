@@ -15,6 +15,8 @@ import { AppReadyEvent } from './utils/app-ready-event';
 import { AppComponent } from './app.component';
 import { InfoServiceAgent } from './service-agents';
 
+import { SharedModule } from './shared';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,6 +28,7 @@ import { InfoServiceAgent } from './service-agents';
     HttpModule,
     MaterialModule.forRoot(),
     routing,
+    SharedModule,
   ],
   providers: [
     FormBuilder,

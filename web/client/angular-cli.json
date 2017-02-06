@@ -21,7 +21,9 @@
         "../node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css",
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/web3/dist/web3.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

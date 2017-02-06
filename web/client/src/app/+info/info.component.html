@@ -1,7 +1,10 @@
-<button md-button>Flat button</button>
-<button md-raised-button>Raised button</button>
-<button md-fab><md-icon>check</md-icon></button>
-<button md-mini-fab><md-icon>check</md-icon></button>
+<button md-raised-button (click)="watchBalance()">Watch balance</button>
+
+<md-list>
+  <md-list-item>coinbase: {{coinbase}} </md-list-item>
+  <md-list-item>originalBalance: {{originalBalance}}</md-list-item>
+  <md-list-item>currentBalance: {{currentBalance}}</md-list-item>
+</md-list>
 
 <md-spinner *ngIf="showSpinner"></md-spinner>
 
