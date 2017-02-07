@@ -1,0 +1,290 @@
+{
+    "basePath": "/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "definitions": {
+        "User": {
+            "description": "",
+            "properties": {
+                "id": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": ""
+                },
+                "email": {
+                    "type": "string",
+                    "description": ""
+                },
+                "createdAt": {
+                    "format": "date-time",
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "id",
+                "email",
+                "createdAt"
+            ],
+            "type": "object"
+        },
+        "Account": {
+            "description": "",
+            "properties": {
+                "id": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": ""
+                },
+                "address": {
+                    "type": "string",
+                    "description": ""
+                },
+                "name": {
+                    "type": "string",
+                    "description": ""
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "type": "array",
+                    "description": ""
+                },
+                "fields": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "description": ""
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "type": "object"
+        },
+        "UserCreateRequest": {
+            "description": "",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "email"
+            ],
+            "type": "object"
+        },
+        "UserUpdateRequest": {
+            "description": "",
+            "properties": {
+                "createdAt": {
+                    "format": "date-time",
+                    "type": "string",
+                    "description": ""
+                },
+                "email": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "email"
+            ],
+            "type": "object"
+        }
+    },
+    "info": {
+        "description": "An example app using tsoa",
+        "license": {
+            "name": "MIT"
+        },
+        "title": "tsoa-example",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/Accounts/Current": {
+            "get": {
+                "operationId": "current",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    }
+                },
+                "description": "Get the current account ",
+                "parameters": [{
+                    "description": "",
+                    "in": "query",
+                    "name": "someFlag",
+                    "required": true,
+                    "type": "boolean"
+                }]
+            }
+        },
+        "/Accounts/Users": {
+            "get": {
+                "operationId": "getUsers",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "description": "Get a list of users for the account ",
+                "parameters": []
+            }
+        },
+        "/Users/Current": {
+            "get": {
+                "operationId": "Current",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "email": "test@test.com",
+                                "id": 1
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "description": "Get the current user ",
+                "parameters": []
+            }
+        },
+        "/Users/{userId}": {
+            "get": {
+                "operationId": "Get",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "description": "Get user by ID ",
+                "parameters": [{
+                    "description": "",
+                    "in": "path",
+                    "name": "userId",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                },
+                "description": "Delete a user by ID ",
+                "parameters": [{
+                    "description": "",
+                    "in": "path",
+                    "name": "userId",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }]
+            }
+        },
+        "/Users": {
+            "post": {
+                "operationId": "Create",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "description": "Create a user ",
+                "parameters": [{
+                        "description": "This is a user creation request description ",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserCreateRequest"
+                        }
+                    },
+                    {
+                        "description": "",
+                        "in": "query",
+                        "name": "optionalString",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "Update",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "description": "Update a user ",
+                "parameters": [{
+                    "description": "",
+                    "in": "body",
+                    "name": "request",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/UserUpdateRequest"
+                    }
+                }]
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "swagger": "2.0",
+    "host": "localhost:3000"
+}
