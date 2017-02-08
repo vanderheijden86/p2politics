@@ -7,4 +7,4 @@ const ROUTES: Routes = [
     { path: 'info', loadChildren: './+info/info.module#InfoModule' },
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(ROUTES);
+export const Routing: ModuleWithProviders = RouterModule.forRoot(ROUTES);

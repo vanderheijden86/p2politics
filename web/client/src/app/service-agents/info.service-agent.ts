@@ -1,38 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { MdSnackBar } from '@angular/material';
 
-import { BaseServiceAgent } from './base.service-agent';
-import { AppConfig } from '../app.config';
+import { BaseServiceAgent, AppRequestOptions } from '../services/base/http/index';
+import { HttpConfig } from '../core/http.config';
 import { Balance } from '../models/webapi/balance.model';
 
 @Injectable()
-export class InfoServiceAgent extends BaseServiceAgent {
+export class InfoServiceAgent {
     constructor(
-        http: Http,
-        snackBar: MdSnackBar,
-        appConfig: AppConfig) {
-        super(http, snackBar, appConfig);
-    }
+        private baseServiceAgent: BaseServiceAgent,
+        private httpConfig: HttpConfig,
+        private mdSnackBar: MdSnackBar) { }
 
     getBalance(): Observable<Balance> {
-        if (this.appConfig.useStub) {
-            this.snackBar.open('LET OP: call naar backend is uitgeschakeld!', 'Sluiten', {
+        if (this.httpConfig.useStub) {
+            this.mdSnackBar.open('LET OP: call naar backend is uitgeschakeld!', 'Sluiten', {
                 duration: 8000
             });
-            let result = new Balance();
-            result.coinbase = 'coinbase stub'; 
+            let result = new Balance({
+                coinbase: 'coinbase stub',
+                originalBalance: 42
+            });
+            result.coinbase = 'coinbase stub';
             result.originalBalance = 42;
             return Observable
                 .of(result)
                 .delay(1000);
-        } else {
-            let url = 'web3/balance';
-            return super.get(null, url)
-                .map((response: any) => {
-                    return new Balance(response);
-                });
         }
+
+        return this.baseServiceAgent.doHttpCall(new AppRequestOptions({
+            url: `${this.httpConfig.api.ethereum}web3/balance`
+        })).map((response: any) => new Balance(response));
     }
 }
