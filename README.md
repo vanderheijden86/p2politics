@@ -15,5 +15,5 @@ hij zal wel lang moeten syncen denk ik eerste keer, was bij mij ook
 Om een coinbase te krijgen op het testnet moet er op dit net een account gemaakt worden.
 Dit wordt gedaan met het volgende command:
 ```
-geth --testnet account new
+$ geth --testnet account new
 ```
