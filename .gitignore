@@ -3,6 +3,7 @@
 *.user
 *.gpState
 *.suo
+bin
 obj
 /packages
 

@@ -28,7 +28,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('server:start', ['ts'], function () {
-    server.listen({ path: 'bin/www.js' }, function (error) {
+    server.listen({ path: 'server.js' }, function (error) {
         console.log(error);
     });
 });
