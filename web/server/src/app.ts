@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Cors } from './setup/cors';
 import { Auth } from './setup/auth'
+import { ClientRoutes } from './setup/client-routes';
 import { RegisterRoutes } from './routes';
 import { web3ConfigInstance } from './config/web3.config';
 
@@ -37,12 +38,10 @@ Auth.init();
 app.use('/v1', passport.initialize());
 app.use('/v1', Auth.authenticate);
 
-// setup client routes (to serve the Angular app on Azure)
-// require('./routes/clientRoutes').setupClientRoutes(app);
-
 RegisterRoutes(app);
 
-// app.use('/', routes);
+// setup client routes (to serve the Angular app on Azure)
+ClientRoutes.setupClientRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: Function) => {
