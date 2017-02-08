@@ -26,6 +26,7 @@
     "express": "~4.13.1",
     "morgan": "~1.6.1",
     "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "rx": "^4.1.0",
     "superagent": "^1.7.1",
     "tsoa": "^1.0.17",

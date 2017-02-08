@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Cors } from './setup/cors';
+import { Auth } from './setup/auth'
 import { RegisterRoutes } from './routes';
 import { web3ConfigInstance } from './config/web3.config';
 
@@ -8,8 +9,7 @@ let path = require('path');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
 
-// let passport = require('passport');
-// let auth = require('./setup/auth');
+let passport = require('passport');
 
 let Rx = require('rx');
 
@@ -33,8 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(Cors.allowCrossDomain);
 
 // setup authentication
-// app.use('/api', passport.initialize());
-// app.use('/api', auth.authenticate);
+Auth.init();
+app.use('/v1', passport.initialize());
+app.use('/v1', Auth.authenticate);
 
 // setup client routes (to serve the Angular app on Azure)
 // require('./routes/clientRoutes').setupClientRoutes(app);
