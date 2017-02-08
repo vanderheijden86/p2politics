@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+
 var app = require('./dist/app');
 var debug = require('debug')('p2politics:server');
 var http = require('http');
@@ -14,6 +15,10 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
+
+// web3Port = normalizePort(process.env.WEB3_PORT || '8545');
+// app.set('web3Port', web3Port);
+// console.log('process.env.WEB3_PORT', process.env.WEB3_PORT, 'web3ConfigInstance', web3ConfigInstance.port);
 
 /**
  * Create HTTP server.

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Cors } from './setup/cors';
 import { RegisterRoutes } from './routes';
+import { web3ConfigInstance } from './config/web3.config';
 
 let express = require('express');
 let path = require('path');
@@ -14,6 +15,9 @@ let Rx = require('rx');
 
 // let routes = require('./routes/index');
 let app = express();
+
+web3ConfigInstance.port = process.env.WEB3_PORT || '8545';
+console.log('web3ConfigInstance.port', web3ConfigInstance.port, 'web3ConfigInstance.providerUrl', web3ConfigInstance.providerUrl);
 
 app.use('/docs', express.static(__dirname + '/swagger-ui'));
 app.use('/swagger.json', (req, res) => {

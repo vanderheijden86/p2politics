@@ -1,8 +1,8 @@
 {
   "name": "node-ts",
   "scripts": {
-    "start": "gulp default",
-    "prod": "node bin/www.js",
+    "start": "WEB3_PORT=8545 gulp default",
+    "prod": "WEB3_PORT=8545 node bin/www.js",
     "gen": "npm run gen-routes && npm run gen-swagger",
     "gen-routes": "tsoa routes",
     "gen-swagger": "tsoa swagger"
