@@ -1,0 +1,19 @@
+
+| <30>                           | <30>                           | <30>                           |                            |
+| Step                           | Action                         | Comments                       | Link                       |
+|--------------------------------+--------------------------------+--------------------------------+----------------------------|
+| Install geth                   | brew tap ethereum/ethereum     |                                | [[https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Mac%20][mac install guide]]          |
+|                                | brew install ethereum          |                                |                            |
+| Create new ethereum account    | geth --testnet account new     | New testnet accout as coinbase |                            |
+| Run geth with console          | geth --testnet console         | Node now starts syncing          |                            |
+| Install truffle                | npm install -g truffle         | Node.js > v5                   | [[http://truffleframework.com/docs/getting_started/installation][install guide and tutorial]] |
+| Install testrpc                | npm install -g ethereumjs-testrpc | Node.js > v6.9.1               | [[https://github.com/ethereumjs/testrpc][github page]]                |
+| Run testrpc                    | testrpc                        | This starts a test ethereum js node for devtest purposes |                            |
+| Initialize Truffle Project     | truffle init                   | Creates a skeleton project in the current folder |                            |
+| Migrate contracts              | truffle migrate                | This migrates the test contracts to the testrpc node |                            |
+| Configure Truffle for live ethereum | edit project's truffle.js --> add new entry for pubtest with port 8546 | Add testnet network to config and run on designated rpc port | [[http://truffleframework.com/tutorials/deploying-to-the-live-network][config guide]]               |
+| Run testnet client             | geth --testnet --rpc --rpcport 8546 | Open rpc port and do it on seperate port as specified in previous step |                            |
+| Open seperate js console on this client | geth attach ipc:/Users/<user>/Library/Ethereum/testnet/geth.ipc | Replace user with own username |                            |
+| Unlock your account in the console | web3.personal.unlockAccount(web3.personal.listAccounts/[0],"<password>",15000); | Replace password by password   |                            |
+| Go ahead an migrate to pubtest network | truffle migrate --network pubtest | Should look like below here    |                            |
+|                                |                                |                                |                            |
