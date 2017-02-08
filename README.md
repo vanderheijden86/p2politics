@@ -12,5 +12,8 @@ Start in terminal met
 console is toevoeging om zoals je al raadt een js console te krijgen
 hij zal wel lang moeten syncen denk ik eerste keer, was bij mij ook
 
-//Start node:
-//brew services start ethereum/ethereum/ethereum
+Om een coinbase te krijgen op het testnet moet er op dit net een account gemaakt worden.
+Dit wordt gedaan met het volgende command:
+```
+$ geth --testnet account new
+```
