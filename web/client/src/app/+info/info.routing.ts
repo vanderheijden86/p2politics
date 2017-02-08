@@ -6,4 +6,4 @@ import { InfoComponent } from './info.component';
 const ROUTES: Routes = [
   { path: '', component: InfoComponent}
 ];
-export const routing: ModuleWithProviders = RouterModule.forChild(ROUTES);
+export const Routing: ModuleWithProviders = RouterModule.forChild(ROUTES);

@@ -7,6 +7,7 @@ import { AppConfig } from '../app.config';
 
 import { UserModel } from '../models';
 
+// Deprecated, see ../services/base/http/*
 export abstract class BaseServiceAgent {
     constructor(
         private http: Http,
