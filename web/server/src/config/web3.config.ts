@@ -1,4 +1,4 @@
-export class Web3Config {
+class Web3Config {
     port = 8545;
     get providerUrl() {
         return `http://localhost:${this.port}`;
