@@ -9,4 +9,9 @@ export class Web3Controller {
     public async getBalance(): Promise<Balance> {
         return web3ServiceAgentInstance.getBalance();
     }
+
+    @Get('metacoin')
+    public async getMetaCoin(): Promise<string> {
+        return web3ServiceAgentInstance.tryMetaCoin();
+    }
 }

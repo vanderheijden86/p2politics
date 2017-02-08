@@ -25,6 +25,20 @@ export function RegisterRoutes(app: any) {
         const controller = new Web3Controller();
         promiseHandler(controller.getBalance.apply(controller, validatedParams), res, next);
     });
+    app.get('/v1/web3/metacoin', function(req: any, res: any, next: any) {
+        const params = {
+        };
+
+        let validatedParams: any[] = [];
+        try {
+            validatedParams = getValidatedParams(params, req, '');
+        } catch (err) {
+            return next(err);
+        }
+
+        const controller = new Web3Controller();
+        promiseHandler(controller.getMetaCoin.apply(controller, validatedParams), res, next);
+    });
 
     function promiseHandler(promise: any, response: any, next: any) {
         return promise
