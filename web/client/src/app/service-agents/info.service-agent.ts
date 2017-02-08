@@ -5,7 +5,7 @@ import { MdSnackBar } from '@angular/material';
 
 import { BaseServiceAgent } from './base.service-agent';
 import { AppConfig } from '../app.config';
-import { InfoViewModel } from '../models';
+import { Balance } from '../models/webapi/balance.model';
 
 @Injectable()
 export class InfoServiceAgent extends BaseServiceAgent {
@@ -16,36 +16,23 @@ export class InfoServiceAgent extends BaseServiceAgent {
         super(http, snackBar, appConfig);
     }
 
-    getInfos(): Observable<InfoViewModel[]> {
+    getBalance(): Observable<Balance> {
         if (this.appConfig.useStub) {
             this.snackBar.open('LET OP: call naar backend is uitgeschakeld!', 'Sluiten', {
                 duration: 8000
             });
-            let result = new Array<InfoViewModel>();
-            const info1 = new InfoViewModel();
-            info1.test = 'Hopla';
-            const info2 = new InfoViewModel();
-            info2.test = 'kee';
-            result.push(info1);
-            result.push(info2); 
+            let result = new Balance();
+            result.coinbase = 'coinbase stub'; 
+            result.originalBalance = 42;
             return Observable
                 .of(result)
                 .delay(1000);
         } else {
-            let url = 'get_users_claims';
+            let url = 'web3/balance';
             return super.get(null, url)
                 .map((response: any) => {
-                    // console.log(result)
-                    let result = new Array<InfoViewModel>();
-                    // if (response) {
-                    // for (let element of response.claims) {
-                    //     let claim = new ClaimViewModel(this.appConfig.webapiRootUrl, element);
-                    //     result.push(claim);
-                    // }
-                    // }
-                    return result;
+                    return new Balance(response);
                 });
         }
     }
-
 }

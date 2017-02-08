@@ -1,14 +1,13 @@
-<button md-raised-button (click)="watchBalance()">Watch balance</button>
+<button md-raised-button (click)="getBalance()">Get balance</button>
 
-<md-list>
-  <md-list-item>coinbase: {{coinbase}} </md-list-item>
-  <md-list-item>originalBalance: {{originalBalance}}</md-list-item>
-  <md-list-item>currentBalance: {{currentBalance}}</md-list-item>
+<md-list *ngIf="balance">
+  <md-list-item>coinbase: {{balance.coinbase}} </md-list-item>
+  <md-list-item>originalBalance: {{balance.originalBalance}}</md-list-item>
 </md-list>
 
 <md-spinner *ngIf="showSpinner"></md-spinner>
-
+<!--
 <md-grid-list *ngFor="let info of infos; let i = index" cols="2" rowHeight="60px">
   <md-grid-tile>{{i}}</md-grid-tile>
   <md-grid-tile>{{info.test}}</md-grid-tile>
-</md-grid-list>
+</md-grid-list>-->
