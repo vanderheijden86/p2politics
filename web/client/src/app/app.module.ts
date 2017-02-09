@@ -15,7 +15,9 @@ import { Broadcaster } from './utils/broadcaster';
 import { AppReadyEvent } from './utils/app-ready-event';
 
 import { AppComponent } from './app.component';
+import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
+import { Web3Service } from './services/web3.service';
 
 import { SharedModule } from './shared';
 
@@ -39,7 +41,9 @@ import { SharedModule } from './shared';
     FormBuilder,
     Broadcaster,
     AppReadyEvent,
+    ContractRpcServiceAgent,
     InfoServiceAgent,
+    Web3Service,
   ],
   bootstrap: [AppComponent]
 })

@@ -24,7 +24,7 @@ export class Web3ServiceAgent {
         // console.log('contractInstance', contractInstance);
         //let balanceAddress = '0x5fea3e33fd6d2ff27f9382be45b72e59b9df2497';
 
-        let ad = '0x8Ae4F8fC3eCaf9E9394f037FD54405DBF77daCa2';
+        let ad = '0x8Ae4F8fC3eCaf9E9394f037FD54405DBF77daCa2'; // address in MetaMask
         let to = '0xb8ab7ea5073c777a46701c3184fd540b9bd1ff36';
 
         let sendCoinResult = contractInstance.sendCoin.call(to, 1, { from: this.web3.defaultAccount });

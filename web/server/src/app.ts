@@ -24,6 +24,7 @@ app.use('/docs', express.static(__dirname + '/swagger-ui'));
 app.use('/swagger.json', (req, res) => {
     res.sendFile(path.join(__dirname, 'swagger.json'));
 });
+app.use('/contracts', express.static(__dirname + '/../../../build/contracts'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
