@@ -10,9 +10,9 @@ export class ClientRoutes {
         let clientImages = `${clientDist}/assets/images`;
         let clientIcons = `${clientDist}/assets/icons`;
         let clientI18N = `${clientDist}/assets/i18n`;
-        console.log('__dirname        ', __dirname);
-        console.log('clientPath       ', clientPath);
-        console.log('clientImages', clientImages);
+        // console.log('__dirname        ', __dirname);
+        // console.log('clientPath       ', clientPath);
+        // console.log('clientImages', clientImages);
 
         // static files
         app.use(express.static(clientDist));
