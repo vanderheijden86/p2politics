@@ -1,5 +1,29 @@
-// .example-fill-remaining-space {
-//   // This fills the remaining space, by using flexbox. 
-//   // Every toolbar row uses a flexbox row layout.
-//   flex: 1 1 auto;
-// }
+.fill-remaining-space {
+    // This fills the remaining space, by using flexbox. 
+    // Every toolbar row uses a flexbox row layout.
+    flex: 1 1 auto;
+}
+
+.sidenav-container {
+//   width: 500px;
+//   height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-container md-sidenav {
+  max-width: 200px;
+}
+
+.sidenav-container .md-sidenav-content,
+.sidenav-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.scrolling-content {
+  overflow: auto;
+}
+
+.content {
+    overflow: auto;
+}
