@@ -80,9 +80,16 @@ export class InfoComponent implements OnInit {
 
     hasRole: boolean;
     tryUser() {
-        this.userService.test()
+        this.userService.getHasRole()
             .subscribe((response) => {
                 this.hasRole = response;
+            });
+    }
+    testjeResult: number;
+    tryTestje() {
+        this.userService.testje()
+            .subscribe((response) => {
+                this.testjeResult = response;
             });
     }
 
