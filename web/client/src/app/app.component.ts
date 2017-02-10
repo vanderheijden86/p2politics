@@ -24,8 +24,6 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.router.events
             .subscribe((event) => {
-                // example: NavigationStart, RoutesRecognized, NavigationEnd
-                console.log(event);
                 if (event instanceof NavigationStart) {
                     if (event.url === '/home') {
                         this.sidenav.open();
