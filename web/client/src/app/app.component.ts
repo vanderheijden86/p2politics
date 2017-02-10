@@ -22,6 +22,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         // TODO remove
-        this.router.navigate(['/info']);
+        // this.router.navigate(['/info']);
     }
 }
