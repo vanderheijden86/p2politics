@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
-import { SideMenuComponent } from './side-menu.component';
+import { Routing } from './home.routing';
+import { HomeComponent } from './home.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
+        Routing,
         MaterialModule,
     ],
     exports: [
-        SideMenuComponent,
     ],
     declarations: [
-        SideMenuComponent,
+        HomeComponent,
     ],
 })
-export class SideMenuModule {
+export class HomeModule {
 }
