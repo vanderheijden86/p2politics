@@ -17,9 +17,11 @@ export class ContractRpcServiceAgent {
     getContractInstance(contractName: string): Observable<any> {
         return this.getContractMetaData(contractName)
             .map((response) => {
-                let metaCoinMetaData = response;
-                let metaCoinContract = this.web3.eth.contract(metaCoinMetaData.abi);
-                let contractInstance = metaCoinContract.at(metaCoinMetaData.networks['1'].address);
+                let metaData = response;
+                let contract = this.web3.eth.contract(metaData.abi);
+                let firstNetwork: any = Object.keys(metaData.networks)[0];
+                //console.log('contract', contract);
+                let contractInstance = contract.at(firstNetwork.address);
                 return contractInstance;
             });
     }
