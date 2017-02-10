@@ -3,6 +3,7 @@
  * Do not edit.
 */
 /* tslint:disable */
+// add
 
 import { ValidatorFn } from '@angular/forms';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
@@ -21,21 +22,21 @@ export abstract class BaseModel {
         });
     }
 
-    /** 
-     * use $formGroup in angular's formBuilder to make a model driven (reactive) form. 
+    /**
+     * use $formGroup in angular's formBuilder to make a model driven (reactive) form.
      *   this.form = this.formBuilder.group({
      *       pet: this.pet.$formGroup,
-     *   }); 
+     *   });
     */
     $formGroup: FormGroup;
 
     protected _formGroup: FormGroup;
     protected abstract getFormGroup(): FormGroup;
 
-    /** 
+    /**
      * add one or more additional validators to the control
-     * @param key Name of the control (is the same as the name of the attached model property) 
-     * @param validators Validator(s) to add to the control 
+     * @param key Name of the control (is the same as the name of the attached model property)
+     * @param validators Validator(s) to add to the control
     */
     addValidatorToControl(key: string, validators: ValidatorFn | ValidatorFn[]) {
         let control = this.$formGroup.controls[key];
@@ -74,7 +75,7 @@ export abstract class BaseModel {
         if (formGroup) {
             let formArray = <FormArray>formGroup.controls[key];
             for (let i = formArray.length-1; i >= 0; i--) {
-                formArray.removeAt(i);                    
+                formArray.removeAt(i);
             }
             return formArray;
         }

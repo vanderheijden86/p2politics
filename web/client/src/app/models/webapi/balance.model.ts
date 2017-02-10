@@ -3,6 +3,7 @@
  * Do not edit.
 */
 /* tslint:disable */
+// add
 
 import { Validators, FormControl, FormGroup, FormArray, ValidatorFn } from '@angular/forms';
 import { minValueValidator, maxValueValidator } from './validators';
@@ -18,9 +19,9 @@ export class Balance extends BaseModel implements IBalance {
     coinbase: string;
     originalBalance: number;
 
-    /** 
+    /**
      * constructor
-     * @param values Can be used to set a webapi response to this newly constructed model   
+     * @param values Can be used to set a webapi response to this newly constructed model
     */
     constructor(values?: any) {
         super();
@@ -29,7 +30,7 @@ export class Balance extends BaseModel implements IBalance {
         }
     }
 
-    /** 
+    /**
      * set the values.
      * @param values Can be used to set a webapi response to this newly constructed model
     */
