@@ -12,11 +12,24 @@
 .sidenav-container {
 //   width: 500px;
 //   height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+//   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidenav-container md-sidenav {
   max-width: 200px;
+}
+
+.sidebar-container .md-sidenav-container {
+  bottom: 0;
+    -webkit-box-shadow: 2px 0px 5px 0px rgba(158,158,158,1);
+    -moz-box-shadow: 2px 0px 5px 0px rgba(158,158,158,1);
+  box-shadow: 2px 0px 5px 0px rgba(158,158,158,1);
+  height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  position: fixed;
+  top: 65px;
+  width: 100%;
 }
 
 .sidenav-container .md-sidenav-content,
