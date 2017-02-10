@@ -19,3 +19,7 @@ Dit wordt gedaan met het volgende command:
 ```
 $ geth --testnet account new
 ```
+
+# Entity Relationship Diagram
+Inline-style:
+![alt text](docs/entity_relationship_diagram.png "ERD")
