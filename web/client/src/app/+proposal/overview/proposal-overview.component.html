@@ -1,11 +1,13 @@
-<md-toolbar *ngIf="user?.isAdmin" class="action-bar">
-    <div>Action</div>
-</md-toolbar>
+<div *ngIf="user?.isAdmin" class="action-bar">
+    <button md-raised-button (click)="onAddProposal()" class="button-with-icon">
+        <md-icon>add</md-icon> Create proposal
+    </button>
+</div>
 
 <div class="proposal-cards">
     <md-card *ngFor="let proposal of proposals">
         <h3>
-            <a [routerLink]="['proposal', 'test']">Proposal</a>
+            <a [routerLink]="['proposal', proposal.id]">{{proposal.title}}</a>
         </h3>
         <md-card-content>
             <p>Card content</p>
