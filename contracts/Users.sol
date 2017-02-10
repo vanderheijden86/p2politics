@@ -19,4 +19,7 @@ contract Users {
     return "Role has been set";
   }
 
+  function testje() returns (uint) {
+      return 42;
+  }
 }

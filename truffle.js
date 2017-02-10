@@ -1,4 +1,4 @@
-module.exports = {
+ module.exports = {
     networks: {
     "pubtest": {
       network_id: 1,
