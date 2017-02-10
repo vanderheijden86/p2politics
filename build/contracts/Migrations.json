@@ -87,9 +87,18 @@
     "default": {
       "links": {},
       "events": {},
+<<<<<<< HEAD
       "updated_at": 1486565264993
     }
   },
   "schema_version": "0.0.5",
   "updated_at": 1486565264993
+=======
+      "updated_at": 1486571570007,
+      "address": "0x8809de0197bca55e2616df443e1a39959d8422f1"
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1486571570007
+>>>>>>> fbdf3977c911c5dfc953af717a258a666cb8929a
 }
