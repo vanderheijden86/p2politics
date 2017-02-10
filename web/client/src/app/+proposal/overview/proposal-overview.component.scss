@@ -22,5 +22,33 @@ md-card	h3 {
 
 md-card .date {
 	color: #4CAF50;
+	display: inline-block;
 	font-size: .75rem;
+	float: left;
+}
+
+md-card .proposal-link {
+	float: right;
+
+	ul {
+		line-height: 18px;
+		margin: 0;
+		margin-right: .5rem;
+
+		li {
+			color: #dbdbdb;
+			display: inline-block;
+			font-size: .75rem;
+			margin: 0 1rem;
+
+			a {
+				text-decoration: underline;
+				transition: all ease-in-out .3s;
+
+				&:hover {
+					color: #000000;
+				}
+			}
+		}
+	}
 }
