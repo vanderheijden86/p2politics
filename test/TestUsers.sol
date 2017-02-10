@@ -10,9 +10,9 @@ contract TestUsers {
 
     function testSetRole() {
 
-        Users users = Users(DeployedAddresses.Users());
+        Users users = Users(DeployedAddresses.Users());
 
-        users.setRole(addr, "insurance", "admin", true);
+        users.setRole(addr, "insurance", "admin", true).gas(20000);
 
         bool expected = true;
 

@@ -4,12 +4,17 @@
 }
 
 md-toolbar {
-  height: 80px;
+  height: 5.5rem;
 }
 
 :host /deep/ .md-button-focus-overlay   {
   background-color: transparent;
   opacity: 0;
+}
+
+md-icon.menu {
+  color: #ababab;
+  font-size: 2rem;
 }
 
 .fill-remaining-space {
@@ -37,7 +42,7 @@ md-toolbar {
   line-height: 1.5;
   margin: 0;
   position: fixed;
-  top: 80px;
+  top: 5.5rem;
   width: 100%;
 }
 
