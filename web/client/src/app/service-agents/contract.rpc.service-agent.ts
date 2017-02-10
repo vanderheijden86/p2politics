@@ -19,9 +19,10 @@ export class ContractRpcServiceAgent {
             .map((response) => {
                 let metaData = response;
                 let contract = this.web3.eth.contract(metaData.abi);
-                let firstNetwork: any = Object.keys(metaData.networks)[0];
-                //console.log('contract', contract);
-                let contractInstance = contract.at(firstNetwork.address);
+                let firstNetworkKey: any = Object.keys(metaData.networks)[0];
+                let contractAddress = metaData.networks[firstNetworkKey].address;
+                console.log('contractAddress', contractAddress);
+                let contractInstance = contract.at(contractAddress);
                 return contractInstance;
             });
     }
