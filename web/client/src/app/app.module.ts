@@ -19,6 +19,7 @@ import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
 import { Web3Service } from './services/web3.service';
 
+import { SideMenuModule } from './side-menu';
 import { SharedModule } from './shared';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SharedModule } from './shared';
     HttpModule,
     MaterialModule.forRoot(),
     Routing,
+    SideMenuModule,
     SharedModule,
     CoreModule.forRoot(),
     BaseHttpModule.forRoot(),
