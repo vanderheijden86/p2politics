@@ -177,16 +177,6 @@
         }
       },
       "links": {
-<<<<<<< HEAD
-        "ConvertLib": "0x046ef21f7347bebb29c4fc1b5ddfae7f339e652f"
-      },
-      "address": "0xdc48601bfbffd98d89b6b4f4d6ac3aefbfac134b",
-      "updated_at": 1486565264991
-    }
-  },
-  "schema_version": "0.0.5",
-  "updated_at": 1486565264991
-=======
         "ConvertLib": "0x828a865d6d44e60ec4cf7897e3c06f14979b296f"
       },
       "address": "0x7a75d1336ee7e81595b08003c0fea68680eab921",
@@ -195,5 +185,4 @@
   },
   "schema_version": "0.0.5",
   "updated_at": 1486571570007
->>>>>>> fbdf3977c911c5dfc953af717a258a666cb8929a
 }
