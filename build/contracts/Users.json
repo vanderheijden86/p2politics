@@ -1,0 +1,83 @@
+{
+  "contract_name": "Users",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "name": "domain",
+          "type": "bytes32"
+        },
+        {
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "name": "domain",
+          "type": "bytes32"
+        },
+        {
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "name": "state",
+          "type": "bool"
+        }
+      ],
+      "name": "setRole",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x606060405234610000575b5b5b6101708061001b6000396000f300606060405263ffffffff60e060020a600035041663d865ae9b811461002f578063e21550a414610062575b610000565b346100005761004e600160a060020a0360043516602435604435610098565b604080519115158252519081900360200190f35b3461000057610086600160a060020a036004351660243560443560643515156100d9565b60408051918252519081900360200190f35b600160a060020a038316600090815260208181526040808320815186815280840186905282519081900383019020845290915290205460ff165b9392505050565b600160a060020a03841660009081526020818152604080832081518781528084018790528251908190038301902084529091529020805460ff19168215151790557f526f6c6520686173206265656e207365740000000000000000000000000000005b9493505050505600a165627a7a72305820156a6a825782c7d996e0ba0a6fc593a19a6fa0e693737f8d477335fbee9db9050029",
+  "networks": {
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "0xc9f4660b6667fbff9ba34742c5e48f663df6d201",
+      "updated_at": 1486760435579
+    },
+    "1486759214592": {
+      "events": {},
+      "links": {},
+      "address": "0xb249cf48cade17eac3d1e2d176155157dd01d2bb",
+      "updated_at": 1486759861992
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1486760435579
+}
