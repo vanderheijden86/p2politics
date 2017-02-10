@@ -5,6 +5,7 @@ const ROUTES: Routes = [
     { path: '', redirectTo: 'info', pathMatch: 'full' },
 
     { path: 'info', loadChildren: './+info/info.module#InfoModule' },
+    { path: ':group', loadChildren: './+proposal/module/#ProposalModule' },
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(ROUTES);
