@@ -9,6 +9,14 @@ contract Votes {
         uint timestamp;
     }
 
+    function vote (address userAddress, uint proposalId, uint value) returns (bytes32) {
+        Vote.userId = userAddress;
+        Vote.proposalId = proposalId
+
+
+        return "Vote succesful"
+    }
+
 
 
 
