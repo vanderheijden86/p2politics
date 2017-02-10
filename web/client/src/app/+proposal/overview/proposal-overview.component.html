@@ -1,4 +1,8 @@
 <div class="card-titel">Natuur en Ruimtelijke Ordening</div>
+<md-toolbar *ngIf="user?.isAdmin" class="action-bar">
+    <div>Action</div>
+</md-toolbar>
+
 <div class="proposal-cards">
 	<a [routerLink]="['proposal', 'test']">
 	  <md-card *ngFor="let proposal of proposals">

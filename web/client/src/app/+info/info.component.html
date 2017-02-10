@@ -25,6 +25,18 @@
     <md-list-item>contractCallResult: {{contractCallResult}} </md-list-item>
   </md-list>
 </div>
+<div>
+  <button md-raised-button (click)="tryUser()">Try User contract call (via RPC from browser)</button>
+  <md-list>
+    <md-list-item>hasRole: {{hasRole}} </md-list-item>
+  </md-list>
+</div>
+<div>
+  <button md-raised-button (click)="tryTestje()">Try testje contract call (via RPC from browser)</button>
+  <md-list *ngIf="testjeResult">
+    <md-list-item>testjeResult: {{testjeResult}} </md-list-item>
+  </md-list>
+</div>
 <!--
 <md-grid-list *ngFor="let info of infos; let i = index" cols="2" rowHeight="60px">
   <md-grid-tile>{{i}}</md-grid-tile>

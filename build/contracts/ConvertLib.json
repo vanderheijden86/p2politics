@@ -24,45 +24,8 @@
       "type": "function"
     }
   ],
-  "unlinked_binary": "0x6060604052346000575b6076806100176000396000f300606060405263ffffffff60e060020a60003504166396e4ee3d81146022575b6000565b602e6004356024356040565b60408051918252519081900360200190f35b8181025b929150505600a165627a7a7230582031815168bfcbd502d8c2ded99efaae3ce56879581111c1363ef24c2c87af3cbb0029",
-  "networks": {
-    "3": {
-      "events": {},
-      "links": {},
-      "address": "0x2be35ee542a8ffcfabaff9e1c4d6d8bca845b8ab",
-      "updated_at": 1486558685296
-    },
-    "1486549929092": {
-      "events": {},
-      "links": {},
-      "address": "0xce9894ac270bc4f36210b96ba9ad4e9abedcd1ea",
-      "updated_at": 1486551035996
-    },
-    "1486565225512": {
-      "events": {},
-      "links": {},
-      "address": "0x046ef21f7347bebb29c4fc1b5ddfae7f339e652f",
-      "updated_at": 1486565264991
-    },
-    "1486568251804": {
-      "events": {},
-      "links": {},
-      "address": "0x7c49e7d4a867445397a5b93486400b97c3ca476f",
-      "updated_at": 1486568270998
-    },
-    "1486571003208": {
-      "events": {},
-      "links": {},
-      "address": "0x57a4b35504cbc9ace1ebf5c8d06a8f98e1879cbb",
-      "updated_at": 1486571064497
-    },
-    "1486571558070": {
-      "events": {},
-      "links": {},
-      "address": "0x828a865d6d44e60ec4cf7897e3c06f14979b296f",
-      "updated_at": 1486571570006
-    }
-  },
+  "unlinked_binary": "0x6060604052346000575b6076806100176000396000f300606060405263ffffffff60e060020a60003504166396e4ee3d81146022575b6000565b602e6004356024356040565b60408051918252519081900360200190f35b8181025b929150505600a165627a7a72305820d13453db172b0eaccaf15672366e139bcc6400c0bf13fb79a1ea5372c7d3ec440029",
+  "networks": {},
   "schema_version": "0.0.5",
-  "updated_at": 1486760361401
+  "updated_at": 1486766809416
 }

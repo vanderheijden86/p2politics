@@ -1,7 +1,5 @@
-export class UserModel {
-    username: string;
-    password: string;
-    useralias: string;
-    userImageUrl: string;
-    hasChangeRights: boolean;
+export class DomainUser {
+    isAdmin: boolean;
+    isProposer: boolean;
+    isVoter: boolean;
 }
