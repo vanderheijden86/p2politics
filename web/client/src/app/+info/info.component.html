@@ -1,0 +1,32 @@
+<div>
+  <button md-raised-button (click)="getBalance()">Get balance (via webapi)</button>
+
+  <md-list *ngIf="balance">
+    <md-list-item>coinbase: {{balance.coinbase}} </md-list-item>
+    <md-list-item>originalBalance: {{balance.originalBalance}}</md-list-item>
+  </md-list>
+
+  <md-spinner *ngIf="showSpinner"></md-spinner>
+</div>
+
+<div>
+  <button md-raised-button (click)="getClientBalance()">Get balance (via RPC from browser)</button>
+
+  <md-list *ngIf="clientBalance">
+    <md-list-item>coinbase: {{clientBalance.coinbase}} </md-list-item>
+    <md-list-item>originalBalance: {{clientBalance.originalBalance}} ether</md-list-item>
+    <md-list-item>net: {{netId}} = {{network}}</md-list-item>
+  </md-list>
+</div>
+
+<div>
+  <button md-raised-button (click)="tryMetaCoinContractCall()">Try MetaCoin contract call (via RPC from browser)</button>
+  <md-list *ngIf="contractCallResult">
+    <md-list-item>contractCallResult: {{contractCallResult}} </md-list-item>
+  </md-list>
+</div>
+<!--
+<md-grid-list *ngFor="let info of infos; let i = index" cols="2" rowHeight="60px">
+  <md-grid-tile>{{i}}</md-grid-tile>
+  <md-grid-tile>{{info.test}}</md-grid-tile>
+</md-grid-list>-->

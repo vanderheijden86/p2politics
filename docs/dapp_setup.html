@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>dapp_setup</title>
+<!-- 2017-02-08 Wed 15:23 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Andre van der Heijden" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">dapp_setup</h1>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Step</th>
+<th scope="col" class="left">Action</th>
+<th scope="col" class="left">Comments</th>
+<th scope="col" class="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Install geth</td>
+<td class="left">brew tap ethereum/ethereum</td>
+<td class="left">&#xa0;</td>
+<td class="left"><a href="https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Mac%20">mac install guide</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">brew install ethereum</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Create new ethereum account</td>
+<td class="left">geth &#x2013;testnet account new</td>
+<td class="left">New testnet accout as coinbase</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Run geth with console</td>
+<td class="left">geth &#x2013;testnet console</td>
+<td class="left">Node now starts syncing</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Install truffle</td>
+<td class="left">npm install -g truffle</td>
+<td class="left">Node.js &gt; v5</td>
+<td class="left"><a href="http://truffleframework.com/docs/getting_started/installation">install guide and tutorial</a></td>
+</tr>
+
+<tr>
+<td class="left">Install testrpc</td>
+<td class="left">npm install -g ethereumjs-testrpc</td>
+<td class="left">Node.js &gt; v6.9.1</td>
+<td class="left"><a href="https://github.com/ethereumjs/testrpc">github page</a></td>
+</tr>
+
+<tr>
+<td class="left">Run testrpc</td>
+<td class="left">testrpc</td>
+<td class="left">This starts a test ethereum js node for devtest purposes</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Initialize Truffle Project</td>
+<td class="left">truffle init</td>
+<td class="left">Creates a skeleton project in the current folder</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Migrate contracts</td>
+<td class="left">truffle migrate</td>
+<td class="left">This migrates the test contracts to the testrpc node</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Configure Truffle for live ethereum</td>
+<td class="left">edit project&rsquo;s truffle.js &#x2013;&gt; add new entry for pubtest with port 8546</td>
+<td class="left">Add testnet network to config and run on designated rpc port</td>
+<td class="left"><a href="http://truffleframework.com/tutorials/deploying-to-the-live-network">config guide</a></td>
+</tr>
+
+<tr>
+<td class="left">Run testnet client</td>
+<td class="left">geth &#x2013;testnet &#x2013;rpc &#x2013;rpcport 8546</td>
+<td class="left">Open rpc port and do it on seperate port as specified in previous step</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Open seperate js console on this client</td>
+<td class="left">geth attach ipc:/Users/&lt;user&gt;/Library/Ethereum/testnet/geth.ipc</td>
+<td class="left">Replace user with own username</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Unlock your account in the console</td>
+<td class="left">web3.personal.unlockAccount(web3.personal.listAccounts/<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>,"&lt;password&gt;&rdquo;,15000);</td>
+<td class="left">Replace password by password</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Go ahead an migrate to pubtest network</td>
+<td class="left">truffle migrate &#x2013;network pubtest</td>
+<td class="left">Should look like below here</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div></div>
+</body>
+</html>

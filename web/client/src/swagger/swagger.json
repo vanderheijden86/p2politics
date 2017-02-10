@@ -1,0 +1,61 @@
+{
+    "basePath": "/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "definitions": {
+        "Balance": {
+            "description": "",
+            "properties": {
+                "coinbase": {
+                    "type": "string",
+                    "description": ""
+                },
+                "originalBalance": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": ""
+                }
+            },
+            "required": [
+                "coinbase",
+                "originalBalance"
+            ],
+            "type": "object"
+        }
+    },
+    "info": {
+        "description": "We want to put the people, the peers back into politics. Merely voting once every four years is not enough to face the challenges of our time. Holding a one-off referendum for every single issue is far too costly. Above all, this fails to recognize our true intellectual potential as society. We will present politics to our peers as the game of choice it really is. We will get to the heart of the matter by letting the people make their own decisions in a gamified version of the political reality. A reality with many paramters (e.g. the tax rate, labour laws, education) to tweak and with the national budget and our constitution as most important boundaries. We will present this experience on a decentralized platform with verified and unique identities of the peers involved, while preserving anonymity. This gamified decision making process will help peers make informed decisions on difficult and wide ranging topics on the political agenda.",
+        "license": {
+            "name": "MIT"
+        },
+        "title": "p2politics",
+        "version": "1.0"
+    },
+    "paths": {
+        "/web3/balance": {
+            "get": {
+                "operationId": "getBalance",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {},
+                        "schema": {
+                            "$ref": "#/definitions/Balance"
+                        }
+                    }
+                },
+                "description": "",
+                "parameters": []
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "swagger": "2.0",
+    "host": "localhost:3001"
+}
