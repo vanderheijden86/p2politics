@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // import { UserService } from '../../services/user.service';
+import { DomainUser } from '../../models/user.model';
 
 @Component({
     selector: 'app-proposal-overview',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ProposalOverviewComponent implements OnInit, OnDestroy {
     proposals = [{}, {}];
-    user: any;
+    user: DomainUser;
 
     private routeSubscription: Subscription;
 
