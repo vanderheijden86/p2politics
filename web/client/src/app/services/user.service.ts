@@ -28,9 +28,12 @@ export class UserService {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
                 const func: any = Observable.bindNodeCallback(contractInstance.hasRole.call);
-                let domainHex = this.web3.fromAscii(domain, 64);
-                let roleHex = this.web3.fromAscii(role, 64);
-                return func(currentUserAddress, domainHex, roleHex, { from: this.web3.eth.coinbase })
+                let domainHex = this.web3._extend.utils.padRight(this.web3.fromAscii(domain), 32);
+                let roleHex = this.web3._extend.utils.padRight(this.web3.fromAscii(role), 32);
+                console.log('currentUserAddress', currentUserAddress, 'domain', domain, 'role', role);
+                //console.log('currentUserAddress', currentUserAddress, 'domainHex', domainHex, 'roleHex', roleHex);
+                return func(currentUserAddress, domain, role, { from: this.web3.eth.coinbase })
+                //return func(currentUserAddress, domainHex, roleHex, { from: this.web3.eth.coinbase })
                     .map((response: boolean) => {
                         console.log('hasRole response', response);
                         // 'error', error,
@@ -45,10 +48,10 @@ export class UserService {
             contractInstance => {
                 const func: any = Observable.bindNodeCallback(contractInstance.testje.call);
                 return func({ from: this.web3.eth.coinbase })
-                    .map((response: number) => {
-                        console.log('testje response', response);
+                    .map((response: any) => {
+                        console.log('testje response', response, 'toNumber', response.toNumber());
                         // 'error', error,
-                        return response;
+                        return response.toNumber();
                     }, (error) => {
                         console.error('error op testje', error);
                     });
