@@ -1,0 +1,79 @@
+# Ignore Visual Studio Project #
+###################
+*.user
+*.gpState
+*.suo
+bin
+obj
+/packages
+
+# Ignore Node, Bower & TSD
+##########################
+node_modules
+bower_components
+typings
+# dist
+.tmp
+.upload
+
+# Ignore Test reporters
+###################
+**/test/coverage
+report
+
+# Ignore Web Storm #
+.idea
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.xap
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+# *.sdf
+*.mdf
+*.ldf
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Office temp file #
+~*.docx
+~*.tmp
+~*.pptx
+
+# Project specific files #
+##########################
+
+# local addresses
+smart_contracts/current_manager.txt
+smart_contracts/db.txt
+cloud/logchain/urls.txt
+cloud/logchain/1*
+web/server/.eris/*
