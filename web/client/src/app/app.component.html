@@ -1,10 +1,22 @@
 <md-toolbar color="primary">
-  <span>Application Title</span>
+  <button md-button (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+  </button>
 
-  <span class="example-fill-remaining-space"></span>
-
-  <span>
-    <a style="color: white;" href="http://faucet.ropsten.be:3001/" target="_blank">Free Ether</a>
-  </span>
+  <span>P2Politics</span>
+  <span class="fill-remaining-space"></span>
+  <!--<span>Right Aligned Text</span>-->
 </md-toolbar>
-<router-outlet></router-outlet>
+<md-sidenav-container class="sidenav-container">
+  <md-sidenav #sidenav mode="side" opened="true">
+    <div class="scrolling-content">
+      hopla Lorem ipsum dolor sit amet, pede a libero aenean phasellus, lectus metus sint ut risus, fusce vel in pellentesque.
+      Nisl rutrum etiam morbi consectetuer tempor magna, aenean nullam nunc id, neque vivamus interdum sociis nulla scelerisque
+      sem, dolor id wisi turpis magna aliquam magna. Risus accumsan hac eget etiam donec sed, senectus erat mattis quam,
+      tempor vel urna occaecat cras, metus urna aug
+    </div>
+  </md-sidenav>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
