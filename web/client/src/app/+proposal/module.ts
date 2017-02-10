@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdCardModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { MdCardModule, MdIconModule } from '@angular/material';
 
 import { ProposalRouting } from './routing';
 
@@ -10,7 +11,9 @@ import { ProposalDetailComponent } from './detail/proposal-detail.component';
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         MdCardModule,
+        MdIconModule,
         ProposalRouting,
     ],
     declarations: [
