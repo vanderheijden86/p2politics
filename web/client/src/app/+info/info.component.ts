@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
 import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
-import { Balance } from '../models/webapi';
+import { Balance } from '../models/webapi/balance.model';
 
 @Component({
     selector: 'app-info',
