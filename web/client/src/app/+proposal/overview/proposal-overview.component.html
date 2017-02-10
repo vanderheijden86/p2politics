@@ -1,10 +1,17 @@
+<div class="card-titel">Natuur en Ruimtelijke Ordening</div>
 <div class="proposal-cards">
-    <md-card *ngFor="let proposal of proposals">
-        <h3>
-            <a [routerLink]="['proposal', 'test']">Proposal</a>
-        </h3>
-        <md-card-content>
-            <p>Card content</p>
-        </md-card-content>
-    </md-card>
+	<a [routerLink]="['proposal', 'test']">
+	  <md-card *ngFor="let proposal of proposals">
+	      <h3>Proposal</h3>
+	      <md-card-content>
+	          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p> 
+	          <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+	      </md-card-content>
+	      <md-card-content>
+	      	<div class="date">
+	      		<span>U kunt tot 22 april 2017 uw mening delen</span>
+	      	</div>
+	      </md-card-content>
+	  </md-card>
+	</a>
 </div>
