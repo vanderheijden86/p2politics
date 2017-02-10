@@ -64,7 +64,8 @@
     "1": {
       "links": {},
       "events": {},
-      "updated_at": 1486558685299
+      "updated_at": 1486760435579,
+      "address": "0x881260c245cebe974672117db50983c9234d5590"
     },
     "3": {
       "events": {},
@@ -87,10 +88,10 @@
     "default": {
       "links": {},
       "events": {},
-      "updated_at": 1486571570007,
-      "address": "0x8809de0197bca55e2616df443e1a39959d8422f1"
+      "updated_at": 1486759861993,
+      "address": "0xace0d629f17448e0ae154871f7893e06f9ab5512"
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1486571570007
+  "updated_at": 1486760435579
 }
