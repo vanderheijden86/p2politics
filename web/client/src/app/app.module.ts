@@ -17,6 +17,7 @@ import { AppReadyEvent } from './utils/app-ready-event';
 import { AppComponent } from './app.component';
 import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
+import { UserService } from './services/user.service';
 import { Web3Service } from './services/web3.service';
 
 import { SideMenuModule } from './side-menu';
@@ -45,6 +46,7 @@ import { SharedModule } from './shared';
     AppReadyEvent,
     ContractRpcServiceAgent,
     InfoServiceAgent,
+    UserService,
     Web3Service,
   ],
   bootstrap: [AppComponent]

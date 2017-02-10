@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
+import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi';
 
@@ -16,6 +17,7 @@ export class InfoComponent implements OnInit {
     constructor(
         private infoServiceAgent: InfoServiceAgent,
         private contractRpcServiceAgent: ContractRpcServiceAgent,
+        private userService: UserService,
         private web3Service: Web3Service) { }
 
     ngOnInit() {
@@ -65,19 +67,23 @@ export class InfoComponent implements OnInit {
 
     contractCallResult: string;
     tryMetaCoinContractCall() {
-        this.contractRpcServiceAgent.getContractMetaData('MetaCoin')
+        this.contractRpcServiceAgent.getContractInstance('MetaCoin')
             .subscribe(
-            response => {
+            contractInstance => {
                 // console.log('contract', response);
-                let metaCoinMetaData = response;
-                let metaCoinContract = this.web3.eth.contract(metaCoinMetaData.abi);
-                let contractInstance = metaCoinContract.at(metaCoinMetaData.networks['1'].address);
                 contractInstance.getBalanceInEth.call(this.web3.eth.coinbase, { from: this.web3.eth.coinbase }, (error, response) => {
                     console.log('error', error, 'getBalanceInEth response', response);
                     this.contractCallResult = response;
                 });
-            }
-            )
+            });
+    }
+
+    hasRole: boolean;
+    tryUser() {
+        this.userService.test()
+            .subscribe((response) => {
+                this.hasRole = response;
+            });
     }
 
     get web3() {
