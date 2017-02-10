@@ -77,3 +77,6 @@ smart_contracts/db.txt
 cloud/logchain/urls.txt
 cloud/logchain/1*
 web/server/.eris/*
+
+#ignore data
+data
