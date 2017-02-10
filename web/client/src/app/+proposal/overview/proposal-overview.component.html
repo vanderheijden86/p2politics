@@ -1,3 +1,7 @@
+<md-toolbar *ngIf="user?.isAdmin" class="action-bar">
+    <div>Action</div>
+</md-toolbar>
+
 <div class="proposal-cards">
     <md-card *ngFor="let proposal of proposals">
         <h3>
