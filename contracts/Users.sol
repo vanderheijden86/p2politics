@@ -11,7 +11,7 @@ contract Users {
 
   function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
     // check if admin. not in hackathon :)!
-    // if (!hasRole(tx.origin, "admin")) {
+    // if (!hasRole(tx.origin, domain, "admin")) {
     //    return "setRole requires 'admin' role";
     //}
     roles[addr][sha3(domain, role)] = state;
