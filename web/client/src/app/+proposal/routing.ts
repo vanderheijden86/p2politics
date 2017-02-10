@@ -6,6 +6,6 @@ import { ProposalDetailComponent } from './detail/proposal-detail.component';
 
 const PROPOSAL_ROUTES: Routes = [
     { path: '', component: ProposalOverviewComponent },
-    { path: 'proposal/:id', component: ProposalDetailComponent }
+    { path: 'proposal/:proposalId', component: ProposalDetailComponent }
 ];
 export const ProposalRouting: ModuleWithProviders = RouterModule.forChild(PROPOSAL_ROUTES);
