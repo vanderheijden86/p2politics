@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { MdSidenav } from '@angular/material';
 
 import { Broadcaster } from './utils/broadcaster';
 import { AppReadyEvent } from './utils/app-ready-event';
@@ -12,16 +13,24 @@ import { AppConfig } from './core/app.config';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+    @ViewChild('sidenav') sidenav: MdSidenav;
+
     constructor(
         private router: Router,
-        private broadcaster: Broadcaster,
-        private appReadyEvent: AppReadyEvent,
         private appConfig: AppConfig) {
-            appConfig.configureApp();
-        }
+        appConfig.configureApp();
+    }
 
     ngOnInit() {
-        // TODO remove
-        // this.router.navigate(['/info']);
+        this.router.events
+            .subscribe((event) => {
+                if (event instanceof NavigationStart) {
+                    if (event.url === '/home') {
+                        this.sidenav.open();
+                    } else {
+                        this.sidenav.close();
+                    }
+                }
+            });
     }
 }
