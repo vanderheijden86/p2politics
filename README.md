@@ -23,3 +23,10 @@ $ geth --testnet account new
 # Entity Relationship Diagram
 Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
+
+# TODO
+- Models maken voor data Models
+- Role based check, UserService, Voter | Admin
+- Developer optie, admin toggle, voter add
+- Rollen toepassen op domains, static
+- ...

@@ -1,0 +1,23 @@
+a.nav-link {
+	color: #ababab;
+	transition: all ease-in-out .3s;
+	width: 10rem;
+
+	&.active {
+		color: #000000;
+	}
+
+	&:hover {
+		color: #000000;
+		text-decoration: underline;
+	}
+}
+
+md-list {
+	margin-top: 1rem;
+	margin-left: 1rem;
+}
+
+md-list-item {
+
+}

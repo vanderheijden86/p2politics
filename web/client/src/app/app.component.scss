@@ -1,8 +1,17 @@
-
 .menu-button {
-    width: 2rem;
-
+  margin-top: 1rem;
+  width: 2rem;
 }
+
+md-toolbar {
+  height: 80px;
+}
+
+:host /deep/ .md-button-focus-overlay   {
+  background-color: transparent;
+  opacity: 0;
+}
+
 .fill-remaining-space {
     // This fills the remaining space, by using flexbox.
     // Every toolbar row uses a flexbox row layout.
@@ -28,7 +37,7 @@
   line-height: 1.5;
   margin: 0;
   position: fixed;
-  top: 65px;
+  top: 80px;
   width: 100%;
 }
 
@@ -43,6 +52,6 @@
 }
 
 .content {
-    overflow: auto;
-    margin: 1.5rem;
+  overflow: auto;
+  margin: 1.5rem;
 }
