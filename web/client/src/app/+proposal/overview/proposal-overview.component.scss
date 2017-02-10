@@ -1,4 +1,18 @@
-.card-titel {
+.action-bar {
+    margin-bottom: 1.5rem;
+}
+
+.button-with-icon {
+    padding-left: 2rem;
+
+    md-icon {
+        position: absolute;
+        left: 6px;
+        top: 5px;
+    }
+}
+
+.category-titel {
 	color: #4CAF50;
 	font-size: 2rem;
 	padding: 0 0 .25rem 1rem;

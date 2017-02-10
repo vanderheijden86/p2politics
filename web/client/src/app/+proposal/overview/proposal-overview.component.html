@@ -1,14 +1,17 @@
-<div class="card-titel">Natuur en Ruimtelijke Ordening</div>
-<md-toolbar *ngIf="user?.isAdmin" class="action-bar">
-    <div>Action</div>
-</md-toolbar>
+<div *ngIf="user?.isAdmin" class="action-bar">
+    <button md-raised-button (click)="onAddProposal()" class="button-with-icon">
+        <md-icon>add</md-icon> Create proposal
+    </button>
+</div>
 
 <div class="proposal-cards">
-	<a [routerLink]="['proposal', 'test']">
-	  <md-card *ngFor="let proposal of proposals">
-	      <h3>Proposal</h3>
-	      <md-card-content>
-	          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p> 
+    <div class="category-titel">Natuur en Ruimtelijke Ordening</div>
+    <md-card *ngFor="let proposal of proposals">
+        <a [routerLink]="['proposal', proposal.id]">
+            <h3>{{proposal.title}}</h3>
+        </a>
+        <md-card-content>
+	          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 	          <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
 	      </md-card-content>
 	      <md-card-content>
@@ -16,6 +19,5 @@
 	      		<span>U kunt tot 22 april 2017 uw mening delen</span>
 	      	</div>
 	      </md-card-content>
-	  </md-card>
-	</a>
+    </md-card>
 </div>

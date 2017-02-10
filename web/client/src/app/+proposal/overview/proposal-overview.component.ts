@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 // import { UserService } from '../../services/user.service';
 import { DomainUser } from '../../models/user.model';
+import { Proposal } from '../../models/proposal.model';
 
 @Component({
     selector: 'app-proposal-overview',
@@ -11,8 +12,11 @@ import { DomainUser } from '../../models/user.model';
     styleUrls: ['./proposal-overview.component.scss'],
 })
 export class ProposalOverviewComponent implements OnInit, OnDestroy {
-    proposals = [{}, {}];
-    user: DomainUser;
+    proposals: Proposal[] = [
+        <any>{ id: '123', title: 'Title one' },
+        <any>{ id: '456', title: 'Title two' }
+    ];
+    user: DomainUser = <any>{ isAdmin: true };
 
     private routeSubscription: Subscription;
 
@@ -30,5 +34,9 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.routeSubscription.unsubscribe();
+    }
+
+    onAddProposal() {
+        console.log('Add proposal');
     }
 }
