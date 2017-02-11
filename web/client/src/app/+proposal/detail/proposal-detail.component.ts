@@ -46,7 +46,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         });
 
         this.proposal = this.proposalService.activeProposal;
-        this.voteService.getProposalVote(this.proposal.id)
+        this.voteService.getProposalVote(this.proposal)
             .subscribe(response => {
                 this.vote = response;
                 this.changeDetectionRef.detectChanges();
@@ -73,7 +73,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         if (this.formGroup.invalid) return;
         console.log('VOTED');
         let formValues = this.formGroup.value;
-        this.voteService.voteForProposal(this.proposal.id, +formValues.answer, formValues.reason || '')
+        this.voteService.voteForProposal(this.proposal, +formValues.answer, formValues.reason || '')
             .subscribe(response => {
                 this.mdSnackBar.open('U heeft gestemd', 'Sluiten', {
                     duration: 8000

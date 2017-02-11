@@ -88,7 +88,7 @@ export class InfoComponent implements OnInit {
             });
     }
 
-    domain = 'borough';
+    domain = 'groningen';
     roles = Role;
     role = Role.voter;
 
@@ -163,7 +163,7 @@ export class InfoComponent implements OnInit {
 
     vote: Vote;
      getProposalVote(proposal) {
-        this.voteService.getProposalVote(proposal.id)
+        this.voteService.getProposalVote(proposal)
             .subscribe(response => {
                 this.vote = response;
             }, (error) => {
@@ -173,7 +173,7 @@ export class InfoComponent implements OnInit {
 
     setVoteResult: string;
     setVote(proposal: Proposal) {
-        this.voteService.voteForProposal(proposal.id, 2, 'TODO comment')
+        this.voteService.voteForProposal(proposal, 2, 'TODO comment')
             .subscribe(response => {
                 this.setVoteResult = response;
             }, (error) => {
