@@ -25,8 +25,7 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
-- Models maken voor data Models
-- Role based check, UserService, Voter | Admin
 - Developer optie, admin toggle, voter add
-- Rollen toepassen op domains, static
-- ...
+- Create proposal route maken + formulier
+- Vote form submittable maken
+- Developer page voor setten van roles
