@@ -97,3 +97,16 @@ md-card .proposal-link {
 		}
 	}
 }
+
+.proposal-description-intro {
+	display: -webkit-box;
+  //max-width: 400px;
+  //height: 109.2px;
+  margin: 0 auto;
+  font-size: 1rem;;
+  line-height: 1.5;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
