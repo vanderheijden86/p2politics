@@ -9,8 +9,6 @@
   	</button>
 </div>
 
-<!-- <md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle> -->
-
 <div class="proposal-container">
     <div *ngIf="!proposalCategories" class="text-center">
         Voorstellen aan het verzamelen...
@@ -36,13 +34,6 @@
               <div class="date">
                   <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
               </div>
-              <!-- <div class="proposal-link">
-                  <ul>
-                      <li>
-                          <a>delen</a>
-                      </li>
-                  </ul>
-              </div> -->
               <div class="proposal-vote">
                   <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}</span>
                   <span>tegen: {{proposal.voteStatistics?.rejectedVotes}}</span>
