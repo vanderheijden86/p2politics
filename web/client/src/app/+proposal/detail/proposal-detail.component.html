@@ -1,5 +1,11 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
 
+<div class="action-bar">
+    <button *ngIf="user && user.isAdmin" md-raised-button (click)="onAddProposal()" class="button-with-icon">
+        <md-icon>add</md-icon> Nieuw vervolg voorstel
+    </button>
+</div>
+
 <div class="proposal container">
     <md-toolbar *ngIf="userPending" class="notification">
         Checking authentication...
