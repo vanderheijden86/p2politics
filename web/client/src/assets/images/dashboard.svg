@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1130px" height="774px" viewBox="0 0 1130 774" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <title>upper dashboard</title>
+    <title>dashboard</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <rect id="path-1" x="0" y="0" width="269" height="275"></rect>
@@ -72,47 +72,47 @@
             <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <path d="M0,0 L50.4920411,0 C54.6293161,0 57.9832402,3.36497672 57.9832402,7.50307161 L57.9832402,19.4969284 C57.9832402,23.6407604 54.6258036,27 50.4920411,27 L0,27 L0,0 Z" id="path-23"></path>
-        <mask id="mask-24" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="57.9832402" height="27" fill="white">
+        <path d="M0,0 L70.762458,0 C76.5738512,0 81.2849162,4.71096741 81.2849162,10.5043003 L81.2849162,27.2956997 C81.2849162,33.0970646 76.5782293,37.8 70.762458,37.8 L0,37.8 L0,0 Z" id="path-23"></path>
+        <mask id="mask-24" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="81.2849162" height="37.8" fill="white">
             <use xlink:href="#path-23"></use>
         </mask>
-        <path d="M0,9.0009892 C0,4.02988013 4.03123346,0 8.99626205,0 L57.9832402,0 C57.9832402,0 56.860984,7.5 56.860984,15 C56.860984,22.5 57.9832402,30 57.9832402,30 L8.99626205,30 C4.02776371,30 0,25.9696426 0,20.9990108 L0,9.0009892 Z" id="path-25"></path>
+        <path d="M0,12.6156178 C0,5.64820448 5.65126186,0 12.6115823,0 L81.2849162,0 C81.2849162,0 79.7116598,10.5 79.7116598,21 C79.7116598,31.5 81.2849162,42 81.2849162,42 L12.6115823,42 C5.64639773,42 0,36.3574996 0,29.3843822 L0,12.6156178 Z" id="path-25"></path>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-26">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-27" cx="1.12081006" cy="1.10769231" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-27" cx="1.57122905" cy="1.55076923" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-28">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-29" cx="4.85684358" cy="1.10769231" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-29" cx="6.80865922" cy="1.55076923" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-30">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-31" cx="1.12081006" cy="4.8" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-31" cx="1.57122905" cy="6.72" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-32">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-33" cx="4.85684358" cy="4.8" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-33" cx="6.80865922" cy="6.72" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-34">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-35" cx="1.12081006" cy="8.49230769" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-35" cx="1.57122905" cy="11.8892308" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-36">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <ellipse id="path-37" cx="4.85684358" cy="8.49230769" rx="1.12081006" ry="1.10769231"></ellipse>
+        <ellipse id="path-37" cx="6.80865922" cy="11.8892308" rx="1.57122905" ry="1.55076923"></ellipse>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-38">
             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
@@ -138,7 +138,7 @@
         </filter>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="upper-dashboard" transform="translate(4.000000, 2.000000)">
+        <g id="dashboard" transform="translate(4.000000, 2.000000)">
             <path d="M1.5,163.5 L1129.5,163.5" id="Line" stroke="#03A9F4" stroke-linecap="square" stroke-dasharray="4,4,4"></path>
             <g id="aangenomen-voorstellen" transform="translate(658.000000, 187.000000)">
                 <g id="Rectangle-8">
@@ -423,11 +423,11 @@
                     <tspan x="20" y="36">Aantal afgesloten voorstellen waar u op stemde (per categorie)</tspan>
                 </text>
             </g>
-            <g id="slide-on/off" transform="translate(1010.000000, 18.000000)">
-                <g id="switch---post" transform="translate(49.016760, 1.800000)">
-                    <use id="Rectangle" stroke="#999999" mask="url(#mask-24)" fill="#FFFFFF" xlink:href="#path-23"></use>
-                    <text id="Landelijk" font-family="HelveticaNeue-Medium, Helvetica Neue" font-size="6" font-weight="400" letter-spacing="0.225" fill="#999999">
-                        <tspan x="17.9329609" y="15.6">Landelijk</tspan>
+            <g id="slide-on/off" transform="translate(973.000000, 22.000000)">
+                <g id="switch---post" transform="translate(68.715084, 2.520000)">
+                    <use id="Rectangle" stroke="#999999" mask="url(#mask-24)" stroke-width="1.40186916" fill="#FFFFFF" xlink:href="#path-23"></use>
+                    <text id="Landelijk" font-family="HelveticaNeue-Medium, Helvetica Neue" font-size="8.41121495" font-weight="400" letter-spacing="0.315420552" fill="#999999">
+                        <tspan x="25.1396648" y="21.44">Landelijk</tspan>
                     </text>
                 </g>
                 <g id="switch---mail">
@@ -435,11 +435,11 @@
                         <use fill="black" fill-opacity="1" filter="url(#filter-26)" xlink:href="#path-25"></use>
                         <use fill="#03A9F4" fill-rule="evenodd" xlink:href="#path-25"></use>
                     </g>
-                    <text id="Gemeentelijk" font-family="HelveticaNeue-Medium, Helvetica Neue" font-size="6" font-weight="400" letter-spacing="0.225" fill="#FFFFFF">
-                        <tspan x="3.58659218" y="17.4">Gemeentelijk</tspan>
+                    <text id="Gemeentelijk" font-family="HelveticaNeue-Medium, Helvetica Neue" font-size="8.41121495" font-weight="400" letter-spacing="0.315420552" fill="#FFFFFF">
+                        <tspan x="5.02793296" y="23.96">Gemeentelijk</tspan>
                     </text>
                 </g>
-                <g id="ribbels" transform="translate(46.027933, 10.200000)">
+                <g id="ribbels" transform="translate(64.525140, 14.280000)">
                     <g id="Oval-2">
                         <use fill="black" fill-opacity="1" filter="url(#filter-28)" xlink:href="#path-27"></use>
                         <use fill="#0277BD" fill-rule="evenodd" xlink:href="#path-27"></use>
