@@ -9,15 +9,16 @@ contract Votes {
         uint timestamp;
     }
 
-    function vote (address userAddress, uint proposalId, uint value) returns (bytes32) {
+event VoteCompleted(uint proposalId);
+    function vote (address userAddress, uint proposalId, uint value, string comment) returns (bytes32) {
         Vote.userId = userAddress;
-        Vote.proposalId = proposalId
+        Vote.proposalId = proposalId;
+        Vote.value = value;
+        vote.voteRevoked = false;
+        vote.comment = comment;
+        vote.timestamp = now;
 
-
-        return "Vote succesful"
+        VoteCompleted(proposalId);
+        return "Voted succesful";
     }
-
-
-
-
 }

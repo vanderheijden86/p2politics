@@ -88,10 +88,10 @@
     "default": {
       "links": {},
       "events": {},
-      "updated_at": 1486770464315,
-      "address": "0x7c564ea6bc78591aeec198ec50fcf51fcdef6413"
+      "updated_at": 1486819866577,
+      "address": "0x6b9b674a98240b29bf61ad9008059b709580ffb1"
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1486809306832
+  "updated_at": 1486819866577
 }

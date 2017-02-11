@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.8;
 contract Users {
 
   mapping(address => mapping(bytes32 => uint)) roles;
