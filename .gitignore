@@ -80,3 +80,5 @@ web/server/.eris/*
 
 #ignore data
 data/generatedvotes
+data/redditposts
+data/amazon_book_reviews
