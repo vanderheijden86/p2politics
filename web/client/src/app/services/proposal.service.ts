@@ -5,6 +5,7 @@ import { getTime } from 'date-fns';
 import { ContractRpcServiceAgent } from '../service-agents';
 import { Web3Service } from '../services/web3.service';
 import { ConvertDate } from '../utils/convert-date';
+import { ConvertString } from '../utils/convert-string';
 
 import { Proposal } from '../models/proposal.model';
 
@@ -17,10 +18,11 @@ export class ProposalService {
     getProposals(domain: string): Observable<[Proposal]> {
         return this.contractRpcServiceAgent.getContractInstance('Proposals')
             .mergeMap(contractInstance => {
+                console.log('getProposals domain=', domain);
                 return this.getProposalCount(contractInstance)
                     .mergeMap(count => {
                         const numberArray = Array.apply(this, { length: count }).map((val, index) => index);
-                        console.log('count', count, 'numberArray', numberArray);
+                        console.log('domain', domain, 'count', count, 'numberArray', numberArray);
                         return Observable.zip<Proposal>(...numberArray.map(index => this.getProposalByIndex(contractInstance, index)))
                             .map(proposals => proposals.filter(proposal => proposal.domain === domain));
                     });
@@ -34,8 +36,6 @@ export class ProposalService {
                 console.log('response', response);
                 console.log('response.toNumber()', response.toNumber());
                 return response.toNumber();
-            }, (error) => {
-                console.error('error op hasRole', error);
             });
     }
 
@@ -45,21 +45,20 @@ export class ProposalService {
         return func(index, { from: this.web3.eth.coinbase })
             .map((response: any) => {
                 console.log('getProposalByIndex response', response);
-                const result = this.mapResponseToProposal(response);
+                const result = this.mapResponseToProposal(index, response);
                 console.log('getProposalByIndex result', result);
                 return result;
-            }, (error) => {
-                console.error('getProposalByIndex error', error);
             });
     }
 
-    private mapResponseToProposal(response: any): Proposal {
+    private mapResponseToProposal(index: number, response: any): Proposal {
         const result = new Proposal();
+        result.id = index;
         result.parentId = response[0].toNumber();
-        result.title = this.web3.toAscii(response[1]);
-        result.domain = this.web3.toAscii(response[2]);
-        result.category = this.web3.toAscii(response[3]);
-        result.phase = this.web3.toAscii(response[4]);
+        result.title = ConvertString.asciiToString(this.web3.toAscii(response[1]));
+        result.domain = ConvertString.asciiToString(this.web3.toAscii(response[2]));
+        result.category = ConvertString.asciiToString(this.web3.toAscii(response[3]));
+        result.phase = ConvertString.asciiToString(this.web3.toAscii(response[4]));
         result.description = response[5];
         result.maxVoteScale = response[6].toNumber();
         result.startDate = ConvertDate.fromUnix(response[7].toNumber());
@@ -79,8 +78,6 @@ export class ProposalService {
                         const result = response.toNumber();
                         console.log('setProposal result', result);
                         return result;
-                    }, (error) => {
-                        console.error('addProposal error', error);
                     });
             });
     }
