@@ -47,34 +47,63 @@ export class ProposalService {
         return func(index, { from: this.web3.eth.coinbase })
             .map((response: any) => {
                 console.log('getProposalByIndex response', response);
-                const result = this.mapResponseToProposal(index, response);
+                const result = this.mapResponseToProposal(response);
                 console.log('getProposalByIndex result', result);
                 return result;
             });
     }
 
-    private mapResponseToProposal(index: number, response: any): Proposal {
+    private mapResponseToProposal(response: any): Proposal {
         const result = new Proposal();
-        result.id = index;
-        result.parentId = response[0].toNumber();
-        result.title = ConvertString.asciiToString(this.web3.toAscii(response[1]));
-        result.domain = ConvertString.asciiToString(this.web3.toAscii(response[2]));
-        result.category = ConvertString.asciiToString(this.web3.toAscii(response[3]));
-        result.phase = ConvertString.asciiToString(this.web3.toAscii(response[4]));
-        result.description = response[5];
-        result.maxVoteScale = response[6].toNumber();
+        result.id = response[0].toNumber();
+        result.iteration = response[1].toNumber();
+        result.title = ConvertString.asciiToString(this.web3.toAscii(response[2]));
+        result.domain = ConvertString.asciiToString(this.web3.toAscii(response[3]));
+        result.category = ConvertString.asciiToString(this.web3.toAscii(response[4]));
+        result.phase = ConvertString.asciiToString(this.web3.toAscii(response[5]));
+        result.description = response[6];
         result.startDate = ConvertDate.fromUnix(response[7].toNumber());
         result.endDate = ConvertDate.fromUnix(response[8].toNumber());
         result.completed = response[9].toNumber();
         return result;
     }
 
-    addProposal(proposal: Proposal): Observable<number> {
+    getProposalByIdIteration(proposalId: number, iteration: number): Observable<[Proposal]> {
+        console.log('getProposalByIdIteration proposalId', proposalId, 'iteration', iteration);
         return this.contractRpcServiceAgent.getContractInstance('Proposals')
             .mergeMap(contractInstance => {
-                const func: any = Observable.bindNodeCallback(contractInstance.setProposal);
-                return func(proposal.parentId, proposal.title, proposal.domain, proposal.category, proposal.phase,
-                    proposal.description, proposal.maxVoteScale, ConvertDate.toUnix(proposal.endDate), proposal.completed, { from: this.web3.eth.coinbase })
+                const func: any = Observable.bindNodeCallback(contractInstance.getProposalByIdIteration);
+                return func(proposalId, iteration, { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log('getProposalByIdIteration response', response);
+                        const result = this.mapResponseToProposal(response);
+                        console.log('getProposalByIdIteration result', result);
+                        return result;
+                    });
+            });
+    }
+
+    addNewProposal(proposal: Proposal): Observable<number> {
+        return this.contractRpcServiceAgent.getContractInstance('Proposals')
+            .mergeMap(contractInstance => {
+                const func: any = Observable.bindNodeCallback(contractInstance.newProposal);
+                return func(proposal.title, proposal.domain, proposal.category, proposal.phase,
+                    proposal.description, ConvertDate.toUnix(proposal.endDate), proposal.completed, { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log('setProposal response', response);
+                        const result = response.toNumber();
+                        console.log('setProposal result', result);
+                        return result;
+                    });
+            });
+    }
+
+    addNewIteration(proposal: Proposal): Observable<number> {
+        return this.contractRpcServiceAgent.getContractInstance('Proposals')
+            .mergeMap(contractInstance => {
+                const func: any = Observable.bindNodeCallback(contractInstance.newIteration);
+                return func(proposal.id, proposal.title, proposal.domain, proposal.category, proposal.phase,
+                    proposal.description, ConvertDate.toUnix(proposal.endDate), proposal.completed, { from: this.web3.eth.coinbase })
                     .map((response: any) => {
                         console.log('setProposal response', response);
                         const result = response.toNumber();
