@@ -57,12 +57,14 @@
           <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
           <button md-raised-button (click)="setHasRole(false)">setHasRole(false)</button>
           <button md-raised-button (click)="getDomainUser()">getDomainUser</button>
+          <button md-raised-button (click)="getProposals()">getProposals</button>
         </div>
       </form>
       <md-list>
         <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
         <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
         <md-list-item>domainUser: {{domainUser | json}} </md-list-item>
+        <md-list-item>proposals: {{proposals | json}} </md-list-item>
       </md-list>
     </div>
 

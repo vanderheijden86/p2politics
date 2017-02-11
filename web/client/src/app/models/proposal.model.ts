@@ -6,6 +6,7 @@ export class Proposal {
     description: string;
     domain: string;
     category: string;
+    phase: string;
     topInFavour: Argument[];
     topAgainst: Argument[];
     maxVoteScale: number;

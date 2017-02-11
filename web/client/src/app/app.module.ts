@@ -17,6 +17,7 @@ import { AppReadyEvent } from './utils/app-ready-event';
 import { AppComponent } from './app.component';
 import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
+import { ProposalService } from './services/proposal.service';
 import { UserService } from './services/user.service';
 import { Web3Service } from './services/web3.service';
 
@@ -46,6 +47,7 @@ import { SharedModule } from './shared';
     AppReadyEvent,
     ContractRpcServiceAgent,
     InfoServiceAgent,
+    ProposalService,
     UserService,
     Web3Service,
   ],
