@@ -1,10 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-// import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { DomainUser } from '../../models/user.model';
 import { Proposal } from '../../models/proposal.model';
+
+interface ProposalCategory {
+    description: string;
+    proposals: Proposal[];
+}
 
 @Component({
     selector: 'app-proposal-overview',
@@ -12,23 +18,33 @@ import { Proposal } from '../../models/proposal.model';
     styleUrls: ['./proposal-overview.component.scss'],
 })
 export class ProposalOverviewComponent implements OnInit, OnDestroy {
-    proposals: Proposal[] = [
-        <any>{ id: '123', title: 'Title one' },
-        <any>{ id: '456', title: 'Title two' }
+    proposalStub:Proposal[] = [
+        <any>{ id: '123', title: 'Title one', category: 'Natuur en Ruimtelijke Ordening',
+                description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.`
+            },
+        <any>{ id: '456', title: 'Title two', category: 'Natuur en Ruimtelijke Ordening',
+                description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.`
+            },
+        <any>{ id: '789', title: 'Title three', category: 'Veiligheid' }
     ];
+    proposalCategories: ProposalCategory[];
     user: DomainUser = <any>{ isAdmin: true };
 
     private routeSubscription: Subscription;
 
     constructor(
-        private route: ActivatedRoute) { }
-        // private userService: UserService) { }
+        private route: ActivatedRoute,
+        private userService: UserService) { }
 
     ngOnInit() {
         this.routeSubscription = this.route.params.subscribe(params => {
             let domainId = params['domainId'];
             console.log('DOMAIN ID', domainId);
             // this.user = this.userService.user(domainId);
+            this.getProposalGroups(Observable.of(this.proposalStub))
+                .subscribe(proposalCategories => this.proposalCategories = proposalCategories);
         });
     }
 
@@ -38,5 +54,19 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
 
     onAddProposal() {
         console.log('Add proposal');
+    }
+
+    private getProposalGroups(proposalsObs: Observable<Proposal[]>) {
+        return proposalsObs.map(proposals => {
+                let categories: ProposalCategory[] = [];
+                proposals.forEach(proposal => {
+                    let category = categories.find(cat => cat.description === proposal.category);
+                    if(!category) {
+                        categories.push(category = { description: proposal.category, proposals: [] });
+                    }
+                    category.proposals.push(proposal);
+                });
+                return categories;
+            });
     }
 }
