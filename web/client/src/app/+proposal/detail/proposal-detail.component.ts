@@ -58,6 +58,10 @@ Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasc
         console.log('VOTED');
     }
 
+    onAddProposal() {
+        console.log('Add child proposal');
+    }
+
     private initForm() {
         this.formGroup = new FormGroup({
             'answer': new FormControl(undefined, Validators.required),
