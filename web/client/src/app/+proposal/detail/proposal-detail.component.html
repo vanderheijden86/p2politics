@@ -1,10 +1,10 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
 
 <div class="proposal container">
-    <md-toolbar *ngIf="!user" class="notification">
+    <md-toolbar *ngIf="userPending" class="notification">
         Checking authentication...
     </md-toolbar>
-    <md-toolbar *ngIf="user && !user.isVoter" class="notification md-warn">
+    <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
         You have no permission to vote on this proposal
     </md-toolbar>
 
