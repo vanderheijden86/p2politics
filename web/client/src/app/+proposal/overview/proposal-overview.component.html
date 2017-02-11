@@ -31,8 +31,8 @@
               <md-card-content>
                   <p class="proposal-description-intro">{{proposal.description}}</p>
                   <p>
-                      Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}
-                      tegen: {{proposal.voteStatistics?.rejectedVotes}}
+                      Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}
+                      tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}
                   </p>
               </md-card-content>
               <div class="date">
