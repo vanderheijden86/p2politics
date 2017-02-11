@@ -1,5 +1,6 @@
 var Users = artifacts.require("./Users.sol");
 var Votes = artifacts.require("./Votes.sol");
+var Proposals = artifacts.require("./Proposals.sol");
 
 module.exports = function(deployer) {
   //deployer.deploy(ConvertLib);
@@ -7,4 +8,5 @@ module.exports = function(deployer) {
     // deployer.deploy(MetaCoin);
     deployer.deploy(Users);
     deployer.deploy(Votes);
+    deployer.deploy(Proposals);
 };

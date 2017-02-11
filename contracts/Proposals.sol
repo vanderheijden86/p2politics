@@ -1,3 +1,4 @@
+pragma solidity ^0.4.8;
 contract Proposals {
 
   Proposal[] proposals;
