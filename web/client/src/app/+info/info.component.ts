@@ -173,7 +173,7 @@ export class InfoComponent implements OnInit {
 
     setVoteResult: string;
     setVote(proposal: Proposal) {
-        this.voteService.voreForProposal(proposal.id, 2, 'TODO comment')
+        this.voteService.voteForProposal(proposal.id, 2, 'TODO comment')
             .subscribe(response => {
                 this.setVoteResult = response;
             }, (error) => {

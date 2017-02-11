@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
@@ -17,7 +17,7 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
     formGroup: FormGroup;
 
     private domain: string;
-    private parentProposalId: string;
+    private iterationId: string;
     private routeSubscription: Subscription;
 
     constructor(
@@ -30,7 +30,7 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
         this.routeSubscription = this.route.params.subscribe(params => {
             console.log('ADD PROPOSAL PARAMS', params);
             this.domain = params['domain'];
-            this.parentProposalId = params['parentId'];
+            this.iterationId = params['iterationId'];
         });
     }
 
@@ -42,13 +42,28 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
         if(this.formGroup.invalid) return;
         const formValues = this.formGroup.value;
         const proposal: Proposal = Object.assign(new Proposal(), formValues);
+        const hasIteration = !!this.iterationId;
+        if(hasIteration) {
+            proposal.id = +this.iterationId;
+        }
         proposal.domain = this.domain;
-        this.proposalService.addProposal(proposal)
-            .subscribe(() => {
-                this.mdSnackBar.open('Het nieuwe voorstel wordt aangemaakt', 'Sluiten', {
-                    duration: 8000
-                });
+        proposal.phase = proposal.phase || '';
+        proposal.completed = 0;
+        console.log('ADD PROPOSAL', proposal);
+        const obs = hasIteration
+            ? this.proposalService.addNewIteration(proposal)
+            : this.proposalService.addNewProposal(proposal);
+
+        obs.subscribe(() => {
+            this.mdSnackBar.open('Het nieuwe voorstel wordt aangemaakt', 'Sluiten', {
+                duration: 8000
             });
+        }, err => {
+            this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
+                duration: 8000
+            });
+            console.log(err);
+        });
     }
 
     private initForm() {
