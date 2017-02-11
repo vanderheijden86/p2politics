@@ -4,5 +4,5 @@ export class Vote {
     value: number;
     revoked: boolean;
     comment: string;
-    createdDate: Date;
+    timestamp: Date;
 }

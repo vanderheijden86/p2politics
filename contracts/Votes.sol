@@ -1,4 +1,4 @@
-pragma solidity ^0.4.8;
+proposalIdpragma solidity ^0.4.8;
 contract Votes {
 
     struct Vote {
