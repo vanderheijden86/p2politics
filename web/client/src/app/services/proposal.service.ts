@@ -57,7 +57,7 @@ export class ProposalService {
         const result = new Proposal();
         result.id = response[0].toNumber();
         result.iteration = response[1].toNumber();
-        result.title = ConvertString.asciiToString(this.web3.toAscii(response[2]));
+        result.title = response[2];
         result.domain = ConvertString.asciiToString(this.web3.toAscii(response[3]));
         result.category = ConvertString.asciiToString(this.web3.toAscii(response[4]));
         result.phase = ConvertString.asciiToString(this.web3.toAscii(response[5]));
