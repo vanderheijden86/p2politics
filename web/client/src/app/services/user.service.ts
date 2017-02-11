@@ -28,8 +28,8 @@ export class UserService {
                 result.isProposer = isProposer;
                 result.isVoter = isVoter;
             })
-            .map(x => {
-                console.log(x);
+            .map(()=> {
+                console.log(`getDomainUser for ${domain}`, result);
                 return result;
             });
 
@@ -46,12 +46,12 @@ export class UserService {
             contractInstance => {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
-                const func: any = Observable.bindNodeCallback(contractInstance.hasRole.call);
+                const func: any = Observable.bindNodeCallback(contractInstance.hasRole);
                 console.log('hasRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role);
                 return func(currentUserAddress, domain, role, { from: this.web3.eth.coinbase })
-                    .map((response: boolean) => {
-                        console.log('Heb ik admin rechten op insurance?', response);
-                        return response;
+                    .map((response: any) => {
+                        console.log('Heb ik admin rechten op insurance?', response, 'response.toNumber()', response.toNumber());
+                        return response.toNumber() === 1;
                     }, (error) => {
                         console.error('error op hasRole', error);
                     });
@@ -63,10 +63,11 @@ export class UserService {
             contractInstance => {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
-                const func: any = Observable.bindNodeCallback(contractInstance.setRole.call);
-                console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role, 'hasRole', hasRole);
+                const func: any = Observable.bindNodeCallback(contractInstance.setRole);
+                let hasRoleInt = hasRole ? 1 : 0;
+                console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role, 'hasRole', hasRole, 'hasRoleInt', hasRoleInt);
                 //function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
-                return func(currentUserAddress, domain, role, hasRole, { from: this.web3.eth.coinbase })
+                return func(currentUserAddress, domain, role, hasRoleInt, { from: this.web3.eth.coinbase })
                     .map((response: string) => {
                         let result = this.web3.toAscii(response);
                         console.log('setRole hasRole-input', hasRole, 'response', response, 'result', result);
