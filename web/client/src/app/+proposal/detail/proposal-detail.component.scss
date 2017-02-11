@@ -12,9 +12,15 @@ md-icon.arrow_back {
 .proposal {
 	max-width: 800px;
 
+	.notification {
+		text-align: center;
+		font-size: 1rem;
+	}
+
 	.proposal-title {
 		color: #03A9F4;
 		text-align: center;
+		margin-top: 5rem;
 		margin-bottom: 1rem;
 
 		span.category-subtitle {

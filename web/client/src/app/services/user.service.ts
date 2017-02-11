@@ -5,6 +5,7 @@ import { ContractRpcServiceAgent } from '../service-agents';
 import { Web3Service } from '../services/web3.service';
 
 import { DomainUser } from '../models/domain-user.model';
+import { Role } from '../models/role.enum';
 
 @Injectable()
 export class UserService {
@@ -20,16 +21,16 @@ export class UserService {
         // let isVoterSubscription = this.hasRole(domain, 'voter');
         return Observable
             .zip(
-            this.hasRole(domain, 'admin'),
-            this.hasRole(domain, 'proposer'),
-            this.hasRole(domain, 'voter'),
+            this.hasRole(domain, Role.admin),
+            this.hasRole(domain, Role.proposer),
+            this.hasRole(domain, Role.voter),
             (isAdmin: boolean, isProposer: boolean, isVoter: boolean) => {
                 result.isAdmin = isAdmin;
                 result.isProposer = isProposer;
                 result.isVoter = isVoter;
             })
-            .map(x => {
-                console.log(x);
+            .map(()=> {
+                console.log(`getDomainUser for ${domain}`, result);
                 return result;
             });
 
@@ -40,33 +41,35 @@ export class UserService {
         //     this.hasRole(domain, 'voter')
         //     );
     }
-    hasRole(domain: string, role: string): Observable<boolean> {
+    hasRole(domain: string, role: Role): Observable<boolean> {
         return this.contractRpcServiceAgent.getContractInstance('Users')
             .mergeMap(
             contractInstance => {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
-                const func: any = Observable.bindNodeCallback(contractInstance.hasRole.call);
-                console.log('hasRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role);
-                return func(currentUserAddress, domain, role, { from: this.web3.eth.coinbase })
-                    .map((response: boolean) => {
-                        console.log('Heb ik admin rechten op insurance?', response);
-                        return response;
+                const func: any = Observable.bindNodeCallback(contractInstance.hasRole);
+                console.log('hasRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', Role[role]);
+                return func(currentUserAddress, domain, Role[role], { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log(`Heb ik ${Role[role]} rechten op ${domain}?`, response);
+                        console.log('response.toNumber()', response[0].toNumber(), 'address', response[1]);
+                        return response[0].toNumber() === 1;
                     }, (error) => {
                         console.error('error op hasRole', error);
                     });
             });
     }
-    setRole(domain: string, role: string, hasRole: boolean): Observable<string> {
+    setRole(domain: string, role: Role, hasRole: boolean): Observable<string> {
         return this.contractRpcServiceAgent.getContractInstance('Users')
             .mergeMap(
             contractInstance => {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
-                const func: any = Observable.bindNodeCallback(contractInstance.setRole.call);
-                console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role, 'hasRole', hasRole);
+                const func: any = Observable.bindNodeCallback(contractInstance.setRole);
+                let hasRoleInt = hasRole ? 1 : 0;
+                console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', Role[role], 'hasRole', hasRole, 'hasRoleInt', hasRoleInt);
                 //function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
-                return func(currentUserAddress, domain, role, hasRole, { from: this.web3.eth.coinbase })
+                return func(currentUserAddress, domain, Role[role], hasRoleInt, { from: this.web3.eth.coinbase })
                     .map((response: string) => {
                         let result = this.web3.toAscii(response);
                         console.log('setRole hasRole-input', hasRole, 'response', response, 'result', result);

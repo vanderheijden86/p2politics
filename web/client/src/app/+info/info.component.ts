@@ -5,10 +5,12 @@ import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
 import { DomainUser } from '../models/domain-user.model';
+import { Role } from '../models/role.enum';
 
 @Component({
     selector: 'app-info',
     templateUrl: './info.component.html',
+    styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent implements OnInit {
 
@@ -79,17 +81,20 @@ export class InfoComponent implements OnInit {
             });
     }
 
+    domain = 'borough';
+    roles = Role;
+    role = Role.voter;
 
     hasRoleResponse: boolean;
     getHasRole() {
-        this.userService.hasRole('insurance', 'admin')
+        this.userService.hasRole(this.domain, this.role)
             .subscribe((response) => {
                 this.hasRoleResponse = response;
             });
     }
     setRoleResponse: string;
     setHasRole(hasRole: boolean) {
-        this.userService.setRole('insurance', 'admin', hasRole)
+        this.userService.setRole(this.domain, this.role, hasRole)
             .subscribe((response) => {
                 this.setRoleResponse = response;
             });
