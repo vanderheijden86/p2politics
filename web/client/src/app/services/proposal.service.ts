@@ -15,6 +15,8 @@ export class ProposalService {
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private web3Service: Web3Service) { }
 
+    activeProposal: Proposal;
+
     getProposals(domain: string): Observable<[Proposal]> {
         return this.contractRpcServiceAgent.getContractInstance('Proposals')
             .mergeMap(contractInstance => {
