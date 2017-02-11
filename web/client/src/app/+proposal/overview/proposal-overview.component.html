@@ -1,7 +1,7 @@
 <div class="action-bar">
-    <button *ngIf="user?.isAdmin" md-raised-button (click)="onAddProposal()" class="button-with-icon">
+    <a md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw voorstel
-    </button>
+    </a>
 </div>
 
 <md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
