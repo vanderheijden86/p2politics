@@ -24,7 +24,7 @@ contract Proposals {
 
   function setProposal(uint parentId, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
                        string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
-    length = proposals.push(Proposal(length, parentId, title, domain, category, phase, description, maxVoteScale, now, now, completed));
+    length = proposals.push(Proposal(length, parentId, title, domain, category, phase, description, maxVoteScale, now, endDate, completed));
     return length - 1;
   }
 
