@@ -18,14 +18,9 @@ module.exports = function(callback) {
 
     Proposals.deployed().then(function(instance) {
         proposals = instance;
-        let results = [];
-        for(let i=0; i < ProposalsData.length;i++) {
-            let ProposalsItem = ProposalsData[i];
-            results.push(proposals.setProposal(ProposalsItem.parentId, ProposalsItem.title, ProposalsItem.category,
-                                  ProposalsItem.description, "proposal", "asdflasj", 10, 39, 4)); // {from: account_one});
-
-        }
-        return Promise.all(results);
+        let ProposalsItem = require("index.json");
+        return proposals.setProposal(ProposalsItem.parentId, ProposalsItem.title, ProposalsItem.category,
+                                     ProposalsItem.description, "proposal", "asdflasj", 10, 39, 4); // {from: account_one});
     }).then(function(result) {
         // If this callback is called, the transaction was successfully processed.
         console.log("Transaction successful!", result);

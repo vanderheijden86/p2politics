@@ -1,13 +1,17 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MdSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 import { AppConfig } from '../../core/app.config';
+import { ProposalService } from '../../services/proposal.service';
 import { UserService } from '../../services/user.service';
+import { VoteService } from '../../services/vote.service';
 
 import { DomainUser } from '../../models/domain-user.model';
 import { Proposal } from '../../models/proposal.model';
+import { Vote } from '../../models/vote.model';
 
 @Component({
     selector: 'app-proposal-detail',
@@ -16,6 +20,7 @@ import { Proposal } from '../../models/proposal.model';
 })
 export class ProposalDetailComponent implements OnInit, OnDestroy {
     proposal: Proposal;
+    vote: Vote;
     user: DomainUser;
     userPending: boolean;
 
@@ -27,8 +32,12 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     constructor(
         private changeDetectionRef: ChangeDetectorRef,
         private route: ActivatedRoute,
+        private mdSnackBar: MdSnackBar,
         private appConfig: AppConfig,
-        private userService: UserService) { }
+        private proposalService: ProposalService,
+        private userService: UserService,
+        private voteService: VoteService,
+    ) { }
 
     ngOnInit() {
         this.initForm();
@@ -36,18 +45,24 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
             this.initUser(params['domainId']);
         });
 
-        this.proposal = <any>{
-            id: 456,
-            title: 'Test title for proposal',
-            description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        this.proposal = this.proposalService.activeProposal;
+        this.voteService.getProposalVote(this.proposal.id)
+            .subscribe(response => {
+                this.vote = response;
+                this.changeDetectionRef.detectChanges();
+            });
+        //         this.proposal = <any>{
+        //             id: 456,
+        //             title: 'Test title for proposal',
+        //             description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        // Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        // Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        // Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
 
-Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.`,
-            category: 'Natuur en Ruimtelijke Ordening'
-        };
+        // Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.`,
+        //             category: 'Natuur en Ruimtelijke Ordening'
+        //         };
     }
 
     ngOnDestroy() {
@@ -55,8 +70,20 @@ Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasc
     }
 
     onVoteConfirm() {
-        if(this.formGroup.invalid) return;
+        if (this.formGroup.invalid) return;
         console.log('VOTED');
+        let formValues = this.formGroup.value;
+        this.voteService.voreForProposal(this.proposal.id, +formValues.answer, formValues.reason || '')
+            .subscribe(response => {
+                this.mdSnackBar.open('U heeft gestemd', 'Sluiten', {
+                    duration: 8000
+                });
+            },
+            error => {
+                this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
+                    duration: 8000
+                });
+            })
     }
 
     onAddProposal() {
