@@ -25,5 +25,7 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
+- Show Proposal history, detail + overview
+- Voting percentage tonen bij proposals, detail + overview
+- ...
 - Proposer should be able to submit a result on a proposal
-- Show Proposal history
