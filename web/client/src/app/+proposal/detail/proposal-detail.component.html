@@ -14,8 +14,7 @@
     </h2>
     <p class="proposal-description">{{proposal.description}}</p>
 
-    <!--*ngIf="user && user.isVoter"-->
-    <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" >
+    <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" *ngIf="user && user.isVoter">
         <fieldset>
             <div class="answer-row">
                 <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
