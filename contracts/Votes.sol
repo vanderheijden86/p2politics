@@ -13,7 +13,7 @@ contract Votes {
     Vote[] votes;
 
 event VoteCompleted(uint proposalId);
-    function vote (uint proposalId, uint value, string comment) returns (bytes32) {
+    function vote(uint proposalId, uint value, string comment) returns (bytes32) {
         Vote memory vote;
         vote.userAddress = tx.origin;
         vote.proposalId = proposalId;
