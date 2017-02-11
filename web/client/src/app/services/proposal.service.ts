@@ -47,13 +47,13 @@ export class ProposalService {
         return func(index, { from: this.web3.eth.coinbase })
             .map((response: any) => {
                 console.log('getProposalByIndex response', response);
-                const result = this.mapResponseToProposal(index, response);
+                const result = this.mapResponseToProposal(response);
                 console.log('getProposalByIndex result', result);
                 return result;
             });
     }
 
-    private mapResponseToProposal(index: number, response: any): Proposal {
+    private mapResponseToProposal(response: any): Proposal {
         const result = new Proposal();
         result.id = response[0].toNumber();
         result.iteration = response[1].toNumber();
@@ -66,6 +66,21 @@ export class ProposalService {
         result.endDate = ConvertDate.fromUnix(response[8].toNumber());
         result.completed = response[9].toNumber();
         return result;
+    }
+
+    getProposalByIdIteration(proposalId: number, iteration: number): Observable<[Proposal]> {
+        console.log('getProposalByIdIteration proposalId', proposalId, 'iteration', iteration);
+        return this.contractRpcServiceAgent.getContractInstance('Proposals')
+            .mergeMap(contractInstance => {
+                const func: any = Observable.bindNodeCallback(contractInstance.getProposalByIdIteration);
+                return func(proposalId, iteration, { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log('getProposalByIdIteration response', response);
+                        const result = this.mapResponseToProposal(response);
+                        console.log('getProposalByIdIteration result', result);
+                        return result;
+                    });
+            });
     }
 
     addNewProposal(proposal: Proposal): Observable<number> {
