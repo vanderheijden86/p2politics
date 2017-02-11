@@ -19,7 +19,6 @@ contract Proposals {
   }
 
   function Proposals() {
-      proposalDepths[0] = 0;
     newProposal("Winkelcentrumpje", "local", "category", "phase", "description",  now + 2 days, 0);
   }
 
