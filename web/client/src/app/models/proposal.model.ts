@@ -1,4 +1,5 @@
 import { VoteStatistics } from './vote-statistics.model';
+import { isPast } from 'date-fns';
 
 export class Proposal {
     proposerAddress: string;
@@ -16,6 +17,9 @@ export class Proposal {
     completed: number;
     // view properties
     voteStatistics: VoteStatistics;
+    get isEnded(): boolean {
+        return isPast(this.endDate);
+    }
 }
 
 export class Argument {

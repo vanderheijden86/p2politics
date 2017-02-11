@@ -12,13 +12,16 @@
         <div class="col-md-12 col-lg-7 offset-lg-2">
             <div class="proposal container">
                 <md-toolbar *ngIf="userPending" class="notification">
-                    Authentication aan het controleren...
+                    Authenticatie wordt gecontroleerd...
                 </md-toolbar>
                 <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
                     U heeft geen rechten om op dit voorstel te stemmen
                 </md-toolbar>
                 <md-toolbar *ngIf="vote" class="notification md-warn">
-                    You have already voted on this proposal
+                    U heeft al op dit voorstel gestemd
+                </md-toolbar>
+                <md-toolbar *ngIf="proposal.isEnded" class="notification md-warn">
+                    Dit voorstel is beëindigd
                 </md-toolbar>
 
                 <h2 class="proposal-title">
@@ -27,7 +30,7 @@
                 </h2>
                 <p class="proposal-description">{{proposal.description}}</p>
 
-                <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter || vote">
+                <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter || vote || proposal.isEnded">
                     <fieldset>
                         <div class="answer-row">
                             <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
