@@ -3,7 +3,7 @@
         "id": 1,
         "iteration": 0,
         "title": "New shopping center Groningen-Oost",
-        "domain": "Municipality of Groningen",
+        "domain": "groningen",
         "category": "Local facilities",
         "phase": "Inquiry",
         "description": "With coming of the new residential area in Groningen-Oost, we want to know whether there is the need to build new shopping facilities. Currently the go to place is the city center. Commitment: if voting proves the need for a new shopping facility in Groningen-Oost, we will a propose an detailed idea within 3 months. This detailed idea will be available for voting and feedback.",
@@ -16,7 +16,7 @@
         "id": 1,
         "iteration": 1,
         "title": "Plan for building a new shopping center in the Kerkstraat",
-        "domain": "Municipality of Groningen",
+        "domain": "groningen",
         "category": "Local facilities",
         "phase": "Policy shaping",
         "description": "Following the proposal of (date) we made the commitment to come up with an detailed idea for a new shopping center in Groningen-Oost. Our plan is to use the empty building previously owned by PostNL to build an indoor shopping center. The building is currently not used and it is cheaper to rebuild than to completely build a new location. We estimate the costs of this project to be around 50000 euros and it will take 5 months to complete. Commitment: if voting shows that our proposed idea sufficient, we will deliver the plan to the counsil of Groningen and they will take a vote over it. If this proposal is rejected, we will come up with a new plan based on your feedback.",
@@ -29,13 +29,13 @@
         "id": 1,
         "iteration": 2,
         "title": "Updated plan for a new shopping center in the Kerkstraat",
-        "domain": "Municipality of Groningen",
+        "domain": "groningen",
         "category": "Local facilities",
         "phase": "Policy proposing",
         "description": "Our previous proposal for the rebuilding of the PostNL building to create a new shopping facility in Groningen-Oost in the Kerkstraat was rejected. One of the reasons that came up was that there are concerns about the accessability of the Kerkstraat. The Kerkstraat is not easily accessable with public transport, as the closest bus stop is more than a 10 minutes walk away. We decides to amend the plan with the addition that a new bus stop will be places in front of the shopping center. Commitment: if voting shows that our proposed idea sufficient, we will deliver the plan to the counsil of Groningen and they will take a vote over it. If this proposal is rejected, we will come up with a new plan based on your feedback.",
         "maxVoteScale": 2,
         "startDate": "1486425601",
         "endDate": "1487635201",
-        "completed": 0qq
+        "completed": 0
     }
 ]
