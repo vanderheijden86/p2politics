@@ -30,7 +30,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         <any>{ id: '789', title: 'Title three', category: 'Veiligheid' }
     ];
     proposalCategories: ProposalCategory[];
-    user: DomainUser = <any>{ isAdmin: true };
+    user: DomainUser;
 
     private routeSubscription: Subscription;
 
