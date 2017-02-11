@@ -4,6 +4,8 @@
     </button>
 </div>
 
+<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
+
 <div *ngFor="let category of proposalCategories">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
