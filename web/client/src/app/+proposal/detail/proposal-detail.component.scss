@@ -64,9 +64,11 @@ md-icon.arrow_back {
 		}
 
 		textarea {
-			padding: .5rem;
+			padding: .5rem .8rem;
 			resize: vertical;
 			width: 100%;
+			border-radius: 0.3rem;
+			border: 1px solid #999;
 		}
 
 		.btn-block {
