@@ -3,7 +3,9 @@
         <md-icon>add</md-icon> Nieuw voorstel
     </a>
     <button class="toggle-history">
-  		<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
+  		<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">
+            {{showClosedProposels ? 'Verberg' : 'Toon'}} gesloten voorstellen
+        </md-button-toggle>
   	</button>
 </div>
 

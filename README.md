@@ -26,6 +26,6 @@ Inline-style:
 
 # TODO
 - Show Proposal history, detail + overview
-- Voting percentage tonen bij proposals, detail + overview
+- Voting aantallen tonen bij proposals, detail (alles) + overview (nog stylen)
 - ...
 - Proposer should be able to submit a result on a proposal
