@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
+import { ProposalService } from '../services/proposal.service';
 import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
 import { DomainUser } from '../models/domain-user.model';
+import { Proposal } from '../models/proposal.model';
 import { Role } from '../models/role.enum';
 
 @Component({
@@ -21,6 +23,7 @@ export class InfoComponent implements OnInit {
         private infoServiceAgent: InfoServiceAgent,
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private userService: UserService,
+        private proposalService: ProposalService,
         private web3Service: Web3Service) { }
 
     ngOnInit() {
@@ -116,6 +119,14 @@ export class InfoComponent implements OnInit {
             });
     }
 
+    proposals: Proposal[];
+    getProposals() {
+        this.proposalService.getProposals(this.domain)
+            .subscribe(response => {
+                this.proposals = response;
+            });
+    }
+    
     get web3() {
         return this.web3Service.web3;
     }
