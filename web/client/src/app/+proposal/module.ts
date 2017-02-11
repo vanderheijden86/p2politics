@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MdCardModule, MdToolbarModule, MdIconModule, MdButtonToggleModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MdCardModule, MdToolbarModule, MdIconModule, MdButtonToggleModule, MdButtonModule } from '@angular/material';
+
+import { SharedModule } from '../shared';
 
 import { ProposalRouting } from './routing';
 
@@ -12,10 +15,13 @@ import { ProposalDetailComponent } from './detail/proposal-detail.component';
     imports: [
         CommonModule,
         RouterModule,
+        ReactiveFormsModule,
         MdCardModule,
         MdToolbarModule,
         MdIconModule,
         MdButtonToggleModule,
+        MdButtonModule,
+        SharedModule,
         ProposalRouting,
     ],
     declarations: [

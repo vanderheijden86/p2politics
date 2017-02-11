@@ -29,6 +29,12 @@ export class AppConfig {
         });
     }
 
+    onHttpError(response: Response) {
+        this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
+            duration: 8000
+        });
+    }
+
     private setDefaultAuthorizationHeader() {
         // AppRequestOptions.defaultHeaders.set('Authorization',
         //     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiYmFuY2Fpci1pcG8tem' +
@@ -42,11 +48,4 @@ export class AppConfig {
             'Basic ' + btoa('TODO username (address)' + ':' + 'TODO password')
         );
     }
-
-    private onHttpError(response: Response) {
-        this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
-            duration: 8000
-        });
-    }
-
 }

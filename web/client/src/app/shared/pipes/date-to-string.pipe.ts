@@ -10,12 +10,9 @@ import { format } from 'date-fns';
 
 @Pipe({ name: 'dateToString' })
 export class DateToStringPipe implements PipeTransform {
-    // transform(value: Date, format: string): any {
-    //     // return 'TODO dateToString';
-    //     return moment(value).locale('nl').format(format);
-    // }
     transform(value: Date | string | number, ...args: any[]): any {
         if (!value) { return ''; };
-        return format(value, args[0]);
+        let locale = require('date-fns/locale/nl');
+        return format(value, args[0], { locale: locale });
     }
 }

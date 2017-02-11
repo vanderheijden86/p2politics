@@ -2,6 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { EnumPipe } from './pipes/enum.pipe';
 import { DateToStringPipe } from './pipes/date-to-string.pipe';
 import { IsoToFromNowPipe } from './pipes/iso-to-from-now.pipe';
 
@@ -14,12 +15,14 @@ import { IsoToFromNowPipe } from './pipes/iso-to-from-now.pipe';
     ],
     exports: [
         // pipes
+        EnumPipe,
         DateToStringPipe,
         IsoToFromNowPipe,
         // widgets
     ],
     declarations: [
         // pipes
+        EnumPipe,
         DateToStringPipe,
         IsoToFromNowPipe,
         // widgets
