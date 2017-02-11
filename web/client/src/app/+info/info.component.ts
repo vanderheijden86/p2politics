@@ -4,10 +4,12 @@ import { addDays } from 'date-fns';
 import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
 import { ProposalService } from '../services/proposal.service';
 import { UserService } from '../services/user.service';
+import { VoteService } from '../services/vote.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
 import { DomainUser } from '../models/domain-user.model';
 import { Proposal } from '../models/proposal.model';
+import { Vote } from '../models/vote.model';
 import { Role } from '../models/role.enum';
 
 @Component({
@@ -25,6 +27,7 @@ export class InfoComponent implements OnInit {
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private userService: UserService,
         private proposalService: ProposalService,
+        private voteService: VoteService,
         private web3Service: Web3Service) { }
 
     ngOnInit() {
@@ -132,6 +135,7 @@ export class InfoComponent implements OnInit {
     getProposals() {
         this.proposalService.getProposals(this.domain)
             .subscribe(response => {
+                console.log('getProposals response', response);
                 this.proposals = response;
             }, (error) => {
                 console.error('error', error);
@@ -141,7 +145,7 @@ export class InfoComponent implements OnInit {
     //string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
     addProposal() {
         const proposal = new Proposal();
-        proposal.parentId = '1';
+        proposal.parentId = 1;
         proposal.title = 'fake title';
         proposal.domain = this.domain;
         proposal.category = 'TODO category';
@@ -152,11 +156,32 @@ export class InfoComponent implements OnInit {
         proposal.completed = 19;
         this.proposalService.addProposal(proposal)
             .subscribe(response => {
-                //proposal.id = response
+                proposal.id = response;
             }, (error) => {
                 console.error('error', error);
             });
     }
+
+    vote: Vote;
+     getProposalVote(proposal) {
+        this.voteService.getProposalVote(proposal.id)
+            .subscribe(response => {
+                this.vote = response;
+            }, (error) => {
+                console.error('error', error);
+            });
+    }
+
+    setVoteResult: string;
+    setVote(proposal: Proposal) {
+        this.voteService.voreForProposal(proposal.id, 2, 'TODO comment')
+            .subscribe(response => {
+                this.setVoteResult = response;
+            }, (error) => {
+                console.error('error', error);
+            });
+    }
+
     get web3() {
         return this.web3Service.web3;
     }

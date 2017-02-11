@@ -1,36 +1,40 @@
+<!--*ngIf="user?.isAdmin"-->
 <div class="action-bar">
     <a md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw voorstel
     </a>
+    <button class="toggle-history">
+  		<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
+  	</button>
 </div>
 
-<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
+<!-- <md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle> -->
 
 <div *ngFor="let category of proposalCategories">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3">
 	    <div class="category-titel">{{category.description}}</div>
 	    <div class="proposal-cards">
-	        <div *ngFor="let proposal of category.proposals" class="">
-	            <md-card>
-	                <a [routerLink]="['proposal', proposal.id]">
-	                    <h3>{{proposal.title}}</h3>
-	                </a>
-	                <md-card-content>
-	                    <p class="proposal-description-intro">{{proposal.description}}</p>
-	                </md-card-content>
-	                <div class="date">
-	                    <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
-	                </div>
-	                <div class="proposal-link">
-	                    <ul>
-	                        <li>
-	                            <a>delen</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	            </md-card>
-	        </div>
+        <div *ngFor="let proposal of category.proposals" class="">
+          <md-card>
+              <a [routerLink]="['proposal', proposal.id]">
+                  <h3>{{proposal.title}}</h3>
+              </a>
+              <md-card-content>
+                  <p class="proposal-description-intro">{{proposal.description}}</p>
+              </md-card-content>
+              <div class="date">
+                  <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+              </div>
+              <div class="proposal-link">
+                  <ul>
+                      <li>
+                          <a>delen</a>
+                      </li>
+                  </ul>
+              </div>
+          </md-card>
+        </div>
 	    </div>
 	  </div>
   </div>

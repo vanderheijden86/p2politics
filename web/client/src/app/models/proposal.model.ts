@@ -1,7 +1,7 @@
 export class Proposal {
     proposerAddress: string;
-    id: string;
-    parentId: string;
+    id: number;
+    parentId: number;
     title: string;
     description: string;
     domain: string;

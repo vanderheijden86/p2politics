@@ -57,16 +57,25 @@
           <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
           <button md-raised-button (click)="setHasRole(false)">setHasRole(false)</button>
           <button md-raised-button (click)="getDomainUser()">getDomainUser</button>
-          <button md-raised-button (click)="getProposals()">getProposals</button>
-          <button md-raised-button (click)="addProposal()">addProposal</button>
+          <button md-raised-button (click)="getProposals()">getProposals for {{domain}}</button>
+          <button md-raised-button (click)="addProposal()">addProposal for {{domain}}</button>
         </div>
       </form>
       <md-list>
         <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
         <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
         <md-list-item>domainUser: {{domainUser | json}} </md-list-item>
-        <md-list-item>proposals: {{proposals | json}} </md-list-item>
       </md-list>
+      <div *ngIf="proposals">
+        <table>
+          <tr *ngFor="let proposal of proposals">
+            <td><button md-raised-button (click)="getProposalVote(proposal)">getVote</button></td>
+            <td><button md-raised-button (click)="setVote(proposal)">vote</button></td>
+            <td>setVoteResult: {{setVoteResult}}</td>
+            <td>{{proposal | json}}</td>
+        </table>
+        <div *ngIf="vote">vote: {{vote | json}}</div>
+      </div>
     </div>
 
     <div>
