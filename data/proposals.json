@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "iteration": 0,
         "title": "New shopping center Groningen-Oost",
         "domain": "Municipality of Groningen",
@@ -14,7 +14,7 @@
     },
     {
         "id": 1,
-        "iteration": 1 ,
+        "iteration": 0,
         "title": "Plan for building a new shopping center in the Kerkstraat",
         "domain": "Municipality of Groningen",
         "category": "Local facilities",
@@ -26,8 +26,8 @@
         "completed": 1
     },
     {
-        "id": 1,
-        "iteration": 2 ,
+        "id": 2,
+        "iteration": 0,
         "title": "Updated plan for a new shopping center in the Kerkstraat",
         "domain": "Municipality of Groningen",
         "category": "Local facilities",
@@ -36,6 +36,6 @@
         "maxVoteScale": 2,
         "startDate": "1486425601",
         "endDate": "1487635201",
-        "completed": 0
+        "completed": 0qq
     }
 ]
