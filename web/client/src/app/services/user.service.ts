@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { ContractRpcServiceAgent } from '../service-agents';
 import { Web3Service } from '../services/web3.service';
 
+import { DomainUser } from '../models/domain-user.model';
+
 @Injectable()
 export class UserService {
     constructor(
@@ -11,7 +13,33 @@ export class UserService {
         private web3Service: Web3Service) { }
 
     //getUser(user);
+    getDomainUser(domain: string): Observable<DomainUser> {
+        const result = new DomainUser();
+        // let isAdminSubscription = this.hasRole(domain, 'admin');
+        // let isProposerSubscription = this.hasRole(domain, 'proposer');
+        // let isVoterSubscription = this.hasRole(domain, 'voter');
+        return Observable
+            .zip(
+            this.hasRole(domain, 'admin'),
+            this.hasRole(domain, 'proposer'),
+            this.hasRole(domain, 'voter'),
+            (isAdmin: boolean, isProposer: boolean, isVoter: boolean) => {
+                result.isAdmin = isAdmin;
+                result.isProposer = isProposer;
+                result.isVoter = isVoter;
+            })
+            .map(x => {
+                console.log(x);
+                return result;
+            });
 
+        // return new Observable()
+        //     .mergeMap(
+        //     this.hasRole(domain, 'admin').subscribe((response) => result.isAdmin = response),
+        //     this.hasRole(domain, 'proposer'),
+        //     this.hasRole(domain, 'voter')
+        //     );
+    }
     hasRole(domain: string, role: string): Observable<boolean> {
         return this.contractRpcServiceAgent.getContractInstance('Users')
             .mergeMap(

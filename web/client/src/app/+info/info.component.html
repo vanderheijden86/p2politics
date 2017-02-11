@@ -27,12 +27,14 @@
 </div>
 
 <div>
-  <button md-raised-button (click)="getHasRole()">Try User contract call (via RPC from browser)</button>
-  <button md-raised-button (click)="setHasRole(true)">Set role true (via RPC from browser)</button>
-  <button md-raised-button (click)="setHasRole(false)">Set role false (via RPC from browser)</button>
+  <button md-raised-button (click)="getHasRole()">getHasRole()</button>
+  <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
+  <button md-raised-button (click)="setHasRole(false)">setHasRole(false)</button>
+  <button md-raised-button (click)="getDomainUser()">getDomainUser</button>
   <md-list>
     <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
     <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
+    <md-list-item>domainUser: {{domainUser | json}} </md-list-item>
   </md-list>
 </div>
 
