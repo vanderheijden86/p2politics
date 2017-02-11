@@ -1,7 +1,7 @@
 <div class="add-proposal">
 
     <h2>Een nieuwe voorstel maken</h2>
-    <p *ngIf="parentProposalId">Dit wordt een vervolg op het voorstel {{parentProposalId}}</p>
+    <p *ngIf="parentProposalId">Dit wordt een vervolg op het voorstel {{iterationId}}</p>
 
     <form (ngSubmit)="onAddProposal()" [formGroup]="formGroup">
         <fieldset>
@@ -18,16 +18,12 @@
             </md-input-container>
             <input-error [control]="formGroup.controls.category" error="required"></input-error>
             <md-input-container>
-                <input md-input name="domain" placeholder="Domein" formControlName="domain">
-            </md-input-container>
-            <input-error [control]="formGroup.controls.domain" error="required"></input-error>
-            <md-input-container>
                 <input md-input name="phase" placeholder="Fase" formControlName="phase">
             </md-input-container>
             <md-input-container>
-                <input md-input type="date" name="enddate" placeholder="Eind datum" formControlName="enddate">
+                <input md-input type="date" name="endDate" placeholder="Eind datum" formControlName="endDate">
             </md-input-container>
-            <input-error [control]="formGroup.controls.enddate" error="required"></input-error>
+            <input-error [control]="formGroup.controls.endDate" error="required"></input-error>
 
             <button md-raised-button type="submit" class="submit-button">Opslaan</button>
         </fieldset>

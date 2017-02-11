@@ -25,7 +25,5 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
-- Create proposal route maken + formulier
-- Connect vote form with service
-- Connect add proposal form with service
 - Proposer should be able to submit a result on a proposal
+- Show Proposal history
