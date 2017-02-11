@@ -1,1 +1,20 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
+
+<div class="proposal container">
+    <h2 class="proposal-title">{{proposal.title}}</h2>
+    <p>{{proposal.description}}</p>
+
+    <form>
+        <div class="answer-row">
+            <md-button-toggle-group #answer="mdButtonToggleGroup">
+                <md-button-toggle value="0">Agree</md-button-toggle>
+                <md-button-toggle value="1">No opinion</md-button-toggle>
+                <md-button-toggle value="2">Disagree</md-button-toggle>
+            </md-button-toggle-group>
+        </div>
+
+        <textarea name="reason"></textarea>
+
+        <button md-raised-button class="btn-block" color="warn">Confirm</button>
+    </form>
+</div>

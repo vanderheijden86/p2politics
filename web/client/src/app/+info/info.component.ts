@@ -4,6 +4,7 @@ import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
 import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
+import { DomainUser } from '../models/domain-user.model';
 
 @Component({
     selector: 'app-info',
@@ -78,13 +79,30 @@ export class InfoComponent implements OnInit {
             });
     }
 
-    hasRole: boolean;
-    tryUser() {
-        this.userService.getHasRole()
+
+    hasRoleResponse: boolean;
+    getHasRole() {
+        this.userService.hasRole('insurance', 'admin')
             .subscribe((response) => {
-                this.hasRole = response;
+                this.hasRoleResponse = response;
             });
     }
+    setRoleResponse: string;
+    setHasRole(hasRole: boolean) {
+        this.userService.setRole('insurance', 'admin', hasRole)
+            .subscribe((response) => {
+                this.setRoleResponse = response;
+            });
+    }
+
+    domainUser: DomainUser;
+    getDomainUser() {
+        this.userService.getDomainUser('insurance')
+            .subscribe((response) => {
+                this.domainUser = response;
+            });
+    }
+
     testjeResult: number;
     tryTestje() {
         this.userService.testje()

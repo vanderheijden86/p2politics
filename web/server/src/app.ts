@@ -17,6 +17,9 @@ let Rx = require('rx');
 // let routes = require('./routes/index');
 let app = express();
 
+// setup cors
+app.use(Cors.allowCrossDomain);
+
 web3ConfigInstance.port = process.env.WEB3_PORT || '8545';
 console.log('web3ConfigInstance.port', web3ConfigInstance.port, 'web3ConfigInstance.providerUrl', web3ConfigInstance.providerUrl);
 
@@ -30,9 +33,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, 'public')));
-
-// setup cors
-app.use(Cors.allowCrossDomain);
 
 // setup authentication
 Auth.init();

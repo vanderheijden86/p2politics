@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../../services/user.service';
-import { DomainUser } from '../../models/user.model';
+import { DomainUser } from '../../models/domain-user.model';
 import { Proposal } from '../../models/proposal.model';
 
 interface ProposalCategory {
@@ -30,7 +30,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         <any>{ id: '789', title: 'Title three', category: 'Veiligheid' }
     ];
     proposalCategories: ProposalCategory[];
-    user: DomainUser = <any>{ isAdmin: true };
+    user: DomainUser;
 
     private routeSubscription: Subscription;
 
@@ -42,7 +42,8 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         this.routeSubscription = this.route.params.subscribe(params => {
             let domainId = params['domainId'];
             console.log('DOMAIN ID', domainId);
-            // this.user = this.userService.user(domainId);
+            this.userService.getDomainUser(domainId)
+                .subscribe(user => this.user = user);
             this.getProposalGroups(Observable.of(this.proposalStub))
                 .subscribe(proposalCategories => this.proposalCategories = proposalCategories);
         });
