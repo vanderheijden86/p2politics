@@ -3,6 +3,7 @@ from gensim import corpora, models
 from collections import defaultdict
 from pprint import pprint
 import re
+from collections import Counter
 
 def testwithgenerateddata():
     data = pd.read_csv('../data/generatedvotes/trash.csv')
@@ -16,10 +17,10 @@ def testwithgenerateddata():
 def bookdata():
     data = pd.read_csv('../data/amazon_book_reviews/Donna-Tartt-The-Goldfinch.csv', sep='\t', quoting=3, header=None)
     ultimate_regexp = "(?i)<\/?\w+((\s+\w+(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)\/?>"
-    print(data[3].replace(to_replace=ultimate_regexp, value='', regex=True))
+    topic_model(data[3].replace(to_replace=ultimate_regexp, value='', regex=True).values)
 
 def topic_model(documents):
-    stoplist = set('for a of the and to in is'.split())
+    stoplist = set('for a of the and to in is it this was that have but you i with so on at an as'.split())
     texts = [[word for word in document.lower().split() if word not in stoplist] for document in documents]
 
     frequency = defaultdict(int)
