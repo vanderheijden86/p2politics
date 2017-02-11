@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
+import { SharedModule } from '../shared';
+
 import { Routing } from './info.routing';
 import { InfoComponent } from './info.component';
 
@@ -12,6 +14,7 @@ import { InfoComponent } from './info.component';
         Routing,
         FormsModule,
         MaterialModule,
+        SharedModule,
     ],
     exports: [
     ],

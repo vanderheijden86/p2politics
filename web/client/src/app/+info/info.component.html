@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div>
       <button md-raised-button (click)="getBalance()">Get balance (via webapi)</button>
 
@@ -29,13 +29,13 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div>
       <form role="form" novalidate>
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
-              <md-input-container class="example-full-width">
+              <md-input-container>
                 <input md-input placeholder="domain" name="domain" [(ngModel)]="domain" ngModelOptions='{standalone: true}'>
               </md-input-container>
             </td>
@@ -43,23 +43,15 @@
               <div class="field-separator"></div>
             </td>
             <td>
-              <md-input-container class="example-full-width">
-                <input md-input placeholder="role" name="role" [(ngModel)]="role" ngModelOptions='{standalone: true}'>
-              </md-input-container>
+              <md-select placeholder="role" name="role" [(ngModel)]="role" ngModelOptions='{standalone: true}'>
+                <md-option [value]=""></md-option>
+                <md-option *ngFor="let role of roles | sfEnum" [value]="role">
+                  {{role}}
+                </md-option>
+              </md-select>
             </td>
           </tr>
         </table>
-
-        <!--<div class="row">
-      <label class="col-sm-3" for="domain">domain</label>
-      <div class="col-sm-3">
-        <input type="text" class="" name="domain" [(ngModel)]="domain" formControlName="domain">
-      </div>
-      <label class="col-sm-3" for="role">role</label>
-      <div class="col-sm-3">
-        <input type="text" class="" name="role" [(ngModel)]="role" formControlName="role">
-      </div>
-    </div>-->
         <div>
           <button md-raised-button (click)="getHasRole()">getHasRole()</button>
           <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
