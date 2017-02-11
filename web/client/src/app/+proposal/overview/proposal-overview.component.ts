@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MdButtonToggleChange } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { addDays } from 'date-fns';
+import { addDays, isFuture } from 'date-fns';
 
 import { UserService } from '../../services/user.service';
 import { DomainUser } from '../../models/domain-user.model';
@@ -68,15 +69,24 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         console.log('Add proposal');
     }
 
+    showClosedProposels = false;
+    showClosedProposelsChanged(event: MdButtonToggleChange) {
+        this.showClosedProposels = event.source.checked;
+        this.getProposalGroups(Observable.of(this.proposalStub))
+            .subscribe(proposalCategories => this.proposalCategories = proposalCategories);
+    }
+
     private getProposalGroups(proposalsObs: Observable<Proposal[]>) {
         return proposalsObs.map(proposals => {
             let categories: ProposalCategory[] = [];
             proposals.forEach(proposal => {
-                let category = categories.find(cat => cat.description === proposal.category);
-                if (!category) {
-                    categories.push(category = { description: proposal.category, proposals: [] });
+                if (this.showClosedProposels || isFuture(proposal.endDate)) {
+                    let category = categories.find(cat => cat.description === proposal.category);
+                    if (!category) {
+                        categories.push(category = { description: proposal.category, proposals: [] });
+                    }
+                    category.proposals.push(proposal);
                 }
-                category.proposals.push(proposal);
             });
             return categories;
         });

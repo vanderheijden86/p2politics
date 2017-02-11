@@ -25,7 +25,7 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
-- Developer optie, admin toggle, voter add
 - Create proposal route maken + formulier
-- Vote form submittable maken
-- Developer page voor setten van roles
+- Connect vote form with service
+- Connect add proposal form with service
+- Proposer should be able to submit a result on a proposal

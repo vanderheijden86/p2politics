@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
+import { AppConfig } from '../../core/app.config';
 import { UserService } from '../../services/user.service';
 
 import { DomainUser } from '../../models/domain-user.model';
@@ -16,6 +17,7 @@ import { Proposal } from '../../models/proposal.model';
 export class ProposalDetailComponent implements OnInit, OnDestroy {
     proposal: Proposal;
     user: DomainUser;
+    userPending: boolean;
 
     pending: boolean;
     formGroup: FormGroup;
@@ -25,6 +27,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     constructor(
         private changeDetectionRef: ChangeDetectorRef,
         private route: ActivatedRoute,
+        private appConfig: AppConfig,
         private userService: UserService) { }
 
     ngOnInit() {
@@ -41,8 +44,8 @@ Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla conse
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
 
-Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.`, 
-            category: 'Natuur en Ruimtelijke Ordening' 
+Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.`,
+            category: 'Natuur en Ruimtelijke Ordening'
         };
     }
 
@@ -55,6 +58,10 @@ Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasc
         console.log('VOTED');
     }
 
+    onAddProposal() {
+        console.log('Add child proposal');
+    }
+
     private initForm() {
         this.formGroup = new FormGroup({
             'answer': new FormControl(undefined, Validators.required),
@@ -64,10 +71,19 @@ Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasc
 
     private initUser(domainId) {
         this.user = undefined;
+        this.userPending = true;
         this.userService.getDomainUser(domainId)
             .subscribe(user => {
                 this.user = user;
-                this.changeDetectionRef.detectChanges();
+                this.onBlockChainCallCompleted(user);
+            }, err => {
+                this.appConfig.onHttpError(err);
+                this.onBlockChainCallCompleted(err);
             });
+    }
+
+    private onBlockChainCallCompleted(response) {
+        this.userPending = false;
+        this.changeDetectionRef.detectChanges();
     }
 }
