@@ -18,7 +18,7 @@ module.exports = function(callback) {
 
     Votes.deployed().then(function(instance) {
         votes = instance;
-        return Votes.voteAs(VotesItem.userAddress, VotesItem.proposalId, VotesItem.iteration, VotesItem.value, VotesItem.comment); // {from: account_one});
+        return votes.voteAs(VotesItem.userAddress, VotesItem.proposalId, VotesItem.iteration, VotesItem.value, VotesItem.comment); // {from: account_one});
     }).then(function(result) {
         // If this callback is called, the transaction was successfully processed.
         console.log("Transaction successful!", result);
