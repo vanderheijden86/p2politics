@@ -88,7 +88,7 @@ export class InfoComponent implements OnInit {
             });
     }
 
-    domain = 'borough';
+    domain = 'groningen';
     roles = Role;
     role = Role.voter;
 
