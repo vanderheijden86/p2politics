@@ -1,3 +1,37 @@
 md-icon.arrow_back {
 	font-size: 2rem;
 }
+
+.proposal {
+	margin-top: 5rem;
+	max-width: 800px;
+
+	.proposal-title {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	form {
+		.answer-row {
+			text-align: center;
+			margin-bottom: 1rem;
+
+			md-button-toggle-group {
+				box-shadow: none;
+
+				md-button-toggle {
+					margin-right: 2rem;
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+
+		textarea {
+			resize: vertical;
+			width: 100%;
+		}
+	}
+}
