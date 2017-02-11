@@ -11,19 +11,29 @@ contract TestUsers {
 
     function testSetRole() {
 
+        users.setRole(addr, "insurance", "admin", 1);
+
+        uint expected = 1;
+        Assert.equal(users.hasRole(addr, "insurance", "admin"), expected, "Ad is niet admin.");
+
+
+    }
+
+    function testHasRole() {
+
         //address addrs = DeployedAddresses.Users();
         //Users users = Users(DeployedAddresses.Users.gas(1000)());
 
-        bool expected = true;
+        uint expected = 1;
         Assert.equal(users.hasRole(addr, "insurance", "admin"), expected, "Ad is niet admin.");
 
     }
 
     function testChangeRole() {
 
-        users.setRole(addr, "insurance", "admin", false);
+        users.setRole(addr, "insurance", "admin", 2);
 
-        bool expected = false;
+        uint expected = 2;
         Assert.equal(users.hasRole(addr, "insurance", "admin"), expected, "Ad is niet admin.");
 
 
