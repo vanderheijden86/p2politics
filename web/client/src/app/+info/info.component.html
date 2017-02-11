@@ -25,12 +25,17 @@
     <md-list-item>contractCallResult: {{contractCallResult}} </md-list-item>
   </md-list>
 </div>
+
 <div>
-  <button md-raised-button (click)="tryUser()">Try User contract call (via RPC from browser)</button>
+  <button md-raised-button (click)="getHasRole()">Try User contract call (via RPC from browser)</button>
+  <button md-raised-button (click)="setHasRole(true)">Set role true (via RPC from browser)</button>
+  <button md-raised-button (click)="setHasRole(false)">Set role false (via RPC from browser)</button>
   <md-list>
-    <md-list-item>hasRole: {{hasRole}} </md-list-item>
+    <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
+    <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
   </md-list>
 </div>
+
 <div>
   <button md-raised-button (click)="tryTestje()">Try testje contract call (via RPC from browser)</button>
   <md-list *ngIf="testjeResult">

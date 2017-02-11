@@ -11,36 +11,43 @@ export class UserService {
         private web3Service: Web3Service) { }
 
     //getUser(user);
-    getHasRole(): Observable<boolean> {
-        return this.hasRole('insurance', 'admin')
-            .map((response) => {
-                console.log('Heb ik admin rechten op insurance?', response);
-                return response;
-            }, (error) => {
-                console.error('error op hasRole', error);
-            });
-    }
 
-    private hasRole(domain: string, role: string): Observable<boolean> {
+    hasRole(domain: string, role: string): Observable<boolean> {
         return this.contractRpcServiceAgent.getContractInstance('Users')
             .mergeMap(
             contractInstance => {
                 // console.log('contract', response);
                 const currentUserAddress = this.web3.eth.coinbase;
                 const func: any = Observable.bindNodeCallback(contractInstance.hasRole.call);
-                let domainHex = this.web3._extend.utils.padRight(this.web3.fromAscii(domain), 32);
-                let roleHex = this.web3._extend.utils.padRight(this.web3.fromAscii(role), 32);
-                console.log('currentUserAddress', currentUserAddress, 'domain', domain, 'role', role);
-                //console.log('currentUserAddress', currentUserAddress, 'domainHex', domainHex, 'roleHex', roleHex);
+                console.log('hasRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role);
                 return func(currentUserAddress, domain, role, { from: this.web3.eth.coinbase })
-                //return func(currentUserAddress, domainHex, roleHex, { from: this.web3.eth.coinbase })
                     .map((response: boolean) => {
-                        console.log('hasRole response', response);
-                        // 'error', error,
+                        console.log('Heb ik admin rechten op insurance?', response);
                         return response;
+                    }, (error) => {
+                        console.error('error op hasRole', error);
                     });
             });
     }
+    setRole(domain: string, role: string, hasRole: boolean): Observable<string> {
+        return this.contractRpcServiceAgent.getContractInstance('Users')
+            .mergeMap(
+            contractInstance => {
+                // console.log('contract', response);
+                const currentUserAddress = this.web3.eth.coinbase;
+                const func: any = Observable.bindNodeCallback(contractInstance.setRole.call);
+                console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', role, 'hasRole', hasRole);
+                //function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
+                return func(currentUserAddress, domain, role, hasRole, { from: this.web3.eth.coinbase })
+                    .map((response: string) => {
+                        let result = this.web3.toAscii(response);
+                        console.log('setRole hasRole-input', hasRole, 'response', response, 'result', result);
+                        // 'error', error,
+                        return result;
+                    });
+            });
+    }
+
 
     testje(): Observable<number> {
         return this.contractRpcServiceAgent.getContractInstance('Users')

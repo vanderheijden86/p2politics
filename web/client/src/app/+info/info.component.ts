@@ -78,13 +78,22 @@ export class InfoComponent implements OnInit {
             });
     }
 
-    hasRole: boolean;
-    tryUser() {
-        this.userService.getHasRole()
+
+    hasRoleResponse: boolean;
+    getHasRole() {
+        this.userService.hasRole('insurance', 'admin')
             .subscribe((response) => {
-                this.hasRole = response;
+                this.hasRoleResponse = response;
             });
     }
+    setRoleResponse: string;
+    setHasRole(hasRole: boolean) {
+        this.userService.setRole('insurance', 'admin', hasRole)
+            .subscribe((response) => {
+                this.setRoleResponse = response;
+            });
+    }
+
     testjeResult: number;
     tryTestje() {
         this.userService.testje()
