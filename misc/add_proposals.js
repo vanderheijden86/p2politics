@@ -4,6 +4,7 @@ module.exports = function(callback) {
     // Specifically request an abstraction for MetaCoin.sol
     var Proposals = artifacts.require("../contracts/Proposals.sol");
     var ProposalsData = require("../data/proposals.json");
+    var ProposalsItem = require("./index.json");
     //console.log(Proposals);
 
     var account_one = "0x731e2a7023ba0064805c673d7a171787a5fda8a5"; // an address
@@ -18,9 +19,10 @@ module.exports = function(callback) {
 
     Proposals.deployed().then(function(instance) {
         proposals = instance;
-        let ProposalsItem = require("index.json");
-        return proposals.setProposal(ProposalsItem.parentId, ProposalsItem.title, ProposalsItem.category,
-                                     ProposalsItem.description, "proposal", "asdflasj", 10, 39, 4); // {from: account_one});
+        return proposals.newProposal(ProposalsItem.title, ProposalsItem.domain,
+                                     ProposalsItem.category, ProposalsItem.phase,
+                                     ProposalsItem.description, ProposalsItem.endDate,
+                                     ProposalsItem.completed); // {from: account_one});
     }).then(function(result) {
         // If this callback is called, the transaction was successfully processed.
         console.log("Transaction successful!", result);
