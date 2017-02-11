@@ -1,7 +1,7 @@
 export class Proposal {
     proposerAddress: string;
     id: number;
-    parentId: number;
+    iteration: number;
     title: string;
     description: string;
     domain: string;
@@ -9,7 +9,6 @@ export class Proposal {
     phase: string;
     topInFavour: Argument[];
     topAgainst: Argument[];
-    maxVoteScale: number;
     startDate: Date;
     endDate: Date;
     completed: number;

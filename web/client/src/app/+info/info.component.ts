@@ -145,16 +145,15 @@ export class InfoComponent implements OnInit {
     //string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
     addProposal() {
         const proposal = new Proposal();
-        proposal.parentId = 1;
+        proposal.iteration = 1;
         proposal.title = 'fake title';
         proposal.domain = this.domain;
         proposal.category = 'TODO category';
         proposal.phase = 'TODO phase';
         proposal.description = 'TODO description';
-        proposal.maxVoteScale = 100;
         proposal.endDate = addDays(Date.now(), 20);
         proposal.completed = 19;
-        this.proposalService.addProposal(proposal)
+        this.proposalService.addNewProposal(proposal)
             .subscribe(response => {
                 proposal.id = response;
             }, (error) => {
