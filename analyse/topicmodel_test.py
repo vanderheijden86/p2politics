@@ -9,41 +9,51 @@ from gensim.utils import simple_preprocess
 def testwithgenerateddata():
     #To test with the generated data
     data = pd.read_csv('../data/generatedvotes/trash.csv') #name of the file
-    votes_favour = data[data['votes']==True]
-    votes_against = data[data['votes']==False]
-    docfavour = votes_favour['opinions'].dropna().values
-    docagainst = votes_against['opinions'].dropna().values
-    topic_model(docfavour)
+    votes_favour = data[data['votes']==True] #votes for
+    votes_against = data[data['votes']==False] #votes against
+    docfavour = votes_favour['opinions'].dropna().values #written as an array
+    docagainst = votes_against['opinions'].dropna().values #written as an array
+    topic_model(docfavour) #run the topic model over the data (only for now, can change)
     return topic_model(docagainst)
 
 def bookdata():
     #To test it with the bookreviewdata
     data = pd.read_csv('../data/amazon_book_reviews/Donna-Tartt-The-Goldfinch.csv', sep='\t', quoting=3, header=None)
-    ultimate_regexp = "(?i)<\/?\w+((\s+\w+(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)\/?>"
-    return topic_model(data[3].replace(to_replace=ultimate_regexp, value='', regex=True).values)
+    ultimate_regexp = "(?i)<\/?\w+((\s+\w+(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)\/?>" #filter html-tags
+    return topic_model(data[3].replace(to_replace=ultimate_regexp, value='', regex=True).values) #filter html-tags
 
 def topic_model(documents):
+    #In this function a topic model (lda) is made from the data, we use 5 topics
+    #First tokenize and remove stop words
     texts = [[token for token in simple_preprocess(document) if token not in STOPWORDS] for document in documents]
+    #remove terms only occuring once.
     frequency = defaultdict(int)
     for text in texts:
         for token in text:
             frequency[token] += 1
-
     texts = [[token for token in text if frequency[token] > 1] for text in texts]
+
+    #create dictionary and corpus from the texts
     dictionary = corpora.Dictionary(texts)
     corpus = [dictionary.doc2bow(text) for text in texts]
+
+    #run and return the topic model.
     lda = models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=5, update_every=1, chunksize=10000, passes=1)
     return lda, dictionary
 
 def topic_unseen_document(dictionary, lda, document):
+    #Determine in which topics the unseen document fits
     new_vec = dictionary.doc2bow([token for token in simple_preprocess(document) if token not in STOPWORDS])
     return lda[new_vec]
+
 def main():
+    #run some code
     lda, dictionary = use_votedata()
     pprint(lda.print_topics(-1))
     print(topic_unseen_document(dictionary, lda, 'I like shopping.'))
 
 def use_votedata():
+    #use the vote data we created.
     data=votedata(2)
     opinions =[]
     for vote in data:

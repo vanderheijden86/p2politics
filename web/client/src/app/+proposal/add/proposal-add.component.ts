@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Proposal } from '../../models/proposal.model';
@@ -32,12 +32,18 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
     }
 
     onAddProposal() {
-        console.log('Add proposal');
+        if(this.formGroup.invalid) return;
+
     }
 
-    initForm() {
+    private initForm() {
         this.formGroup = new FormGroup({
-
+            'title': new FormControl(undefined, Validators.required),
+            'description': new FormControl(undefined, Validators.required),
+            'category': new FormControl(undefined, Validators.required),
+            'domain': new FormControl(undefined, Validators.required),
+            'phase': new FormControl(undefined),
+            'enddate': new FormControl(undefined, Validators.required)
         });
     }
 }
