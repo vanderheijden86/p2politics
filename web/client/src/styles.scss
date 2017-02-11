@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
-	color: #555555;
+	color: #bababa;
 	font-family: 'roboto', sans-serif;
 	font-size: 16px;
   line-height: 1.25;
@@ -18,6 +18,11 @@ ul {
   padding: 0;
 }
 
+p {
+	color: #9e9e9e;
+	font-size: 1rem;
+}
+
 a	{
 	cursor: pointer;
 	text-decoration: none;
@@ -28,4 +33,10 @@ img.logo {
 	padding-top: 1.5rem;
 	height: 60px;
 	width: auto;
+}
+
+button {
+	&:foucs {
+		outline: 0!important;
+	}
 }

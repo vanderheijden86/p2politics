@@ -1,6 +1,10 @@
 .menu-button {
   margin-top: 1rem;
   width: 2rem;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 md-toolbar {
@@ -18,15 +22,10 @@ md-icon.menu {
 }
 
 .fill-remaining-space {
-    // This fills the remaining space, by using flexbox.
-    // Every toolbar row uses a flexbox row layout.
     flex: 1 1 auto;
 }
 
 .sidenav-container {
-//   width: 500px;
-//   height: 300px;
-//   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidenav-container md-sidenav {
@@ -41,8 +40,8 @@ md-icon.menu {
   height: 100%;
   line-height: 1.5;
   margin: 0;
-  position: fixed;
-  top: 5.5rem;
+  //position: fixed;
+  //top: 5.5rem;
   width: 100%;
 }
 

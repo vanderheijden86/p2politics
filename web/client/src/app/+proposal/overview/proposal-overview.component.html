@@ -5,27 +5,31 @@
 </div>
 
 <div *ngFor="let category of proposalCategories">
-    <div class="category-titel">{{category.description}}</div>
-    <div class="proposal-cards row">
-        <div *ngFor="let proposal of category.proposals" class="col-lg-6 col-md-12">
-            <md-card>
-                <a [routerLink]="['proposal', proposal.id]">
-                    <h3>{{proposal.title}}</h3>
-                </a>
-                <md-card-content>
-                    <p>{{proposal.description}}</p>
-                </md-card-content>
-                <div class="date">
-                    <span>U kunt tot 22 april 2017 uw mening delen</span>
-                </div>
-                <div class="proposal-link">
-                    <ul>
-                        <li>
-                            <a>delen</a>
-                        </li>
-                    </ul>
-                </div>
-            </md-card>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+	    <div class="category-titel">{{category.description}}</div>
+	    <div class="proposal-cards">
+	        <div *ngFor="let proposal of category.proposals" class="">
+	            <md-card>
+	                <a [routerLink]="['proposal', proposal.id]">
+	                    <h3>{{proposal.title}}</h3>
+	                </a>
+	                <md-card-content>
+	                    <p>{{proposal.description}}</p>
+	                </md-card-content>
+	                <div class="date">
+	                    <span>U kunt tot 22 april 2017 uw mening delen</span>
+	                </div>
+	                <div class="proposal-link">
+	                    <ul>
+	                        <li>
+	                            <a>delen</a>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </md-card>
+	        </div>
+	    </div>
+	  </div>
+  </div>
 </div>
