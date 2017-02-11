@@ -68,5 +68,17 @@ md-icon.arrow_back {
 			resize: vertical;
 			width: 100%;
 		}
+
+		.btn-block {
+			background-color: #03A9F4;
+			color: white;
+			float: right;
+			margin: 1rem;
+			width: auto;
+
+			&:hover {
+				background-color: #0277BD;
+			}
+		}
 	}
 }
