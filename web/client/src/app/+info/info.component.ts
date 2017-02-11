@@ -102,7 +102,7 @@ export class InfoComponent implements OnInit {
 
     domainUser: DomainUser;
     getDomainUser() {
-        this.userService.getDomainUser('insurance')
+        this.userService.getDomainUser(this.domain)
             .subscribe((response) => {
                 this.domainUser = response;
             });

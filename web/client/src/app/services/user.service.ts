@@ -52,8 +52,8 @@ export class UserService {
                 return func(currentUserAddress, domain, Role[role], { from: this.web3.eth.coinbase })
                     .map((response: any) => {
                         console.log(`Heb ik ${Role[role]} rechten op ${domain}?`, response);
-                        console.log('response.toNumber()', response[0].toNumber(), 'address', response[1]);
-                        return response[0].toNumber() === 1;
+                        console.log('response.toNumber()', response.toNumber());
+                        return response.toNumber() === 1;
                     }, (error) => {
                         console.error('error op hasRole', error);
                     });
