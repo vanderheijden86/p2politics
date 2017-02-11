@@ -1,6 +1,23 @@
+.add-proposal {
+    margin: 50px auto;
+    width: 420px;
+
+    h2 {
+        color: #03A9F4;
+    }
+
+    p.add-explain {
+        color: #555555;
+        display: block;
+        font-size: 1rem;
+        margin: .5rem 0;
+    }
+}
+
 md-input-container {
     display: block;
     padding: .3rem 0;
+    margin-bottom: .75rem;
 
     textarea {
         height: 8rem;
@@ -8,10 +25,18 @@ md-input-container {
 }
 
 form {
-    margin-bottom: 2rem;
+    margin: 2rem 0;
 
     .submit-button {
         float: right;
         margin: .5rem;
     }
+}
+
+:host /deep/ .md-input-placeholder.md-focused {
+    color: #03A9F4;
+}
+
+:host /deep/ .md-input-underline .md-input-ripple {
+    background-color: #03A9F4;
 }
