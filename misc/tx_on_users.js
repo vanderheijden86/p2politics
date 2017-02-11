@@ -15,7 +15,7 @@ Users.deployed().then(function(instance) {
     return users.hasRole(addr, domain, role); // {from: account_one});
 }).then(function(result) {
   // If this callback is called, the transaction was successfully processed.
-    console.log("Transaction successful!");
+    console.log("Transaction successful!", result);
     callback();
 }).catch(function(e) {
     // There was an error! Handle it.

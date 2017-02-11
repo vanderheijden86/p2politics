@@ -10,8 +10,8 @@ contract Users {
       roles[addr][sha3(domain, role)] = true;
   }
 
-  function hasRole(address addr, bytes32 domain, bytes32 role) returns (bool) {
-    return roles[addr][sha3(domain, role)];
+  function hasRole(address addr, bytes32 domain, bytes32 role) constant returns (bool, bytes32) {
+      return (roles[addr][sha3(domain, role)], sha3(domain, role));
   }
 
   function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
