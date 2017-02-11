@@ -12,11 +12,11 @@ def testwithgenerateddata():
     topic_model(docfavour)
     topic_model(docagainst)
 
-
-
+def bookdata():
+    data = pd.read_csv('../data/amazon_book_reviews/Donna-Tartt-The-Goldfinch.csv', sep='/', quoting=3)
+    print(data.head())
 
 def topic_model(documents):
-
     stoplist = set('for a of the and to in is'.split())
     texts = [[word for word in document.lower().split() if word not in stoplist] for document in documents]
 
@@ -31,4 +31,4 @@ def topic_model(documents):
     lda = models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=5, update_every=1, chunksize=10000, passes=1)
     pprint(lda.print_topics(5))
 
-testwithgenerateddata()
+bookdata()
