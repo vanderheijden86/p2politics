@@ -6,9 +6,9 @@
       port: 8546   // Different than the default below
     },
     "development": {
-      host: "localhost",
-      port: 8545,
-      network_id: "default" // Match any network id
+        host: "localhost",
+        port: 8545,
+        network_id: "default" // Match any network id
     }
   }
 };
