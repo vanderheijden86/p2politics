@@ -42,7 +42,8 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         this.routeSubscription = this.route.params.subscribe(params => {
             let domainId = params['domainId'];
             console.log('DOMAIN ID', domainId);
-            // this.user = this.userService.user(domainId);
+            this.userService.getDomainUser(domainId)
+                .subscribe(user => this.user = user);
             this.getProposalGroups(Observable.of(this.proposalStub))
                 .subscribe(proposalCategories => this.proposalCategories = proposalCategories);
         });
