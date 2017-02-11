@@ -1,20 +1,29 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
 
 <div class="proposal container">
+    <md-toolbar *ngIf="!user" class="notification">
+        Checking authentication...
+    </md-toolbar>
+    <md-toolbar *ngIf="user && !user.isVoter" class="notification md-warn">
+        You have no permission to vote on this proposal
+    </md-toolbar>
+
     <h2 class="proposal-title">{{proposal.title}}</h2>
     <p>{{proposal.description}}</p>
 
     <form>
-        <div class="answer-row">
-            <md-button-toggle-group #answer="mdButtonToggleGroup">
-                <md-button-toggle value="0">Agree</md-button-toggle>
-                <md-button-toggle value="1">No opinion</md-button-toggle>
-                <md-button-toggle value="2">Disagree</md-button-toggle>
-            </md-button-toggle-group>
-        </div>
+        <fieldset [disabled]="!user">
+            <div class="answer-row">
+                <md-button-toggle-group #answer="mdButtonToggleGroup">
+                    <md-button-toggle value="0">Agree</md-button-toggle>
+                    <md-button-toggle value="1">No opinion</md-button-toggle>
+                    <md-button-toggle value="2">Disagree</md-button-toggle>
+                </md-button-toggle-group>
+            </div>
 
-        <textarea name="reason"></textarea>
+            <textarea name="reason"></textarea>
 
-        <button md-raised-button class="btn-block" color="accent">Confirm</button>
+            <button md-raised-button class="btn-block" color="accent">Confirm</button>
+        </fieldset>
     </form>
 </div>
