@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
 import { DomainUser } from '../models/domain-user.model';
+import { Role } from '../models/role.enum';
 
 @Component({
     selector: 'app-info',
@@ -81,7 +82,8 @@ export class InfoComponent implements OnInit {
     }
 
     domain = 'borough';
-    role = 'voter';
+    roles = Role;
+    role = Role.voter;
 
     hasRoleResponse: boolean;
     getHasRole() {
