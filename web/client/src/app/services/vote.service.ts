@@ -15,7 +15,7 @@ export class VoteService {
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private web3Service: Web3Service) { }
 
-    voreForProposal(proposalId: number, value: number, comment: string): Observable<string> {
+    voteForProposal(proposalId: number, value: number, comment: string): Observable<string> {
         let currentUserAddress = this.web3.eth.coinbase;
         console.log('voreForProposal proposalId', proposalId, 'currentUserAddress', currentUserAddress, 'value', value);
         return this.contractRpcServiceAgent.getContractInstance('Votes')

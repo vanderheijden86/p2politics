@@ -73,7 +73,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         if (this.formGroup.invalid) return;
         console.log('VOTED');
         let formValues = this.formGroup.value;
-        this.voteService.voreForProposal(this.proposal.id, +formValues.answer, formValues.reason || '')
+        this.voteService.voteForProposal(this.proposal.id, +formValues.answer, formValues.reason || '')
             .subscribe(response => {
                 this.mdSnackBar.open('U heeft gestemd', 'Sluiten', {
                     duration: 8000
@@ -83,12 +83,24 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
                 this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
                     duration: 8000
                 });
-            })
+            });
     }
 
     onAddProposal() {
         console.log('Add child proposal');
+        this.proposalService.addNewIteration(this.proposal)
+            .subscribe(response => {
+                this.mdSnackBar.open('U heeft een nieuwe iteratie aangemaakt', 'Sluiten', {
+                    duration: 8000
+                });
+            }, error => {
+                this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
+                    duration: 8000
+                });
+            });
     }
+
+    //getProposalByIdIteration
 
     private initForm() {
         this.formGroup = new FormGroup({
