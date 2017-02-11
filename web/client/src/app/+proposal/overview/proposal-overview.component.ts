@@ -56,11 +56,11 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSubscription = this.route.params.subscribe(params => {
-            let domainId = params['domainId'];
-            console.log('DOMAIN ID', domainId);
-            this.userService.getDomainUser(domainId)
+            let domain = params['domain'];
+            console.log('domain', domain);
+            this.userService.getDomainUser(domain)
                 .subscribe(user => this.user = user);
-            this.proposalService.getProposals(domainId)
+            this.proposalService.getProposals(domain)
                 .subscribe(proposals => {
                     this.proposals = proposals;
                     this.fillProposalGroups(proposals);

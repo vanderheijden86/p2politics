@@ -42,7 +42,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.initForm();
         this.routeSubscription = this.route.params.subscribe(params => {
-            this.initUser(params['domainId']);
+            this.initUser(params['domain']);
         });
 
         this.proposal = this.proposalService.activeProposal;
@@ -97,10 +97,10 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         });
     }
 
-    private initUser(domainId) {
+    private initUser(domain) {
         this.user = undefined;
         this.userPending = true;
-        this.userService.getDomainUser(domainId)
+        this.userService.getDomainUser(domain)
             .subscribe(user => {
                 this.user = user;
                 this.onBlockChainCallCompleted(user);
