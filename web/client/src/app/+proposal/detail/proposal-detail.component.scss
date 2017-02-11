@@ -1,5 +1,12 @@
 md-icon.arrow_back {
+	color: #03A9F4;
 	font-size: 2rem;
+	margin-left: 1.5rem;
+	transition: all ease-in-out .3s;
+
+	&:hover {
+		color: #0277BD;
+	}
 }
 
 .proposal {

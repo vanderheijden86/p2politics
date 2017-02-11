@@ -11,7 +11,7 @@ md-toolbar {
   height: 5.5rem;
 }
 
-:host /deep/ .md-button-focus-overlay   {
+:host /deep/ .md-button-focus-overlay {
   background-color: transparent;
   opacity: 0;
 }
@@ -49,6 +49,10 @@ md-icon.menu {
 .sidenav-container md-sidenav {
   display: flex;
   overflow: visible;
+}
+
+:host /deep/ .md-sidenav-content {
+  height: 100vh;
 }
 
 .scrolling-content {
