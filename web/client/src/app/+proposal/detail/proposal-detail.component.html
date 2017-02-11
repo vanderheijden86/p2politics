@@ -1,30 +1,19 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
 
-<<<<<<< HEAD
-<div class="row">
-    <div class="col-md-12 col-lg-7 offset-lg-2">
-        <div class="proposal container">
-            <md-toolbar *ngIf="!user" class="notification">
-                Checking authentication...
-            </md-toolbar>
-            <md-toolbar *ngIf="user && !user.isVoter" class="notification md-warn">
-                You have no permission to vote on this proposal
-            </md-toolbar>
-=======
 <div class="action-bar">
     <button *ngIf="user && user.isAdmin" md-raised-button (click)="onAddProposal()" class="button-with-icon">
         <md-icon>add</md-icon> Nieuw vervolg voorstel
     </button>
 </div>
-
-<div class="proposal container">
-    <md-toolbar *ngIf="userPending" class="notification">
-        Checking authentication...
-    </md-toolbar>
-    <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
-        You have no permission to vote on this proposal
-    </md-toolbar>
->>>>>>> c32be5ba00f424be3ce1bec7c23f0ec192206507
+<div class="row">
+    <div class="col-md-12 col-lg-7 offset-lg-2">
+        <div class="proposal container">
+            <md-toolbar *ngIf="userPending" class="notification">
+                Checking authentication...
+            </md-toolbar>
+            <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
+                You have no permission to vote on this proposal
+            </md-toolbar>
 
             <h2 class="proposal-title">
                 {{proposal.title}}
@@ -32,19 +21,17 @@
             </h2>
             <p class="proposal-description">{{proposal.description}}</p>
 
-<<<<<<< HEAD
-            <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" *ngIf="user && user.isVoter">
+            <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter">
                 <fieldset>
                     <div class="answer-row">
-                        <md-button-toggle-group #answer="mdButtonToggleGroup" >
+                        <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
                             <md-button-toggle value="0">Mee eens</md-button-toggle>
-                            <md-button-toggle value="1">Geen mening</md-button-toggle>
-                            <md-button-toggle value="2">Oneens</md-button-toggle>
+                            <md-button-toggle value="1">Oneens</md-button-toggle>
                         </md-button-toggle-group>
                     </div>
 
                     <div *ngIf="answer.value">
-                        <textarea name="reason" placeholder="Toelichting..." cols="30" rows="5" formControlName="reason"></textarea>
+                        <textarea name="reason" placeholder="Toelichting..." formControlName="reason"></textarea>
 
                         <button type="submit" md-raised-button class="btn-block">Versturen</button>
                     </div>
@@ -52,6 +39,7 @@
             </form>
         </div>
     </div>
+
     <div class="col-md-12 col-lg-3">
         <div class="proposal-information">
             <div class="row">
@@ -76,19 +64,6 @@
                         </div>
                     </div>
                 </div>
-=======
-    <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter">
-        <fieldset>
-            <div class="answer-row">
-                <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
-                    <md-button-toggle value="0">Mee eens</md-button-toggle>
-                    <md-button-toggle value="1">Oneens</md-button-toggle>
-                </md-button-toggle-group>
-            </div>
-
-            <div *ngIf="answer.value">
-                <textarea name="reason" placeholder="Toelichting..." formControlName="reason"></textarea>
->>>>>>> c32be5ba00f424be3ce1bec7c23f0ec192206507
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
                     <div class="proposal-history">
