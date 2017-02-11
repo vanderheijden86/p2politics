@@ -13,10 +13,12 @@ import { BaseUtilsModule } from './services/base/utils/module';
 import { Routing } from './app.routing';
 import { Broadcaster } from './utils/broadcaster';
 import { AppReadyEvent } from './utils/app-ready-event';
+import { ConvertDate } from './utils/convert-date';
 
 import { AppComponent } from './app.component';
 import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
+import { ProposalService } from './services/proposal.service';
 import { UserService } from './services/user.service';
 import { Web3Service } from './services/web3.service';
 
@@ -44,8 +46,10 @@ import { SharedModule } from './shared';
     FormBuilder,
     Broadcaster,
     AppReadyEvent,
+    ConvertDate,
     ContractRpcServiceAgent,
     InfoServiceAgent,
+    ProposalService,
     UserService,
     Web3Service,
   ],

@@ -1,9 +1,9 @@
 <a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
 
 <div class="action-bar">
-    <button *ngIf="user && user.isAdmin" md-raised-button (click)="onAddProposal()" class="button-with-icon">
+    <a *ngIf="user && user.isAdmin" md-raised-button [routerLink]="['../add', proposal.id]" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw vervolg voorstel
-    </button>
+    </a>
 </div>
 <div class="row">
     <div class="col-md-12 col-lg-7 offset-lg-2">

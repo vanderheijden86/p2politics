@@ -13,12 +13,8 @@ export class UserService {
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private web3Service: Web3Service) { }
 
-    //getUser(user);
     getDomainUser(domain: string): Observable<DomainUser> {
         const result = new DomainUser();
-        // let isAdminSubscription = this.hasRole(domain, 'admin');
-        // let isProposerSubscription = this.hasRole(domain, 'proposer');
-        // let isVoterSubscription = this.hasRole(domain, 'voter');
         return Observable
             .zip(
             this.hasRole(domain, Role.admin),
@@ -29,18 +25,12 @@ export class UserService {
                 result.isProposer = isProposer;
                 result.isVoter = isVoter;
             })
-            .map(()=> {
+            .map(() => {
                 console.log(`getDomainUser for ${domain}`, result);
                 return result;
             });
-
-        // return new Observable()
-        //     .mergeMap(
-        //     this.hasRole(domain, 'admin').subscribe((response) => result.isAdmin = response),
-        //     this.hasRole(domain, 'proposer'),
-        //     this.hasRole(domain, 'voter')
-        //     );
     }
+
     hasRole(domain: string, role: Role): Observable<boolean> {
         return this.contractRpcServiceAgent.getContractInstance('Users')
             .mergeMap(
@@ -68,7 +58,6 @@ export class UserService {
                 const func: any = Observable.bindNodeCallback(contractInstance.setRole);
                 let hasRoleInt = hasRole ? 1 : 0;
                 console.log('setRole currentUserAddress', currentUserAddress, 'domain', domain, 'role', Role[role], 'hasRole', hasRole, 'hasRoleInt', hasRoleInt);
-                //function setRole(address addr, bytes32 domain, bytes32 role, bool state) returns (bytes32){
                 return func(currentUserAddress, domain, Role[role], hasRoleInt, { from: this.web3.eth.coinbase })
                     .map((response: string) => {
                         let result = this.web3.toAscii(response);

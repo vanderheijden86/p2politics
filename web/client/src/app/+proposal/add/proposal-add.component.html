@@ -1,0 +1,8 @@
+<h2>Een nieuwe voorstel maken</h2>
+<p *ngIf="parentProposalId">Dit wordt een vervolg op het voorstel {{parentProposalId}}</p>
+
+<form (ngSubmit)="onAddProposal()" [formGroup]="formGroup">
+    <fieldset>
+
+    </fieldset>
+</form>

@@ -10,6 +10,7 @@ import { ProposalRouting } from './routing';
 
 import { ProposalOverviewComponent } from './overview/proposal-overview.component';
 import { ProposalDetailComponent } from './detail/proposal-detail.component';
+import { ProposalAddComponent } from './add/proposal-add.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { ProposalDetailComponent } from './detail/proposal-detail.component';
     ],
     declarations: [
         ProposalOverviewComponent,
-        ProposalDetailComponent
+        ProposalDetailComponent,
+        ProposalAddComponent
     ]
 })
 export class ProposalModule { }
