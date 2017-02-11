@@ -8,8 +8,8 @@ contract Proposals {
   struct Proposal {
     uint id;
     uint iteration;
-    bytes32 title;
-    string domain;
+    string title;
+    bytes32 domain;
     bytes32 category;
     bytes32 phase;
     string description;
@@ -21,24 +21,24 @@ contract Proposals {
   function Proposals() {
   }
 
-  function newProposal(bytes32 title, string domain, bytes32 category, bytes32 phase,
+  function newProposal(string title, bytes32 domain, bytes32 category, bytes32 phase,
                        string description, uint endDate, uint completed) returns (uint) {
     _setProposal(proposalCount, title, domain, category, phase, description, endDate, completed);
     return proposalCount;
   }
 
-  function newIteration(uint id, bytes32 title, string domain, bytes32 category, bytes32 phase,
+  function newIteration(uint id, string title, bytes32 domain, bytes32 category, bytes32 phase,
                        string description, uint endDate, uint completed) returns (uint) {
     _setProposal(id, title, domain, category, phase, description, endDate, completed);
     return proposalCount;
   }
 
-  function getProposal(uint index) constant returns (uint, uint, bytes32, bytes32, bytes32, bytes32, string, uint, uint, uint) {
+  function getProposal(uint index) constant returns (uint, uint, string, bytes32, bytes32, bytes32, string, uint, uint, uint) {
     Proposal p = proposals[index];
     return (p.id, p.iteration, p.title, p.domain, p.category, p.phase, p.description, p.startDate, p.endDate, p.completed);
   }
 
-  function getProposalByIdIteration(uint id, uint iteration) constant returns (uint, uint, bytes32, bytes32, bytes32, bytes32, string, uint, uint, uint) {
+  function getProposalByIdIteration(uint id, uint iteration) constant returns (uint, uint, string, bytes32, bytes32, bytes32, string, uint, uint, uint) {
     for (uint i = 0; i < proposalCount; i++ ) {
       if (proposals[i].id == id && proposals[i].iteration == iteration) {
         Proposal p = proposals[i];
@@ -51,7 +51,7 @@ contract Proposals {
     return proposalCount;
   }
 
-  function _setProposal(uint id, bytes32 title, string domain, bytes32 category, bytes32 phase,
+  function _setProposal(uint id, string title, bytes32 domain, bytes32 category, bytes32 phase,
                         string description, uint endDate, uint completed) returns (uint) {
     proposals.push(Proposal(id, _getDepth(id), title, domain, category, phase, description, now, endDate, completed));
     proposalDepths[id]++;
