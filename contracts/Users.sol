@@ -4,7 +4,7 @@ contract Users {
   mapping(address => mapping(bytes32 => uint)) roles;
 
   function Users() {
-     }
+  }
 
   function hasRole(address addr, bytes32 domain, bytes32 role) constant returns (uint) {
       return roles[addr][sha3(domain, role)];
@@ -19,7 +19,4 @@ contract Users {
     return "Role has been set";
   }
 
-  function testje() returns (uint) {
-      return 42;
-  }
 }
