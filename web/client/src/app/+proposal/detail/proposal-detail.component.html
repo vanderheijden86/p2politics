@@ -11,19 +11,21 @@
     <h2 class="proposal-title">{{proposal.title}}</h2>
     <p>{{proposal.description}}</p>
 
-    <form>
-        <fieldset [disabled]="!user">
+    <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" *ngIf="user && user.isVoter">
+        <fieldset>
             <div class="answer-row">
-                <md-button-toggle-group #answer="mdButtonToggleGroup">
+                <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
                     <md-button-toggle value="0">Agree</md-button-toggle>
                     <md-button-toggle value="1">No opinion</md-button-toggle>
                     <md-button-toggle value="2">Disagree</md-button-toggle>
                 </md-button-toggle-group>
             </div>
 
-            <textarea name="reason"></textarea>
+            <div *ngIf="answer.value">
+                <textarea name="reason" placeholder="Toelichting..." formControlName="reason"></textarea>
 
-            <button md-raised-button class="btn-block" color="accent">Confirm</button>
+                <button type="submit" md-raised-button class="btn-block" color="accent">Confirm</button>
+            </div>
         </fieldset>
     </form>
 </div>

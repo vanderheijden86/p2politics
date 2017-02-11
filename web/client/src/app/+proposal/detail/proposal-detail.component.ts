@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../../services/user.service';
@@ -17,6 +18,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     user: DomainUser;
 
     pending: boolean;
+    formGroup: FormGroup;
 
     private routeSubscription: Subscription;
 
@@ -26,8 +28,9 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         private userService: UserService) { }
 
     ngOnInit() {
+        this.initForm();
         this.routeSubscription = this.route.params.subscribe(params => {
-            this.initUser(params['domainId'])
+            this.initUser(params['domainId']);
         });
 
         this.proposal = <any>{
@@ -38,7 +41,19 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.routeSubscription.unsubscribe();
+    }
 
+    onVoteConfirm() {
+        if(this.formGroup.invalid) return;
+        console.log('VOTED');
+    }
+
+    private initForm() {
+        this.formGroup = new FormGroup({
+            'answer': new FormControl(undefined, Validators.required),
+            'reason': new FormControl(undefined)
+        });
     }
 
     private initUser(domainId) {

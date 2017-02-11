@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MdCardModule, MdToolbarModule, MdIconModule, MdButtonToggleModule, MdButtonModule } from '@angular/material';
 
 import { ProposalRouting } from './routing';
@@ -12,6 +13,7 @@ import { ProposalDetailComponent } from './detail/proposal-detail.component';
     imports: [
         CommonModule,
         RouterModule,
+        ReactiveFormsModule,
         MdCardModule,
         MdToolbarModule,
         MdIconModule,
