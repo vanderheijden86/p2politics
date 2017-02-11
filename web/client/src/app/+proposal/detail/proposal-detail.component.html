@@ -1,4 +1,4 @@
-<a routerLink="../.."><md-icon class="arrow_back">arrow_back</md-icon></a>
+<a routerLink="../.." class="pull-left"><md-icon class="arrow_back">arrow_back</md-icon></a>
 
 <div class="proposal container">
     <md-toolbar *ngIf="!user" class="notification">
@@ -8,7 +8,8 @@
         You have no permission to vote on this proposal
     </md-toolbar>
 
-    <h2 class="proposal-title">{{proposal.title}}
+    <h2 class="proposal-title">
+        {{proposal.title}}
         <span class="category-subtitle">{{proposal.category}}</span>
     </h2>
     <p class="proposal-description">{{proposal.description}}</p>
