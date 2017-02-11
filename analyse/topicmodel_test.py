@@ -2,6 +2,7 @@ import pandas as pd
 from gensim import corpora, models
 from collections import defaultdict
 from pprint import pprint
+from collections import Counter
 
 def testwithgenerateddata():
     data = pd.read_csv('../data/generatedvotes/trash.csv')
@@ -13,11 +14,12 @@ def testwithgenerateddata():
     topic_model(docagainst)
 
 def bookdata():
-    data = pd.read_csv('../data/amazon_book_reviews/Donna-Tartt-The-Goldfinch.csv', sep='/', quoting=3)
-    print(data.head())
+    data = pd.read_csv('../data/amazon_book_reviews/Donna-Tartt-The-Goldfinch.csv', sep='\t', quoting=3, header=None)
+    print(Counter(data[0].values))
+    topic_model(data[3].values)
 
 def topic_model(documents):
-    stoplist = set('for a of the and to in is'.split())
+    stoplist = set('for a of the and to in is it this was that have but you i with so on at an as'.split())
     texts = [[word for word in document.lower().split() if word not in stoplist] for document in documents]
 
     frequency = defaultdict(int)
