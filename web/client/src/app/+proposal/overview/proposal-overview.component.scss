@@ -8,6 +8,10 @@
 	top: 1rem;
 }
 
+.proposal-container {
+	margin-top: 3rem;
+}
+
 button.toggle-history {
 	font-size: 14px;
 	background-color: #03A9F4;
@@ -59,6 +63,17 @@ md-card a {
 		color: #0277BD;
 		text-decoration: none;
 	}
+}
+
+.proposal-description-intro {
+	display: -webkit-box;
+  margin: 0 auto;
+  font-size: 1rem;;
+  line-height: 1.5;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 md-card .date {

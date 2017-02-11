@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdButtonToggleChange } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
@@ -50,6 +50,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
     private routeSubscription: Subscription;
 
     constructor(
+        private changeDetectorRef: ChangeDetectorRef,
         private route: ActivatedRoute,
         private router: Router,
         private userService: UserService,
@@ -67,6 +68,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
                     this.proposals = proposals;
                     this.fillProposalGroups(proposals);
                     this.fillVoteStatistics(proposals);
+                    this.changeDetectorRef.detectChanges();
                 });
         });
     }

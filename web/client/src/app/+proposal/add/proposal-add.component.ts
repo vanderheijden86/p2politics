@@ -5,6 +5,7 @@ import { MdSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ProposalService } from '../../services/proposal.service';
+// import { ProposalService } from '../../services/proposal.service';
 import { Proposal } from '../../models/proposal.model';
 
 @Component({
@@ -40,17 +41,8 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
 
     onAddProposal() {
         if(this.formGroup.invalid) return;
-        const formValues = this.formGroup.value;
-        const proposal: Proposal = Object.assign(new Proposal(), formValues);
-        const hasIteration = !!this.iterationId;
-        if(hasIteration) {
-            proposal.id = +this.iterationId;
-        }
-        proposal.domain = this.domain;
-        proposal.phase = proposal.phase || '';
-        proposal.completed = 0;
-        console.log('ADD PROPOSAL', proposal);
-        const obs = hasIteration
+        const proposal = this.getFormProposal();
+        const obs = !!this.iterationId
             ? this.proposalService.addNewIteration(proposal)
             : this.proposalService.addNewProposal(proposal);
 
@@ -66,11 +58,25 @@ export class ProposalAddComponent implements OnInit, OnDestroy {
         });
     }
 
+    private getFormProposal() {
+        const formValues = this.formGroup.value;
+        const proposal: Proposal = Object.assign(new Proposal(), formValues);
+        if(this.iterationId) {
+            proposal.id = +this.iterationId;
+        }
+        proposal.domain = this.domain;
+        proposal.phase = proposal.phase || '';
+        proposal.completed = 0;
+        console.log('ADD PROPOSAL', proposal);
+        return proposal;
+    }
+
     private initForm() {
+        const category = this.proposalService.activeProposal ? this.proposalService.activeProposal.category : undefined;
         this.formGroup = new FormGroup({
             'title': new FormControl(undefined, Validators.required),
             'description': new FormControl(undefined, Validators.required),
-            'category': new FormControl(undefined, Validators.required),
+            'category': new FormControl(category, Validators.required),
             'phase': new FormControl(undefined),
             'endDate': new FormControl(undefined, Validators.required)
         });
