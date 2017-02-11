@@ -9,7 +9,7 @@ contract Proposals {
     uint id;
     uint iteration;
     bytes32 title;
-    bytes32 domain;
+    string domain;
     bytes32 category;
     bytes32 phase;
     string description;
@@ -21,13 +21,13 @@ contract Proposals {
   function Proposals() {
   }
 
-  function newProposal(bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+  function newProposal(bytes32 title, string domain, bytes32 category, bytes32 phase,
                        string description, uint endDate, uint completed) returns (uint) {
     _setProposal(proposalCount, title, domain, category, phase, description, endDate, completed);
     return proposalCount;
   }
 
-  function newIteration(uint id, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+  function newIteration(uint id, bytes32 title, string domain, bytes32 category, bytes32 phase,
                        string description, uint endDate, uint completed) returns (uint) {
     _setProposal(id, title, domain, category, phase, description, endDate, completed);
     return proposalCount;
@@ -51,7 +51,7 @@ contract Proposals {
     return proposalCount;
   }
 
-  function _setProposal(uint id, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+  function _setProposal(uint id, bytes32 title, string domain, bytes32 category, bytes32 phase,
                         string description, uint endDate, uint completed) returns (uint) {
     proposals.push(Proposal(id, _getDepth(id), title, domain, category, phase, description, now, endDate, completed));
     proposalDepths[id]++;
