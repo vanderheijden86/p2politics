@@ -19,7 +19,6 @@ contract Proposals {
   }
 
   function Proposals() {
-    newProposal("Winkelcentrumpje", "local", "category", "phase", "description",  now + 2 days, 0);
   }
 
   function newProposal(bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
