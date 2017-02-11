@@ -79,4 +79,4 @@ cloud/logchain/1*
 web/server/.eris/*
 
 #ignore data
-data
+data/generatedvotes
