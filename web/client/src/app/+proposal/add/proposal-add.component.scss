@@ -30,6 +30,12 @@ form {
     .submit-button {
         float: right;
         margin: .5rem;
+        background-color: #03A9F4;
+        color: white;
+
+        &:hover {
+            background-color: #0277BD;
+        }
     }
 }
 
