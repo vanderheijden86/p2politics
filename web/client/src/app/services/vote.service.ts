@@ -89,6 +89,7 @@ export class VoteService {
                         const result = new VoteStatistics();
                         result.acceptedVotes = response[0].toNumber();
                         result.rejectedVotes = response[1].toNumber();
+                        console.log('getAcceptedAndRejectedVotes result', result);
                         return result;
                     });
             });
