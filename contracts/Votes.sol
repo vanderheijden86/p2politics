@@ -53,4 +53,22 @@ event VoteCompleted(uint proposalId);
         }
     }
 
+    function getAcceptedAndRejectedVotes(uint proposalId) returns (uint, uint) {
+
+        uint acceptedVotes = 0;
+        uint rejectedVotes = 0;
+        for (uint i = 0; i < votes.length; i++) {
+            if (votes[i].proposalId == proposalId) {
+                if (votes[i].accepts) {
+                    acceptedVotes ++;
+                } else {
+                    rejectedVotes ++;
+                }
+            }
+        }
+
+        return (acceptedVotes, rejectedVotes);
+    }
+
+
 }

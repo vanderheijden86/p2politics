@@ -20,6 +20,7 @@ import { ContractRpcServiceAgent } from './service-agents';
 import { InfoServiceAgent } from './service-agents';
 import { ProposalService } from './services/proposal.service';
 import { UserService } from './services/user.service';
+import { VoteService } from './services/vote.service';
 import { Web3Service } from './services/web3.service';
 
 import { SideMenuModule } from './side-menu';
@@ -51,6 +52,7 @@ import { SharedModule } from './shared';
     InfoServiceAgent,
     ProposalService,
     UserService,
+    VoteService,
     Web3Service,
   ],
   bootstrap: [AppComponent]

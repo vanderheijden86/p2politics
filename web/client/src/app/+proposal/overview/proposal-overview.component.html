@@ -17,9 +17,12 @@
 	    <div class="proposal-cards">
         <div *ngFor="let proposal of category.proposals" class="">
           <md-card>
-              <a [routerLink]="['proposal', proposal.id]">
+              <a (click)="activateProposal(proposal);">
                   <h3>{{proposal.title}}</h3>
               </a>
+              <!--<a [routerLink]="['proposal', proposal.id]">
+                  <h3>{{proposal.title}}</h3>
+              </a>-->
               <md-card-content>
                   <p class="proposal-description-intro">{{proposal.description}}</p>
               </md-card-content>

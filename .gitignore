@@ -82,3 +82,4 @@ web/server/.eris/*
 data/generatedvotes
 data/redditposts
 data/amazon_book_reviews
+misc/index.json

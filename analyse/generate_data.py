@@ -3,7 +3,7 @@ import pandas as pd
 
 #In this file we generate the opinions to be used in the demo.
 
-#In the demo we will show votes on the question:
+#some questions and answers to those to use for generating data.
 
 #Do you want trash to be collected weekly or bi-weekly, where the first will
 #cost 300 euros in trash tax and the later only costs 180 euros in trash tax
@@ -48,21 +48,25 @@ problem3 = {
     ]
 }
 
+#Generates a single opinion
 def generate_opinion(problem, favour=True, opiniative=0.5):
     reaction=[]
     if favour:
         stance='arguments_favour'
     else:
         stance='arguments_against'
+    #only take the arguments from the correct stance
     opinions=problem[stance]
     for opinion in opinions:
-        if random.random() < opiniative:
+        if random.random() < opiniative: #randomly, but opiniative decides how much chance to have an opinion
             reaction.append(random.choice(opinion))
-    random.shuffle(reaction)
-    return ' '.join(reaction)
+    random.shuffle(reaction) #shuffle the reaction
+    return ' '.join(reaction) #and return it as a sentence
 
 
 def generate_opinions(number_of_voters=100, chance_in_favour=0.5, problem=problem1):
+    #Generates a series of votes (so many as number_of_voters) by picking opinions from the collection of possible
+    #opinions. The chance of picking opinions in favour or not can be set.
     votes=[]
     reactions=[]
     for voter in range(0,number_of_voters):
@@ -75,8 +79,9 @@ def generate_opinions(number_of_voters=100, chance_in_favour=0.5, problem=proble
     return votes, reactions
 
 def main():
+    #main
     votes, reactions = generate_opinions(number_of_voters=1261, chance_in_favour=0.35, problem=problem1)
     data = pd.DataFrame({'votes': votes, 'opinions' : reactions})
-    data.to_csv('../data/generatedvotes/trash.csv')
+    data.to_csv('../data/generatedvotes/trash.csv') #save the data
 
 main()
