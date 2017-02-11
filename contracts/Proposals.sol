@@ -23,10 +23,18 @@ contract Proposals {
     setProposal(proposalCount, "Winkelcentrumpje", "local", "category", "phase", "description", 100, now + 2 days, 0);
   }
 
-  function setProposal(uint id, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+  function newProposal(bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
                        string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
     proposals.push(Proposal(proposalCount, proposalDepths[proposalCount], title, domain, category, phase, description, maxVoteScale, now, endDate, completed));
     proposalDepths[proposalCount]++;
+    proposalCount++;
+    return proposalCount;
+  }
+
+  function newIteration(uint id, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+                       string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
+    proposals.push(Proposal(id, proposalDepths[id], title, domain, category, phase, description, maxVoteScale, now, endDate, completed));
+    proposalDepths[id]++;
     proposalCount++;
     return proposalCount;
   }
