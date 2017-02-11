@@ -14,6 +14,6 @@ with open("../data/{}.json".format(name)) as f:
 for num, proposal in enumerate(proposals):
     with open("index.json", "w") as f:
         json.dump(proposal, f)
-        os.system("truffle exec add_{}.js --network pubtest".format(name))
-        print(num)
-        time.sleep(5)
+    os.system("truffle exec add_{}.js --network pubtest".format(name))
+    print(num)
+    time.sleep(5)
