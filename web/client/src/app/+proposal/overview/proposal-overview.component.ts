@@ -7,6 +7,7 @@ import { addDays, isFuture } from 'date-fns';
 
 import { UserService } from '../../services/user.service';
 import { ProposalService } from '../../services/proposal.service';
+import { VoteService } from '../../services/vote.service';
 import { DomainUser } from '../../models/domain-user.model';
 import { Proposal } from '../../models/proposal.model';
 
@@ -52,7 +53,8 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private userService: UserService,
-        private proposalService: ProposalService) { }
+        private proposalService: ProposalService,
+        private voteService: VoteService) { }
 
     ngOnInit() {
         this.routeSubscription = this.route.params.subscribe(params => {
@@ -64,6 +66,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
                 .subscribe(proposals => {
                     this.proposals = proposals;
                     this.fillProposalGroups(proposals);
+                    this.fillVoteStatistics(proposals);
                 });
         });
     }
@@ -100,5 +103,14 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
             }
         });
         this.proposalCategories = categories;
+    }
+
+    private fillVoteStatistics(proposals: Proposal[]) {
+        proposals.forEach(proposal => {
+            this.voteService.getAcceptedAndRejectedVotes(proposal)
+            .subscribe(response => {
+                proposal.voteStatistics = response;
+            });
+        });
     }
 }
