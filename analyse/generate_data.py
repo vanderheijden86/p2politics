@@ -26,6 +26,28 @@ problem1 ={'arguments_favour': [['I do not like the smell of the trash when I ha
                                   ['bi-weekly collection will motivate people to produce less trash.',
                                    'Otherwise a lot of trash will be produced.']]}
 
+problem2 = {
+    'arguments_favour': [
+        ['The public transport is sufficient.', 'Enough busses drive through the city center.', 'People can use public transport.'],
+        ['It would make the city center more safe.', 'Safety is a very important issue.', 'A safer city center is better for everyone.'],
+        ['It is better for the environment.', 'The gases are not good for the environment.', 'It would make the city center a more clean space.']
+    ],
+    'arguments_against': [
+        ['Disabled people should not have to walk.', 'The public transport is not always suited to disabled people', 'Public transport is not for everyone.'],
+        ['Some streets in the city center are very suitable for cars.', 'Not in every street cars are a problem.']
+    ]
+}
+
+problem3 = {
+    'arguments_favour': [
+        ['It is not ethical to keep people in poverty.', 'Keeping people in poverty is not ethical.'],
+        ['The Netherlands is a rich country so we should help people who have less.', 'We as a country are rich enough to help poor people.']
+    ],
+    'arguments_against': [
+        ['People should earn their own money.', 'Those people could earn their own money.']
+    ]
+}
+
 def generate_opinion(problem, favour=True, opiniative=0.5):
     reaction=[]
     if favour:
