@@ -9,6 +9,7 @@ import { DomainUser } from '../models/domain-user.model';
 @Component({
     selector: 'app-info',
     templateUrl: './info.component.html',
+    styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent implements OnInit {
 
@@ -79,17 +80,19 @@ export class InfoComponent implements OnInit {
             });
     }
 
+    domain = 'borough';
+    role = 'voter';
 
     hasRoleResponse: boolean;
     getHasRole() {
-        this.userService.hasRole('insurance', 'admin')
+        this.userService.hasRole(this.domain, this.role)
             .subscribe((response) => {
                 this.hasRoleResponse = response;
             });
     }
     setRoleResponse: string;
     setHasRole(hasRole: boolean) {
-        this.userService.setRole('insurance', 'admin', hasRole)
+        this.userService.setRole(this.domain, this.role, hasRole)
             .subscribe((response) => {
                 this.setRoleResponse = response;
             });

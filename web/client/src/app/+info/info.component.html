@@ -1,51 +1,89 @@
-<div>
-  <button md-raised-button (click)="getBalance()">Get balance (via webapi)</button>
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <button md-raised-button (click)="getBalance()">Get balance (via webapi)</button>
 
-  <md-list *ngIf="balance">
-    <md-list-item>coinbase: {{balance.coinbase}} </md-list-item>
-    <md-list-item>originalBalance: {{balance.originalBalance}}</md-list-item>
-  </md-list>
+      <md-list *ngIf="balance">
+        <md-list-item>coinbase: {{balance.coinbase}} </md-list-item>
+        <md-list-item>originalBalance: {{balance.originalBalance}}</md-list-item>
+      </md-list>
 
-  <md-spinner *ngIf="showSpinner"></md-spinner>
-</div>
+      <md-spinner *ngIf="showSpinner"></md-spinner>
+    </div>
 
-<div>
-  <button md-raised-button (click)="getClientBalance()">Get balance (via RPC from browser)</button>
+    <div>
+      <button md-raised-button (click)="getClientBalance()">Get balance (via RPC from browser)</button>
 
-  <md-list *ngIf="clientBalance">
-    <md-list-item>coinbase: {{clientBalance.coinbase}} </md-list-item>
-    <md-list-item>originalBalance: {{clientBalance.originalBalance}} ether</md-list-item>
-    <md-list-item>net: {{netId}} = {{network}}</md-list-item>
-  </md-list>
-</div>
+      <md-list *ngIf="clientBalance">
+        <md-list-item>coinbase: {{clientBalance.coinbase}} </md-list-item>
+        <md-list-item>originalBalance: {{clientBalance.originalBalance}} ether</md-list-item>
+        <md-list-item>net: {{netId}} = {{network}}</md-list-item>
+      </md-list>
+    </div>
 
-<div>
-  <button md-raised-button (click)="tryMetaCoinContractCall()">Try MetaCoin contract call (via RPC from browser)</button>
-  <md-list *ngIf="contractCallResult">
-    <md-list-item>contractCallResult: {{contractCallResult}} </md-list-item>
-  </md-list>
-</div>
+    <div>
+      <button md-raised-button (click)="tryMetaCoinContractCall()">Try MetaCoin contract call (via RPC from browser)</button>
+      <md-list *ngIf="contractCallResult">
+        <md-list-item>contractCallResult: {{contractCallResult}} </md-list-item>
+      </md-list>
+    </div>
+  </div>
 
-<div>
-  <button md-raised-button (click)="getHasRole()">getHasRole()</button>
-  <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
-  <button md-raised-button (click)="setHasRole(false)">setHasRole(false)</button>
-  <button md-raised-button (click)="getDomainUser()">getDomainUser</button>
-  <md-list>
-    <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
-    <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
-    <md-list-item>domainUser: {{domainUser | json}} </md-list-item>
-  </md-list>
-</div>
+  <div class="col-md-6">
+    <div>
+      <form role="form" novalidate>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <md-input-container class="example-full-width">
+                <input md-input placeholder="domain" name="domain" [(ngModel)]="domain" ngModelOptions='{standalone: true}'>
+              </md-input-container>
+            </td>
+            <td>
+              <div class="field-separator"></div>
+            </td>
+            <td>
+              <md-input-container class="example-full-width">
+                <input md-input placeholder="role" name="role" [(ngModel)]="role" ngModelOptions='{standalone: true}'>
+              </md-input-container>
+            </td>
+          </tr>
+        </table>
 
-<div>
-  <button md-raised-button (click)="tryTestje()">Try testje contract call (via RPC from browser)</button>
-  <md-list *ngIf="testjeResult">
-    <md-list-item>testjeResult: {{testjeResult}} </md-list-item>
-  </md-list>
-</div>
-<!--
+        <!--<div class="row">
+      <label class="col-sm-3" for="domain">domain</label>
+      <div class="col-sm-3">
+        <input type="text" class="" name="domain" [(ngModel)]="domain" formControlName="domain">
+      </div>
+      <label class="col-sm-3" for="role">role</label>
+      <div class="col-sm-3">
+        <input type="text" class="" name="role" [(ngModel)]="role" formControlName="role">
+      </div>
+    </div>-->
+        <div>
+          <button md-raised-button (click)="getHasRole()">getHasRole()</button>
+          <button md-raised-button (click)="setHasRole(true)">setHasRole(true)</button>
+          <button md-raised-button (click)="setHasRole(false)">setHasRole(false)</button>
+          <button md-raised-button (click)="getDomainUser()">getDomainUser</button>
+        </div>
+      </form>
+      <md-list>
+        <md-list-item>hasRoleResponse: {{hasRoleResponse}} </md-list-item>
+        <md-list-item>setRoleResponse: {{setRoleResponse}} </md-list-item>
+        <md-list-item>domainUser: {{domainUser | json}} </md-list-item>
+      </md-list>
+    </div>
+
+    <div>
+      <button md-raised-button (click)="tryTestje()">Try testje contract call (via RPC from browser)</button>
+      <md-list *ngIf="testjeResult">
+        <md-list-item>testjeResult: {{testjeResult}} </md-list-item>
+      </md-list>
+    </div>
+    <!--
 <md-grid-list *ngFor="let info of infos; let i = index" cols="2" rowHeight="60px">
   <md-grid-tile>{{i}}</md-grid-tile>
   <md-grid-tile>{{info.test}}</md-grid-tile>
 </md-grid-list>-->
+  </div>
+</div>
