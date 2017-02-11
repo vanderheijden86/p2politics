@@ -1,3 +1,5 @@
+import { VoteStatistics } from './vote-statistics.model';
+
 export class Proposal {
     proposerAddress: string;
     id: number;
@@ -12,6 +14,8 @@ export class Proposal {
     startDate: Date;
     endDate: Date;
     completed: number;
+    // view properties
+    voteStatistics: VoteStatistics;
 }
 
 export class Argument {

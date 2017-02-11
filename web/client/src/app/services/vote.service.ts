@@ -9,6 +9,7 @@ import { ConvertString } from '../utils/convert-string';
 
 import { Proposal } from '../models/proposal.model';
 import { Vote } from '../models/vote.model';
+import { VoteStatistics } from '../models/vote-statistics.model';
 
 @Injectable()
 export class VoteService {
@@ -78,22 +79,21 @@ export class VoteService {
         return result;
     }
 
-    // addVote(vote: Vote): Observable<number> {
-    //     return this.contractRpcServiceAgent.getContractInstance('Votes')
-    //         .mergeMap(contractInstance => {
-    //             const func: any = Observable.bindNodeCallback(contractInstance.setVote);
-    //             return func(vote.parentId, vote.title, vote.domain, vote.category, vote.phase,
-    //                 vote.description, vote.maxVoteScale, ConvertDate.toUnix(vote.endDate), vote.completed, { from: this.web3.eth.coinbase })
-    //                 .map((response: any) => {
-    //                     console.log('setVote response', response);
-    //                     const result = response.toNumber();
-    //                     console.log('setVote result', result);
-    //                     return result;
-    //                 }, (error) => {
-    //                     console.error('addVote error', error);
-    //                 });
-    //         });
-    // }
+    getAcceptedAndRejectedVotes(proposal: Proposal): Observable<VoteStatistics> {
+        return this.contractRpcServiceAgent.getContractInstance('Votes')
+            .mergeMap(contractInstance => {
+                const func: any = Observable.bindNodeCallback(contractInstance.getAcceptedAndRejectedVotes);
+                return func(proposal.id, proposal.iteration, { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log('getAcceptedAndRejectedVotes response', response);
+                        const result = new VoteStatistics();
+                        result.acceptedVotes = response[0].toNumber();
+                        result.rejectedVotes = response[1].toNumber();
+                        return result;
+                    });
+            });
+
+    }
 
     get web3() {
         return this.web3Service.web3;
