@@ -59,7 +59,7 @@ contract Votes {
     }
   }
 
-  function getAcceptedAndRejectedVotes(uint proposalId, uint iteration) returns (uint, uint) {
+  function getAcceptedAndRejectedVotes(uint proposalId, uint iteration) constant returns (uint, uint) {
 
     uint acceptedVotes = 0;
     uint rejectedVotes = 0;

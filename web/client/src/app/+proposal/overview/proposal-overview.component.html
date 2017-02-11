@@ -1,4 +1,4 @@
-<div class="action-bar" >
+<div class="action-bar">
     <a *ngIf="user?.isProposer" md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw voorstel
     </a>
@@ -17,10 +17,7 @@
         Het is eenzaam hier
     </div>
     <div *ngFor="let category of proposalCategories">
-        <!-- <div class="row"> -->
-            <!-- <div class="col-lg-6 offset-lg-3"> -->
       <div class="category-titel">{{category.description}}</div>
-
         <div class="proposal-cards">
           <div class="row">
           <div *ngFor="let proposal of category.proposals" class="col-lg-6">
@@ -33,6 +30,10 @@
               </a>-->
               <md-card-content>
                   <p class="proposal-description-intro">{{proposal.description}}</p>
+                  <p>
+                      Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}
+                      tegen: {{proposal.voteStatistics?.rejectedVotes}}
+                  </p>
               </md-card-content>
               <div class="date">
                   <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
