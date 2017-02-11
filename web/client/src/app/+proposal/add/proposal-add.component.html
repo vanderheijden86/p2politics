@@ -1,28 +1,31 @@
-<h2>Een nieuwe voorstel maken</h2>
-<p *ngIf="parentProposalId">Dit wordt een vervolg op het voorstel {{parentProposalId}}</p>
+<div class="add-proposal">
 
-<form (ngSubmit)="onAddProposal()" [formGroup]="formGroup">
-    <fieldset>
-        <md-input-container>
-            <input md-input name="title" placeholder="Titel" formControlName="title">
-        </md-input-container>
-        <input-error [control]="formGroup.controls.title" error="required"></input-error>
-        <md-input-container>
-            <textarea md-input name="description" placeholder="Omschrijving" formControlName="description"></textarea>
-        </md-input-container>
-        <input-error [control]="formGroup.controls.description" error="required"></input-error>
-        <md-input-container>
-            <input md-input name="category" placeholder="Categorie" formControlName="category">
-        </md-input-container>
-        <input-error [control]="formGroup.controls.category" error="required"></input-error>
-        <md-input-container>
-            <input md-input name="phase" placeholder="Fase" formControlName="phase">
-        </md-input-container>
-        <md-input-container>
-            <input md-input type="date" name="endDate" placeholder="Eind datum" formControlName="endDate">
-        </md-input-container>
-        <input-error [control]="formGroup.controls.endDate" error="required"></input-error>
+    <h2>Een nieuwe voorstel maken</h2>
+    <p *ngIf="parentProposalId">Dit wordt een vervolg op het voorstel {{iterationId}}</p>
 
-        <button md-raised-button type="submit" class="submit-button">Opslaan</button>
-    </fieldset>
-</form>
+    <form (ngSubmit)="onAddProposal()" [formGroup]="formGroup">
+        <fieldset>
+            <md-input-container>
+                <input md-input name="title" placeholder="Titel" formControlName="title">
+            </md-input-container>
+            <input-error [control]="formGroup.controls.title" error="required"></input-error>
+            <md-input-container>
+                <textarea md-input name="description" placeholder="Omschrijving" formControlName="description"></textarea>
+            </md-input-container>
+            <input-error [control]="formGroup.controls.description" error="required"></input-error>
+            <md-input-container>
+                <input md-input name="category" placeholder="Categorie" formControlName="category">
+            </md-input-container>
+            <input-error [control]="formGroup.controls.category" error="required"></input-error>
+            <md-input-container>
+                <input md-input name="phase" placeholder="Fase" formControlName="phase">
+            </md-input-container>
+            <md-input-container>
+                <input md-input type="date" name="endDate" placeholder="Eind datum" formControlName="endDate">
+            </md-input-container>
+            <input-error [control]="formGroup.controls.endDate" error="required"></input-error>
+
+            <button md-raised-button type="submit" class="submit-button">Opslaan</button>
+        </fieldset>
+    </form>
+</div>

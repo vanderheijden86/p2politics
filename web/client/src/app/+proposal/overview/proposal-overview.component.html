@@ -1,6 +1,5 @@
-<!--*ngIf="user?.isAdmin"-->
-<div class="action-bar">
-    <a md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
+<div class="action-bar" >
+    <a *ngIf="user?.isProposer" md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw voorstel
     </a>
     <button class="toggle-history">
