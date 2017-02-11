@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { getTime } from 'date-fns';
 
 import { ContractRpcServiceAgent } from '../service-agents';
 import { Web3Service } from '../services/web3.service';
+import { ConvertDate } from '../utils/convert-date';
 
 import { Proposal } from '../models/proposal.model';
-// import { DomainUser } from '../models/domain-user.model';
-// import { Role } from '../models/role.enum';
 
 @Injectable()
 export class ProposalService {
@@ -15,29 +15,6 @@ export class ProposalService {
         private web3Service: Web3Service) { }
 
     getProposals(domain: string): Observable<[Proposal]> {
-        // const result = new Array<Proposal>();
-        // return this.contractRpcServiceAgent.getContractInstance('Proposals')
-        //     .mergeMap(
-        //     contractInstance => {
-        //         this.getProposalCount(contractInstance)
-        //             .map((count) => {
-        //                 Observable
-        //                     .range(1, count)
-        //                     .mergeMap((counter) => {
-        //                         let index = counter - 1; // zero based
-        //                         this.getProposalByIndex(contractInstance, index)
-        //                             .map((proposal => {
-        //                                 if (proposal.domain === domain) {
-        //                                     result.push(proposal);
-        //                                 }
-        //                             }));
-        //                     })
-        //                     .map(() => {
-        //                         return result;
-        //                     });
-        //             });
-        //     });
-
         return this.contractRpcServiceAgent.getContractInstance('Proposals')
             .mergeMap(contractInstance => {
                 return this.getProposalCount(contractInstance)
@@ -47,7 +24,7 @@ export class ProposalService {
                         return Observable.zip<Proposal>(...numberArray.map(index => this.getProposalByIndex(contractInstance, index)))
                             .map(proposals => proposals.filter(proposal => proposal.domain === domain));
                     });
-            })
+            });
     }
 
     private getProposalCount(contractInstance: any): Observable<number> {
@@ -72,7 +49,7 @@ export class ProposalService {
                 console.log('getProposalByIndex result', result);
                 return result;
             }, (error) => {
-                console.error('getProposalByIndex error op hasRole', error);
+                console.error('getProposalByIndex error', error);
             });
     }
 
@@ -85,10 +62,27 @@ export class ProposalService {
         result.phase = this.web3.toAscii(response[4]);
         result.description = response[5];
         result.maxVoteScale = response[6].toNumber();
-        result.startDate = response[7].toNumber();
-        result.endDate = response[8].toNumber();
+        result.startDate = ConvertDate.fromUnix(response[7].toNumber());
+        result.endDate = ConvertDate.fromUnix(response[8].toNumber());
         result.completed = response[9].toNumber();
         return result;
+    }
+
+    addProposal(proposal: Proposal): Observable<number> {
+        return this.contractRpcServiceAgent.getContractInstance('Proposals')
+            .mergeMap(contractInstance => {
+                const func: any = Observable.bindNodeCallback(contractInstance.setProposal);
+                return func(proposal.parentId, proposal.title, proposal.domain, proposal.category, proposal.phase,
+                    proposal.description, proposal.maxVoteScale, ConvertDate.toUnix(proposal.endDate), proposal.completed, { from: this.web3.eth.coinbase })
+                    .map((response: any) => {
+                        console.log('setProposal response', response);
+                        const result = response.toNumber();
+                        console.log('setProposal result', result);
+                        return result;
+                    }, (error) => {
+                        console.error('addProposal error', error);
+                    });
+            });
     }
 
     get web3() {
