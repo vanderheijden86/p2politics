@@ -12,10 +12,10 @@
         <div class="col-md-12 col-lg-7 offset-lg-2">
             <div class="proposal container">
                 <md-toolbar *ngIf="userPending" class="notification">
-                    Checking authentication...
+                    Authentication aan het controleren...
                 </md-toolbar>
                 <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
-                    You have no permission to vote on this proposal
+                    U heeft geen rechten om op dit voorstel te stemmen
                 </md-toolbar>
                 <md-toolbar *ngIf="vote" class="notification md-warn">
                     You have already voted on this proposal
