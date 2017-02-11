@@ -14,7 +14,10 @@ md-icon.arrow_back {
 }
 
 .proposal {
-	max-width: 800px;
+	// max-width: 800px;
+	// @media screen and (max-width: 1140px) {
+	// 	max-width: 100%;
+	// }
 
 	.notification {
 		text-align: center;
@@ -84,6 +87,105 @@ md-icon.arrow_back {
 
 			&:hover {
 				background-color: #0277BD;
+			}
+		}
+	}
+}
+
+.proposal-information {
+	padding: 2rem;
+	height: 500px; 
+
+	.proposal-stakeholder {
+		display: block;
+		min-height: 7.5rem;
+
+		.stakeholder-title {
+			color: #03A9F4;
+			font-size: 1.25rem;
+			margin-bottom: .75rem;
+		}
+		img {
+			float: left;
+			height: 50px;
+			margin-right: .5rem;
+			width: auto;
+			@media screen and (max-width: 1292px) {
+				display: none;
+			}
+		}
+		.stakeholder-info {
+			.data {
+				display: block;
+				margin-top: .5rem;
+			}
+			.email {
+				display: block;
+				color: #ababab;
+				font-size: .75rem;
+
+				&:hover {
+					color: #03A9F4;
+					cursor: pointer;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.proposal-phase {
+		display: block;
+		min-height: 7.5rem;
+
+		.phase-title {
+			color: #03A9F4;
+			font-size: 1.25rem;
+			margin-bottom: .75rem;
+		}
+		img {
+			float: left;
+			height: 50px;
+			margin-right: .5rem;
+			width: auto;
+			@media screen and (max-width: 1292px) {
+				display: none;
+			}
+		}
+		.phase-info {
+			.status {
+				display: block;
+				margin-top: .5rem;
+			}
+			.date {
+				color: #ababab;
+				font-size: .75rem;
+			}
+		}
+	}
+
+	.proposal-history {
+		display: block;
+		// height: 7.5rem;
+		.history-title {
+			color: #03A9F4;
+			font-size: 1.25rem;
+			margin-bottom: .75rem;
+		}
+
+		li {
+			border-bottom: 1px dashed #bababa;
+			margin-bottom: .75rem;
+			padding-bottom: .25rem;
+			.history-arrow {
+				float: left;
+				margin-right: .25rem;
+				@media screen and (max-width: 1292px) {
+					font-size: .75rem;
+					margin: .25rem 0;
+				}
+			}
+			span {
+
 			}
 		}
 	}
