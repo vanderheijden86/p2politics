@@ -1,0 +1,17 @@
+md-input-container {
+    display: block;
+    padding: .3rem 0;
+
+    textarea {
+        height: 8rem;
+    }
+}
+
+form {
+    margin-bottom: 2rem;
+
+    .submit-button {
+        float: right;
+        margin: .5rem;
+    }
+}
