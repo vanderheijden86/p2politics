@@ -3,11 +3,16 @@ md-icon.arrow_back {
 }
 
 .proposal {
-	margin-top: 5rem;
 	max-width: 800px;
+
+	.notification {
+		text-align: center;
+		font-size: 1rem;
+	}
 
 	.proposal-title {
 		text-align: center;
+		margin-top: 5rem;
 		margin-bottom: 1rem;
 	}
 
