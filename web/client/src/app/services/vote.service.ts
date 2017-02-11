@@ -87,8 +87,8 @@ export class VoteService {
                     .map((response: any) => {
                         console.log('getAcceptedAndRejectedVotes response', response);
                         const result = new VoteStatistics();
-                        result.acceptedVotes = response[0].toNumber();
-                        result.rejectedVotes = response[1].toNumber();
+                        result.acceptedVotes = response[0].toNumber() || 0;
+                        result.rejectedVotes = response[1].toNumber() || 0;
                         console.log('getAcceptedAndRejectedVotes result', result);
                         return result;
                     });
