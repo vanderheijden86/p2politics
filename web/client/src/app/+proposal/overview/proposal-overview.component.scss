@@ -65,6 +65,17 @@ md-card a {
 	}
 }
 
+.proposal-description-intro {
+	display: -webkit-box;
+  margin: 0 auto;
+  font-size: 1rem;;
+  line-height: 1.5;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 md-card .date {
 	color: #ababab;
 	display: inline-block;
@@ -96,17 +107,4 @@ md-card .proposal-link {
 			}
 		}
 	}
-}
-
-.proposal-description-intro {
-	display: -webkit-box;
-  //max-width: 400px;
-  //height: 109.2px;
-  margin: 0 auto;
-  font-size: 1rem;;
-  line-height: 1.5;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
