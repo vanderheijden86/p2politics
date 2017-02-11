@@ -27,6 +27,5 @@ Inline-style:
 # TODO
 - Show Proposal history, detail + overview
 - Voting percentage tonen bij proposals, detail + overview
-- Voting close after date ended
 - ...
 - Proposer should be able to submit a result on a proposal
