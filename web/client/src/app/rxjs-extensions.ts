@@ -4,6 +4,7 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/bindNodeCallback';
+import 'rxjs/add/observable/zip';
 
 // Observable operators
 import 'rxjs/add/operator/delay';

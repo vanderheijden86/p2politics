@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../../services/user.service';
-import { DomainUser } from '../../models/user.model';
+import { DomainUser } from '../../models/domain-user.model';
 import { Proposal } from '../../models/proposal.model';
 
 interface ProposalCategory {
