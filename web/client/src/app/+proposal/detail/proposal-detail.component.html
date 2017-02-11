@@ -5,35 +5,82 @@
         <md-icon>add</md-icon> Nieuw vervolg voorstel
     </a>
 </div>
+<div class="row">
+    <div class="col-md-12 col-lg-7 offset-lg-2">
+        <div class="proposal container">
+            <md-toolbar *ngIf="userPending" class="notification">
+                Checking authentication...
+            </md-toolbar>
+            <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
+                You have no permission to vote on this proposal
+            </md-toolbar>
 
-<div class="proposal container">
-    <md-toolbar *ngIf="userPending" class="notification">
-        Checking authentication...
-    </md-toolbar>
-    <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
-        You have no permission to vote on this proposal
-    </md-toolbar>
+            <h2 class="proposal-title">
+                {{proposal.title}}
+                <span class="category-subtitle">{{proposal.category}}</span>
+            </h2>
+            <p class="proposal-description">{{proposal.description}}</p>
 
-    <h2 class="proposal-title">
-        {{proposal.title}}
-        <span class="category-subtitle">{{proposal.category}}</span>
-    </h2>
-    <p class="proposal-description">{{proposal.description}}</p>
+            <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter">
+                <fieldset>
+                    <div class="answer-row">
+                        <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
+                            <md-button-toggle value="0">Mee eens</md-button-toggle>
+                            <md-button-toggle value="1">Oneens</md-button-toggle>
+                        </md-button-toggle-group>
+                    </div>
 
-    <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter">
-        <fieldset>
-            <div class="answer-row">
-                <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
-                    <md-button-toggle value="0">Mee eens</md-button-toggle>
-                    <md-button-toggle value="1">Oneens</md-button-toggle>
-                </md-button-toggle-group>
+                    <div *ngIf="answer.value">
+                        <textarea name="reason" placeholder="Toelichting..." formControlName="reason"></textarea>
+
+                        <button type="submit" md-raised-button class="btn-block">Versturen</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-3">
+        <div class="proposal-information">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
+                    <div class="proposal-stakeholder">
+                        <div class="stakeholder-title">Indiener voorstel</div>
+                        <img src="/assets/images/stakeholder.png" alt="stakeholder Albert Steekhouder">
+                        <div class="stakeholder-info">
+                            <span class="name">Albert Steekhouder</span>
+                            <span class="email">aj.steekhouder@email.nl</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
+                    <div class="proposal-phase">
+                        <div class="phase-title">Status voorstel</div>
+                        <img src="/assets/images/proposal-small.png" alt="proposal shopping centre">
+                        <div class="phase-info">
+                            <span class="status">Concretisering voorstel</span>
+                            <span class="date">tot 22 april 2017</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
+                    <div class="proposal-history">
+                        <div class="history-title">Geschiedenis</div>
+                        <ul>
+                            <li>
+                                <md-icon class="history-arrow">arrow_forward</md-icon>
+                                <span>initiele voorstel</span>
+                            </li>
+                            <li>
+                                <md-icon class="history-arrow">arrow_forward</md-icon>
+                                <span>resultaten 1e voorstel</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <div *ngIf="answer.value">
-                <textarea name="reason" placeholder="Toelichting..." formControlName="reason"></textarea>
-
-                <button type="submit" md-raised-button class="btn-block">Versturen</button>
-            </div>
-        </fieldset>
-    </form>
+        </div>
+    </div>
 </div>

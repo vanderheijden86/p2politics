@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { addDays } from 'date-fns';
 
 import { InfoServiceAgent, ContractRpcServiceAgent } from '../service-agents';
+import { ProposalService } from '../services/proposal.service';
 import { UserService } from '../services/user.service';
 import { Web3Service } from '../services/web3.service';
 import { Balance } from '../models/webapi/balance.model';
 import { DomainUser } from '../models/domain-user.model';
+import { Proposal } from '../models/proposal.model';
 import { Role } from '../models/role.enum';
 
 @Component({
@@ -21,6 +24,7 @@ export class InfoComponent implements OnInit {
         private infoServiceAgent: InfoServiceAgent,
         private contractRpcServiceAgent: ContractRpcServiceAgent,
         private userService: UserService,
+        private proposalService: ProposalService,
         private web3Service: Web3Service) { }
 
     ngOnInit() {
@@ -90,6 +94,8 @@ export class InfoComponent implements OnInit {
         this.userService.hasRole(this.domain, this.role)
             .subscribe((response) => {
                 this.hasRoleResponse = response;
+            }, (error) => {
+                console.error('error', error);
             });
     }
     setRoleResponse: string;
@@ -97,6 +103,8 @@ export class InfoComponent implements OnInit {
         this.userService.setRole(this.domain, this.role, hasRole)
             .subscribe((response) => {
                 this.setRoleResponse = response;
+            }, (error) => {
+                console.error('error', error);
             });
     }
 
@@ -105,6 +113,8 @@ export class InfoComponent implements OnInit {
         this.userService.getDomainUser(this.domain)
             .subscribe((response) => {
                 this.domainUser = response;
+            }, (error) => {
+                console.error('error', error);
             });
     }
 
@@ -113,9 +123,40 @@ export class InfoComponent implements OnInit {
         this.userService.testje()
             .subscribe((response) => {
                 this.testjeResult = response;
+            }, (error) => {
+                console.error('error', error);
             });
     }
 
+    proposals: Proposal[];
+    getProposals() {
+        this.proposalService.getProposals(this.domain)
+            .subscribe(response => {
+                this.proposals = response;
+            }, (error) => {
+                console.error('error', error);
+            });
+    }
+    //uint parentId, bytes32 title, bytes32 domain, bytes32 category, bytes32 phase,
+    //string description, uint maxVoteScale, uint endDate, uint completed) returns (uint) {
+    addProposal() {
+        const proposal = new Proposal();
+        proposal.parentId = '1';
+        proposal.title = 'fake title';
+        proposal.domain = this.domain;
+        proposal.category = 'TODO category';
+        proposal.phase = 'TODO phase';
+        proposal.description = 'TODO description';
+        proposal.maxVoteScale = 100;
+        proposal.endDate = addDays(Date.now(), 20);
+        proposal.completed = 19;
+        this.proposalService.addProposal(proposal)
+            .subscribe(response => {
+                //proposal.id = response
+            }, (error) => {
+                console.error('error', error);
+            });
+    }
     get web3() {
         return this.web3Service.web3;
     }
