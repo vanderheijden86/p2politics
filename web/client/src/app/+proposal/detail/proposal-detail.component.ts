@@ -75,13 +75,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     }
 
     setAnswer(event: MdButtonToggleChange) {
-        //console.log('setAnswer event', event);
-        // const formValues = this.formGroup.value;
-        // formValues.answer = event.value;
-        //console.log(this.formGroup);
         this.changeDetectionRef.detectChanges();
-        // this.showClosedProposels = event.source.checked;
-        // this.fillProposalGroups(this.proposals);
     }
 
     onVoteConfirm() {
@@ -120,7 +114,7 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         this.proposal = proposal;
         console.log('activateProposal proposalId', proposal.id, 'iteration', proposal.iteration);
         // let redirect = ['../../', proposal.id, proposal.iteration];
-        // console.log('redirect', redirect); 
+        // console.log('redirect', redirect);
         // this.router.navigate(redirect, { relativeTo: this.route });
         this.changeDetectionRef.detectChanges();
     }

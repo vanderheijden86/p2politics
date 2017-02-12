@@ -83,10 +83,6 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
         this.routeSubscription.unsubscribe();
     }
 
-    onAddProposal() {
-        console.log('Add proposal');
-    }
-
     activateProposal(proposal: Proposal) {
         this.proposalService.activeProposal = proposal;
         let redirect = ['proposal', proposal.id];
@@ -97,6 +93,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
     showClosedProposelsChanged(event: MdButtonToggleChange) {
         this.showClosedProposels = event.source.checked;
         this.fillProposalGroups(this.proposals);
+        this.changeDetectorRef.detectChanges();
     }
 
     private filterPreviousIterations(proposals: Proposal[]) {
