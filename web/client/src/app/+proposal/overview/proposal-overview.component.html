@@ -35,8 +35,8 @@
                   <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
               </div>
               <div class="proposal-vote">
-                  <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}</span>
-                  <span>tegen: {{proposal.voteStatistics?.rejectedVotes}}</span>
+                  <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}</span>
+                  <span>tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}</span>
               </div>
             </md-card>
           </div>

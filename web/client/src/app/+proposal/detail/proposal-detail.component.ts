@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
@@ -34,7 +34,6 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
     constructor(
         private changeDetectionRef: ChangeDetectorRef,
         private route: ActivatedRoute,
-        private router: Router,
         private mdSnackBar: MdSnackBar,
         private appConfig: AppConfig,
         private proposalService: ProposalService,
@@ -104,11 +103,11 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
             });
     }
 
-    activateProposal(proposal: Proposal) {
-        this.proposalService.activeProposal = proposal;
-        let redirect = ['proposal', proposal.id];
-        this.router.navigate(redirect, {relativeTo: this.route});
-    }
+    // activateProposal(proposal: Proposal) {
+    //     this.proposalService.activeProposal = proposal;
+    //     let redirect = ['../', proposal.id];
+    //     this.router.navigate(redirect);
+    // }
 
     private initForm() {
         this.formGroup = new FormGroup({
