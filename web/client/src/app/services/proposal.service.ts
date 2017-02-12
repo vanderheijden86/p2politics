@@ -68,7 +68,7 @@ export class ProposalService {
         return result;
     }
 
-    getProposalByIdIteration(proposalId: number, iteration: number): Observable<[Proposal]> {
+    getProposalByIdIteration(proposalId: number, iteration: number): Observable<Proposal> {
         console.log('getProposalByIdIteration proposalId', proposalId, 'iteration', iteration);
         return this.contractRpcServiceAgent.getContractInstance('Proposals')
             .mergeMap(contractInstance => {

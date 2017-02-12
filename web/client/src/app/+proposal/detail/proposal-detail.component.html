@@ -30,6 +30,11 @@
                 </h2>
                 <p class="proposal-description">{{proposal.description}}</p>
 
+                <div class="proposal-vote">
+                      <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}</span>
+                      <span>tegen: {{proposal.voteStatistics?.rejectedVotes}}</span>
+                  </div>
+
                 <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter || vote || proposal.isEnded">
                     <fieldset>
                         <div class="answer-row">
@@ -79,12 +84,27 @@
                             <div class="history-title">Geschiedenis</div>
                             <ul>
                                 <li>
-                                    <md-icon class="history-arrow">arrow_forward</md-icon>
-                                    <span>initiele voorstel</span>
+                                    <a href="">
+                                        <md-icon class="history-arrow">arrow_forward</md-icon>
+                                        <span>initiele voorstel</span>
+                                    </a>
                                 </li>
                                 <li>
+                                    <a href="">
+                                        <md-icon class="history-arrow">arrow_forward</md-icon>
+                                        <span>resultaten 1e voorstel</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
+                        <div class="proposal-history">
+                            <div class="history-title">Geschiedenis</div>
+                            <ul>
+                                <li *ngFor="let proposalIteration of proposal.iterations" class="pointer" (click)="activateProposal(proposal)">
                                     <md-icon class="history-arrow">arrow_forward</md-icon>
-                                    <span>resultaten 1e voorstel</span>
+                                    <span>{{proposalIteration.title}}</span>
                                 </li>
                             </ul>
                         </div>

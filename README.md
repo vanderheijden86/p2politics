@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/vanderheijden86/p2politics)](https://bettercodehub.com)
+
 # p2politics
 P2P political party powered by blockchain
 
