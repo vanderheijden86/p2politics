@@ -98,6 +98,17 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12">
+                        <div class="proposal-history">
+                            <div class="history-title">Geschiedenis</div>
+                            <ul>
+                                <li *ngFor="let proposalIteration of proposal.iterations" class="pointer" (click)="activateProposal(proposal)">
+                                    <md-icon class="history-arrow">arrow_forward</md-icon>
+                                    <span>{{proposalIteration.title}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

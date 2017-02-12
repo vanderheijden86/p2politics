@@ -16,6 +16,11 @@ interface ProposalCategory {
     proposals: Proposal[];
 }
 
+interface IterationGroup {
+    id: number,
+    iterations: Proposal[]
+}
+
 @Component({
     selector: 'app-proposal-overview',
     templateUrl: './proposal-overview.component.html',
@@ -64,6 +69,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
             this.userService.getDomainUser(domain)
                 .subscribe(user => this.user = user);
             this.proposalService.getProposals(domain)
+                .map(proposals => this.filterPreviousIterations(proposals))
                 .subscribe(proposals => {
                     this.proposals = proposals;
                     this.fillProposalGroups(proposals);
@@ -91,6 +97,29 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
     showClosedProposelsChanged(event: MdButtonToggleChange) {
         this.showClosedProposels = event.source.checked;
         this.fillProposalGroups(this.proposals);
+    }
+
+    private filterPreviousIterations(proposals: Proposal[]) {
+        const iterationGroups: IterationGroup[] = [];
+        for(let proposal of proposals) {
+            let iterationGroup = iterationGroups.find(group => group.id === proposal.id);
+            if(!iterationGroup) {
+                iterationGroup = { id: proposal.id, iterations: [] };
+                iterationGroups.push(iterationGroup);
+            }
+            iterationGroup.iterations.push(proposal);
+        }
+        this.enrichProposalsWithIterations(iterationGroups);
+        return iterationGroups.map(iterationGroup => iterationGroup.iterations[0]);
+    }
+
+    private enrichProposalsWithIterations(iterationGroups: IterationGroup[]) {
+        iterationGroups.forEach(group => {
+            group.iterations = group.iterations.sort((a, b) => a.iteration > b.iteration ? -1 : 1);
+            group.iterations.forEach(proposal => {
+                proposal.iterations = group.iterations;
+            });
+        });
     }
 
     private fillProposalGroups(proposals: Proposal[]) {
