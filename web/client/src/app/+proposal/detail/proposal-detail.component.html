@@ -4,7 +4,7 @@
 
 <div *ngIf="proposal">
     <div class="action-bar">
-        <a *ngIf="user && user.isProposer" md-raised-button [routerLink]="['../add', proposal.id]" class="action-button button-with-icon">
+        <a *ngIf="user && user.isProposer && proposal.isEnded" md-raised-button [routerLink]="['../add', proposal.id]" class="action-button button-with-icon">
             <md-icon>add</md-icon> Nieuw vervolg voorstel
         </a>
     </div>

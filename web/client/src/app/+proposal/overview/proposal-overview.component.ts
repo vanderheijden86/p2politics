@@ -141,6 +141,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
             this.voteService.getAcceptedAndRejectedVotes(proposal)
             .subscribe(response => {
                 proposal.voteStatistics = response;
+                this.changeDetectorRef.detectChanges();
             });
         });
     }
