@@ -39,8 +39,8 @@
                     <fieldset>
                         <div class="answer-row">
                             <md-button-toggle-group #answer="mdButtonToggleGroup" formControlName="answer">
-                                <md-button-toggle value="1">Mee eens</md-button-toggle>
-                                <md-button-toggle value="0">Oneens</md-button-toggle>
+                                <md-button-toggle value="1" (change)="setAnswer($event)">Mee eens</md-button-toggle>
+                                <md-button-toggle value="0" (change)="setAnswer($event)">Oneens</md-button-toggle>
                             </md-button-toggle-group>
                         </div>
 

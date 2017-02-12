@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
+import { MdButtonToggleChange } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -73,10 +74,20 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
         this.routeSubscription.unsubscribe();
     }
 
+    setAnswer(event: MdButtonToggleChange) {
+        //console.log('setAnswer event', event);
+        const formValues = this.formGroup.value;
+        formValues.answer = event.value;
+        //console.log(this.formGroup);
+        this.changeDetectionRef.detectChanges();
+        // this.showClosedProposels = event.source.checked;
+        // this.fillProposalGroups(this.proposals);
+    }
+
     onVoteConfirm() {
         if (this.formGroup.invalid) return;
         console.log('VOTED');
-        let formValues = this.formGroup.value;
+        const formValues = this.formGroup.value;
         this.voteService.voteForProposal(this.proposal, +formValues.answer, formValues.reason || '')
             .subscribe(response => {
                 this.mdSnackBar.open('U heeft gestemd', 'Sluiten', {
