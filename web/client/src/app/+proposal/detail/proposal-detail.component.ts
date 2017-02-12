@@ -76,8 +76,8 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
 
     setAnswer(event: MdButtonToggleChange) {
         //console.log('setAnswer event', event);
-        const formValues = this.formGroup.value;
-        formValues.answer = event.value;
+        // const formValues = this.formGroup.value;
+        // formValues.answer = event.value;
         //console.log(this.formGroup);
         this.changeDetectionRef.detectChanges();
         // this.showClosedProposels = event.source.checked;
