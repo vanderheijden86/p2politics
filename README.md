@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/vanderheijden86/p2politics)](https://bettercodehub.com)
+
 # p2politics
 P2P political party powered by blockchain
 
@@ -25,8 +27,6 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
-- Show Proposal history, detail + overview
-- Voting aantallen tonen bij proposals, detail (alles) + overview (nog stylen)
 - Proposal reactions display
 - ...
 - Proposer should be able to submit a result on a proposal

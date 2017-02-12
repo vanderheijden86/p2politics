@@ -15,7 +15,9 @@ export class Proposal {
     startDate: Date;
     endDate: Date;
     completed: number;
+
     // view properties
+    iterations: Proposal[];
     voteStatistics: VoteStatistics;
     get isEnded(): boolean {
         return isPast(this.endDate);

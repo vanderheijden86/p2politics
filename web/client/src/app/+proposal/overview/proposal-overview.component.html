@@ -11,7 +11,7 @@
 
 <div class="proposal-container">
     <div *ngIf="!proposalCategories" class="text-center">
-        Voorstellen aan het verzamelen...
+        We zijn de voorstellen aan het verzamelen...
     </div>
     <div *ngIf="proposalCategories && !proposalCategories.length" class="text-center">
         Het is eenzaam hier
@@ -30,20 +30,14 @@
               </a>-->
               <md-card-content>
                   <p class="proposal-description-intro">{{proposal.description}}</p>
-                  <p>
-                      Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}
-                      tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}
-                  </p>
               </md-card-content>
               <div class="date">
-                  <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+                  <span *ngIf="!proposal.isEnded">U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+                  <span *ngIf="proposal.isEnded">Dit voorstel is beëindigd</span>
               </div>
-              <div class="proposal-link">
-                  <ul>
-                      <li>
-                          <a>delen</a>
-                      </li>
-                  </ul>
+              <div class="proposal-vote">
+                  <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}</span>
+                  <span>tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}</span>
               </div>
             </md-card>
           </div>

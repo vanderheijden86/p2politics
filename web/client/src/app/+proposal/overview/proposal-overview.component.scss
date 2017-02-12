@@ -44,7 +44,7 @@ button.toggle-history {
 }
 
 md-card {
-	min-height: 210px;
+	min-height: 235px;
   margin-bottom: 1.5rem;
 
   &:hover {
@@ -81,31 +81,16 @@ md-card .date {
 	color: #ababab;
 	display: inline-block;
 	font-size: .75rem;
-	float: left;
 }
 
-md-card .proposal-link {
+.proposal-vote {
 	float: right;
+	color: #03A9F4;
 
-	ul {
+	span {
+		margin-left: .5rem;
+		margin-bottom: .5rem;
+		font-size: .75rem;
 		line-height: 18px;
-		margin: 0;
-		margin-right: .5rem;
-
-		li {
-			display: inline-block;
-			font-size: .75rem;
-			margin: 0 1rem;
-
-			a {
-				color: #dbdbdb;
-				text-decoration: underline;
-				transition: all ease-in-out .3s;
-
-				&:hover {
-					color: #0277BD;
-				}
-			}
-		}
 	}
 }
