@@ -30,6 +30,11 @@
                 </h2>
                 <p class="proposal-description">{{proposal.description}}</p>
 
+                <div class="proposal-vote">
+                      <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}</span>
+                      <span>tegen: {{proposal.voteStatistics?.rejectedVotes}}</span>
+                  </div>
+
                 <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter || vote || proposal.isEnded">
                     <fieldset>
                         <div class="answer-row">
@@ -79,12 +84,16 @@
                             <div class="history-title">Geschiedenis</div>
                             <ul>
                                 <li>
-                                    <md-icon class="history-arrow">arrow_forward</md-icon>
-                                    <span>initiele voorstel</span>
+                                    <a href="">
+                                        <md-icon class="history-arrow">arrow_forward</md-icon>
+                                        <span>initiele voorstel</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <md-icon class="history-arrow">arrow_forward</md-icon>
-                                    <span>resultaten 1e voorstel</span>
+                                    <a href="">
+                                        <md-icon class="history-arrow">arrow_forward</md-icon>
+                                        <span>resultaten 1e voorstel</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
