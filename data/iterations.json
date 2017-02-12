@@ -1,0 +1,28 @@
+[
+    {
+        "id": 0,
+        "iteration": 1,
+        "title": "Concreet plan voor de bouw van een winkelcentrum in de Kerkstraat",
+        "domain": "groningen",
+        "category": "Lokale faciliteiten",
+        "phase": "Policy shaping",
+        "description": "Op het recente voorstel voor het opzetten van een winkelcentrum in Groningen-Oost werd op dit platform in meerderheid positief gereageerd. Volgend op de toezegging in het vorige voorstel bevat dit voorstel een concreet plan voor de bouw van een winkelcentrum in Groningen-Oost. Het voorstel is om het lege voormalig PostNL gebouw om te bouwen tot winkelcentrum. Het gebouw wordt momenteel niet gebruikt en een groot voordeel is dat de kosten lager zijn dan bij nieuwbouw. We schatten in dat de kosten voor het project 500.000 euro zijn en dat de verbouw 5 maanden zal duren. Toezegging: als dit voorstel meer dan 50% steun ontvangt wordt het plan uitgewerkt en in de gemeenteraad voorgesteld. Als een meerderheid tegen het huidige plan is worden de suggesties gebruikt om tot een verbeterd voorstel te komen.",
+        "maxVoteScale": 2,
+        "startDate": "1481760001",
+        "endDate": "1482969601",
+        "completed": 1
+    },
+    {
+        "id": 0,
+        "iteration": 2,
+        "title": "Verbeterd plan voor een winkelcentrum in de Kerkstraat",
+        "domain": "groningen",
+        "category": "Lokale faciliteiten",
+        "phase": "Policy proposing",
+        "description": "Ondanks dat een meerderheid aangaf een nieuw winkelcentrum te willen in Groningen-Oost werd een vorig voorstel voor het verbouwen van het PostNL gebouw in de Kerkstraat verworpen. De belangrijkste reden hiervoor waren zorgen over de toegankelijkheid van de Kerkstraat. Deze is namelijk niet makkelijk te bereiken met het openbaar vervoer, de dichtsbijzijnde bushalte is op 10 minuten loopafstand. Het vorige voorstel voor de bouw van een winkelcentrum in het PostNL gebouw wordt uitgebreid met een plan om een bushalte te bouwen bij dit nieuwe winkelcentrum. Toezegging: als dit voorstel meer dan 50% steun ontvangt wordt het plan uitgewerkt en in de gemeenteraad voorgesteld. Als een meerderheid tegen het huidige plan is worden de suggesties gebruikt om tot een verbeterd voorstel te komen.",
+        "maxVoteScale": 2,
+        "startDate": "1486425601",
+        "endDate": "1487635201",
+        "completed": 0
+    }
+]
