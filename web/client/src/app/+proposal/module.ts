@@ -8,7 +8,8 @@ import {
     MdIconModule,
     MdButtonToggleModule,
     MdButtonModule,
-    MdInputModule
+    MdInputModule,
+    MdSnackBarModule
 } from '@angular/material';
 
 import { SharedModule } from '../shared';
@@ -31,6 +32,7 @@ import { InputErrorComponent } from './add/input-error.component';
         MdButtonToggleModule,
         MdButtonModule,
         MdInputModule,
+        MdSnackBarModule,
         SharedModule,
         ProposalRouting,
     ],

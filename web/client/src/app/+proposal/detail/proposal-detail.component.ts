@@ -87,13 +87,13 @@ export class ProposalDetailComponent implements OnInit, OnDestroy {
                 this.mdSnackBar.open('U heeft gestemd', 'Sluiten', {
                     duration: 8000
                 });
-                // this.changeDetectionRef.detectChanges();
+                this.changeDetectionRef.detectChanges();
             },
             error => {
                 this.mdSnackBar.open('Er is een fout opgetreden', 'Sluiten', {
                     duration: 8000
                 });
-                // this.changeDetectionRef.detectChanges();
+                this.changeDetectionRef.detectChanges();
             });
     }
 
