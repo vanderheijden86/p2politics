@@ -31,9 +31,9 @@
                 <p class="proposal-description">{{proposal.description}}</p>
 
                 <div class="proposal-vote">
-                      <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}</span>
-                      <span>tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}</span>
-                  </div>
+                    <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}</span>
+                    <span>tegen: {{proposal.voteStatistics?.rejectedVotes || 0}}</span>
+                </div>
 
                 <form (ngSubmit)="onVoteConfirm()" [formGroup]="formGroup" [class.hidden]="!user || !user.isVoter || vote || proposal.isEnded">
                     <fieldset>
@@ -84,9 +84,9 @@
                             <div class="history-title">Geschiedenis</div>
                             <ul>
                                 <li *ngFor="let proposalIteration of proposal.iterations" class="pointer">
-                                    <a [routerLink]="['..', proposalIteration.id]">
-                                    <md-icon class="history-arrow">arrow_forward</md-icon>
-                                    <span>{{proposalIteration.title}}</span>
+                                    <a (click)="activateProposal(proposalIteration);">
+                                        <md-icon class="history-arrow">arrow_forward</md-icon>
+                                        <span>{{proposalIteration.title}}</span>
                                     </a>
                                 </li>
                             </ul>
