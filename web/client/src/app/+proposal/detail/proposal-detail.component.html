@@ -14,7 +14,7 @@
                 <md-toolbar *ngIf="userPending" class="notification">
                     Authenticatie wordt gecontroleerd...
                 </md-toolbar>
-                <md-toolbar *ngIf="!userPending && user && !user.isVoter" class="notification md-warn">
+                <md-toolbar *ngIf="!userPending && user && !user.isVoter && !proposal.isEnded" class="notification md-warn">
                     U heeft geen rechten om op dit voorstel te stemmen
                 </md-toolbar>
                 <md-toolbar *ngIf="vote" class="notification md-warn">
