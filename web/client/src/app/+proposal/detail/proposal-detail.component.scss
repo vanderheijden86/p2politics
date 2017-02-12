@@ -103,6 +103,93 @@ md-icon.arrow_back {
 	}
 }
 
+.proposal-response {
+  margin: 20px 10px;
+  padding: 10px 0 0;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+
+	input {
+	  display: none;
+	  visibility: hidden;
+	}
+
+	label {
+	  display: block;
+	  padding: 0.5em;
+	  border-bottom: 1px solid #939393;
+	  color: #03A9F4;
+
+		&:hover {
+		  color: #0277BD;
+		}
+	}
+
+	#expand {
+	  height: 0px;
+	  overflow: hidden;
+	  transition: height 0.5s;
+	  color: #FFF;
+
+	  section {
+	  	.advantage,
+	  	.disadvantage {
+	  		color: #333;
+
+	  		h3 {
+	  			color: #03A9F4;
+			    font-size: 1.5rem;
+			    padding: .5rem;
+	  		}
+
+	  		ul {
+	  			padding: .5rem .75rem;
+
+		  		li {
+		  			color: #9e9e9e;
+						border-bottom: 1px dashed #bababa;
+						margin-bottom: .75rem;
+						padding-bottom: .25rem;
+
+						.response-arrow {
+							float: left;
+							margin-right: .25rem;
+							margin-bottom: 2rem;
+							@media screen and (max-width: 1292px) {
+								font-size: .75rem;
+								margin: .25rem 0;
+								display: none;
+							}
+						}
+						span {
+							display: block;
+					    // width: 200px;
+					    // white-space: nowrap;
+					    // overflow: hidden;
+					    // text-overflow: ellipsis;
+						}
+					}
+				}
+	  	}
+
+	  	// .disadvantage {
+	  	// 	color: #333;
+	  	// }
+	  }
+	}
+
+	#toggle:checked ~ #expand {
+	  height: 250px;
+	}
+}
+
+.response-icon {
+	position: absolute;
+}
+
+.response-header {
+	padding-left: 2rem;
+}
+
 .proposal-information {
 	padding: 2rem;
 	height: 500px; 
@@ -202,10 +289,15 @@ md-icon.arrow_back {
 					@media screen and (max-width: 1292px) {
 						font-size: .75rem;
 						margin: .25rem 0;
+						display: none;
 					}
 				}
 				span {
-
+					display: block;
+			    width: 200px;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
 				}
 			}
 		}
