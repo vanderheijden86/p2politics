@@ -44,6 +44,7 @@ button.toggle-history {
 }
 
 md-card {
+	min-height: 235px;
   margin-bottom: 1.5rem;
 
   &:hover {
@@ -65,43 +66,8 @@ md-card a {
 	}
 }
 
-md-card .date {
-	color: #ababab;
-	display: inline-block;
-	font-size: .75rem;
-	float: left;
-}
-
-md-card .proposal-link {
-	float: right;
-
-	ul {
-		line-height: 18px;
-		margin: 0;
-		margin-right: .5rem;
-
-		li {
-			display: inline-block;
-			font-size: .75rem;
-			margin: 0 1rem;
-
-			a {
-				color: #dbdbdb;
-				text-decoration: underline;
-				transition: all ease-in-out .3s;
-
-				&:hover {
-					color: #0277BD;
-				}
-			}
-		}
-	}
-}
-
 .proposal-description-intro {
 	display: -webkit-box;
-  //max-width: 400px;
-  //height: 109.2px;
   margin: 0 auto;
   font-size: 1rem;;
   line-height: 1.5;
@@ -109,4 +75,22 @@ md-card .proposal-link {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+md-card .date {
+	color: #ababab;
+	display: inline-block;
+	font-size: .75rem;
+}
+
+.proposal-vote {
+	float: right;
+	color: #03A9F4;
+
+	span {
+		margin-left: .5rem;
+		margin-bottom: .5rem;
+		font-size: .75rem;
+		line-height: 18px;
+	}
 }

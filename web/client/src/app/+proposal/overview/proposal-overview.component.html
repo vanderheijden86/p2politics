@@ -1,13 +1,13 @@
-<div class="action-bar" >
+<div class="action-bar">
     <a *ngIf="user?.isProposer" md-raised-button routerLink="proposal/add" class="action-button button-with-icon">
         <md-icon>add</md-icon> Nieuw voorstel
     </a>
     <button class="toggle-history">
-  		<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle>
+  		<md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">
+            {{showClosedProposels ? 'Verberg' : 'Toon'}} gesloten voorstellen
+        </md-button-toggle>
   	</button>
 </div>
-
-<!-- <md-button-toggle [checked]="showClosedProposels" (change)="showClosedProposelsChanged($event)">Toon gesloten voorstellen</md-button-toggle> -->
 
 <div class="proposal-container">
     <div *ngIf="!proposalCategories" class="text-center">
@@ -17,35 +17,30 @@
         Het is eenzaam hier
     </div>
     <div *ngFor="let category of proposalCategories">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-            <div class="category-titel">{{category.description}}</div>
-            <div class="proposal-cards">
-            <div *ngFor="let proposal of category.proposals" class="">
+      <div class="category-titel">{{category.description}}</div>
+        <div class="proposal-cards">
+          <div class="row">
+          <div *ngFor="let proposal of category.proposals" class="col-lg-6">
             <md-card>
-                <a (click)="activateProposal(proposal);">
-                    <h3>{{proposal.title}}</h3>
-                </a>
-                <!--<a [routerLink]="['proposal', proposal.id]">
-                    <h3>{{proposal.title}}</h3>
-                </a>-->
-                <md-card-content>
-                    <p class="proposal-description-intro">{{proposal.description}}</p>
-                </md-card-content>
-                <div class="date">
-                    <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
-                </div>
-                <div class="proposal-link">
-                    <ul>
-                        <li>
-                            <a>delen</a>
-                        </li>
-                    </ul>
-                </div>
+              <a (click)="activateProposal(proposal);">
+                  <h3>{{proposal.title}}</h3>
+              </a>
+              <!--<a [routerLink]="['proposal', proposal.id]">
+                  <h3>{{proposal.title}}</h3>
+              </a>-->
+              <md-card-content>
+                  <p class="proposal-description-intro">{{proposal.description}}</p>
+              </md-card-content>
+              <div class="date">
+                  <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+              </div>
+              <div class="proposal-vote">
+                  <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes}}</span>
+                  <span>tegen: {{proposal.voteStatistics?.rejectedVotes}}</span>
+              </div>
             </md-card>
-            </div>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
 </div>
