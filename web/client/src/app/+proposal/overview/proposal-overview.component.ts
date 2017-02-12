@@ -90,7 +90,7 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
     activateProposal(proposal: Proposal) {
         this.proposalService.activeProposal = proposal;
         let redirect = ['proposal', proposal.id];
-        this.router.navigate(redirect, {relativeTo: this.route});
+        this.router.navigate(redirect, { relativeTo: this.route });
     }
 
     showClosedProposels = false;
@@ -101,9 +101,9 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
 
     private filterPreviousIterations(proposals: Proposal[]) {
         const iterationGroups: IterationGroup[] = [];
-        for(let proposal of proposals) {
+        for (let proposal of proposals) {
             let iterationGroup = iterationGroups.find(group => group.id === proposal.id);
-            if(!iterationGroup) {
+            if (!iterationGroup) {
                 iterationGroup = { id: proposal.id, iterations: [] };
                 iterationGroups.push(iterationGroup);
             }
@@ -139,10 +139,10 @@ export class ProposalOverviewComponent implements OnInit, OnDestroy {
     private fillVoteStatistics(proposals: Proposal[]) {
         proposals.forEach(proposal => {
             this.voteService.getAcceptedAndRejectedVotes(proposal)
-            .subscribe(response => {
-                proposal.voteStatistics = response;
-                this.changeDetectorRef.detectChanges();
-            });
+                .subscribe(response => {
+                    proposal.voteStatistics = response;
+                    this.changeDetectorRef.detectChanges();
+                });
         });
     }
 }

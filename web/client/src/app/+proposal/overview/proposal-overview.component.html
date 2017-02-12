@@ -32,7 +32,8 @@
                   <p class="proposal-description-intro">{{proposal.description}}</p>
               </md-card-content>
               <div class="date">
-                  <span>U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+                  <span *ngIf="!proposal.isEnded">U kunt tot {{proposal.endDate | dateToString:'D MMMM YYYY'}} uw mening delen</span>
+                  <span *ngIf="proposal.isEnded">Dit voorstel is beëindigd</span>
               </div>
               <div class="proposal-vote">
                   <span>Aantal voor: {{proposal.voteStatistics?.acceptedVotes || 0}}</span>
