@@ -27,6 +27,6 @@ Inline-style:
 ![alt text](docs/entity_relationship_diagram.png "ERD")
 
 # TODO
-- Proposal reactions display
-- ...
+- Proposal reactions display (get and view)
 - Proposer should be able to submit a result on a proposal
+- ...
